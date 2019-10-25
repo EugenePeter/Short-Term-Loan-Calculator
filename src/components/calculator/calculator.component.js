@@ -38,7 +38,7 @@ class Calculator extends Component {
                 <h4>I want to borrow ${loanAmount}</h4>
                 <InputRange
                     step={100}
-                    maxValue={5000}    
+                    maxValue={100000}    
                     minValue={100}
                     value={loanAmount}
                     onChange={this.handleAmountChange}

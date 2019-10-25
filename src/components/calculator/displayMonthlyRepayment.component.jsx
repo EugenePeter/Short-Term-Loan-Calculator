@@ -1,7 +1,14 @@
+
 import React from "react";
 
-const DisplayMOnthlyRepayment = () => {
-    <h1>test</h1>
-}
+const DisplayMonthlyRepayment = ({ func, text }) => {
+return (
+    <span>
+    {func} <small>{text}</small>
+    </span>
+);
+};
 
-export default DisplayMonthlyRepayment  ;
+
+
+export default DisplayMonthlyRepayment;

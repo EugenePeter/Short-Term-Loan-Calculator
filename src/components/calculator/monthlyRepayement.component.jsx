@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-// import DisplayMonthlyRepayment   from './displayMonthlyRepayment.component';
+import DisplayMonthlyRepayment   from './displayMonthlyRepayment.component';
 
 class MonthlyRepayment extends Component {
     constructor() {
@@ -31,17 +31,18 @@ class MonthlyRepayment extends Component {
         const discountFactor = a / b;
         const monthlyPayment = amount / discountFactor;
 
-        return <p>£{Math.round(monthlyPayment)}</p>;
+        // return <p>${Math.round(monthlyPayment)}</p>;
+        return <p>{monthlyPayment}</p>
 
     };
 
 
     render() {
         return(
-            <div>
-                {this.calculateMonthlyPayment}
-                <h1>test{this.calculateMonthlyPayment}</h1>
-            </div>
+            <div className="flex">
+                <DisplayMonthlyRepayment func={this.calculateMonthlyPayment()} text="Monthly Payment" />
+     
+        </div>
         );
     }
 }
