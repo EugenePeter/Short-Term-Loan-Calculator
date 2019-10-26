@@ -1,6 +1,12 @@
 import React, {Component} from "react";
 import DisplayMonthlyRepayment   from './displayMonthlyRepayment.component';
 
+import './calculator.component.scss';
+
+
+
+
+
 class MonthlyRepayment extends Component {
     constructor() {
         super();
@@ -24,7 +30,7 @@ class MonthlyRepayment extends Component {
     calculateMonthlyPayment = () => {
         const { amount , years } = this.props;
         const apr = this.state.APR / 12;
-        const loanDuration = years / 12; 
+        const loanDuration = years * 12; 
 
         const a = Math.pow(1 + apr, loanDuration ) - 1;
         const b = Math.pow(1 + apr, loanDuration ) * apr;
@@ -32,17 +38,17 @@ class MonthlyRepayment extends Component {
         const monthlyPayment = amount / discountFactor;
 
         // return <p>${Math.round(monthlyPayment)}</p>;
-        return <p>{monthlyPayment}</p>
+        // return <p>{monthlyPayment}</p>
+
+        // return <h1> {loanDuration} </h1>
+        return Math.round(monthlyPayment).toLocaleString('en')
 
     };
 
 
     render() {
         return(
-            <div className="flex">
-                <DisplayMonthlyRepayment func={this.calculateMonthlyPayment()} text="Monthly Payment" />
-     
-        </div>
+                <DisplayMonthlyRepayment calculateMonthlyPayment={this.calculateMonthlyPayment()} text="Monthly Payment" />
         );
     }
 }

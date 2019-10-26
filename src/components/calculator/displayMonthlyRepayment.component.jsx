@@ -1,12 +1,14 @@
 
 import React from "react";
 
-const DisplayMonthlyRepayment = ({ func, text }) => {
+const DisplayMonthlyRepayment = ({calculateMonthlyPayment, text }) => {
 return (
-    <span>
-    {func} <small>{text}</small>
-    </span>
-);
+        <div className="test">
+            <h4>{calculateMonthlyPayment}</h4>
+            <small>{text}</small>
+        </div>
+
+    );
 };
 
 

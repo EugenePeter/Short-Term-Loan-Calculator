@@ -1,55 +1,81 @@
 html {
     font-size: 17px;
-    }
-    
-    body {
+}
+
+body {
     font-family: "Nunito", sans-serif;
-    }
-    
-    p {
-    font-size: 2rem;
-    margin-bottom: -10px !important;
-    }
-    
-    h4 {
-    font-size: 1.5rem;
-    }
-    
-    small {
+}
+
+p {
+    // font-size: 2rem;
+    // margin-bottom: -10px !important;
+}
+
+h4 {
+    font-size: 20px;
+    margin: 0;
+    // background-color: pink;
+}
+
+small {
     font-weight: lighter;
     color: gray;
-    margin: 0;
-    }
-    
-    .flex {
+    padding: 2% 0 10% 0;
+    // background-color: green;
+}
+
+.flex {
     padding-top: 15px;
     display: flex;
-    justify-content: space-between;
-    }
-    
-    .Calculator {
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    // background-color: red;
+}
+
+.Calculator {
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: center;
     padding: 2rem;
     border-radius: 2rem;
-    max-width: 800px;
+    width: 40vw;
     margin: 20vh auto;
     box-shadow: 15px 20px 70px -10px;
-    }
-    
-    .input-range__label--max {
+    background-color: white;
+}
+
+.Input-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10% 0 10% 0;
+    // background-color: yellow;
+}
+
+.DisplayMonthlyRepayment {
+    margin: 0;
+    padding: 0;
+    // background-color: yellow;
+}
+
+.test {
+    display: flex;
+    flex-direction: column;
+    align-item: center;
+}
+
+.input-range__label--max {
     display: none;
-    }
-    
-    .input-range__label--min {
+}
+
+.input-range__label--min {
     display: none;
-    }
-    
-    .input-range__label-container {
+}
+
+.input-range__label-container {
     left: -50%;
     position: relative;
     display: none;
-    }
-    
+}

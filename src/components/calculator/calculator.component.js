@@ -19,6 +19,7 @@ class Calculator extends Component {
     }
 
     handleAmountChange = value => {
+        
         this.setState({ loanAmount: value});
     };
 
@@ -34,24 +35,34 @@ class Calculator extends Component {
     render() {
         const {loanAmount, loanDuration} = this.state;
         return(
-            <div className="Calculator">
-                <h4>I want to borrow ${loanAmount}</h4>
-                <InputRange
-                    step={100}
-                    maxValue={100000}    
-                    minValue={100}
-                    value={loanAmount}
-                    onChange={this.handleAmountChange}
-                />
-                <h4>Over {loanDuration} month{loanDuration > 1 && "s"}</h4>
-                <InputRange
-                    step={1}
-                    maxValue={30}
-                    minValue={1}
-                    value={loanDuration}
-                    onChange={this.handleDurationChange}
-                />
-                <MonthlyRepayment years={ loanDuration } amount={loanAmount} />
+            <div className="App-header">
+                <div className="Calculator">
+                    <div className="Input-wrapper">
+                        <h4>${loanAmount.toLocaleString('en')}</h4>                  
+                        <small>I want to borrow</small>
+                        <InputRange
+                            step={100}
+                            maxValue={100000}    
+                            minValue={100}
+                            value={loanAmount}
+                            onChange={this.handleAmountChange}
+                        />
+                    </div>
+                    <div  className="Input-wrapper">
+                        <h4>{loanDuration} year{loanDuration > 1 && "s"}</h4>
+                        <small>Over </small>
+                        <InputRange
+                            step={1}
+                            maxValue={30}
+                            minValue={1}
+                            value={loanDuration}
+                            onChange={this.handleDurationChange}
+                        />
+                    </div>
+                    <div className="Input-wrapper">
+                        <MonthlyRepayment years={ loanDuration } amount={loanAmount} />
+                    </div>
+                </div>
             </div>
         );
     }
