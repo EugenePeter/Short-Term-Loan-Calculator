@@ -20,7 +20,7 @@ h4 {
 small {
     font-weight: lighter;
     color: gray;
-    padding: 2% 0 10% 0;
+    padding: 2% 0 4% 0;
     // background-color: green;
 }
 
@@ -33,24 +33,61 @@ small {
     // background-color: red;
 }
 
+.Repayment-schedule {
+    display: flex;
+    justify-content: center;
+    width: 60vw;
+    // background-color: green;
+    box-sizing: border-box;
+    * {
+        background-color: #fff;
+        padding: 6%;
+        box-sizing: border-box;
+    }
+    &__weekly {
+        border-radius: 25px 0 0 0;
+    }
+    &__fornightly {}
+    &__monthly {
+        border-radius: 0 25px 0 0;
+    }
+}
+
 .Calculator {
     display: flex;
+    // background-color: red;
+    width: 100%;
+}
+
+.Calculator__inner {
+    display: flex;
     flex-direction: column;
-    justify-content: center;
+    align-items: center;
     text-align: center;
-    padding: 2rem;
+    // padding: 2rem;
     border-radius: 2rem;
-    width: 40vw;
-    margin: 20vh auto;
-    box-shadow: 15px 20px 70px -10px;
-    background-color: white;
+    width: 100vw;
+    margin: 0 auto;
+    // box-shadow: 15px 20px 70px -10px;
+    // background-color: white;
+    box-sizing: border-box;
 }
 
 .Input-wrapper {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    width: 80%;
+    background-color: #fff;
+    border-radius: 3rem 3rem 0 0;
+}
+
+.Input-wrapper__inner {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     padding: 10% 0 10% 0;
+    width: 90vw;
     // background-color: yellow;
 }
 
