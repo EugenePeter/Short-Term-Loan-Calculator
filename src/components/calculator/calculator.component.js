@@ -6,6 +6,8 @@ import './calculator.component.scss';
 
 import MonthlyRepayment from './monthlyRepayement.component'
 
+import 'normalize.css';
+
 
 
 class Calculator extends Component {
@@ -14,18 +16,27 @@ class Calculator extends Component {
 
         this.state = {
             loanAmount: 5000,
-            loanDuration: 1
+            loanDuration: 1,
+            repaymentSchedule: ''
         };
     }
 
     handleAmountChange = value => {
-        
         this.setState({ loanAmount: value});
+        console.log(this.state.loanAmount)
     };
 
     handleDurationChange = value => {
         this.setState({ loanDuration: value});
     };
+
+    handleRepaymentSchedule = event => {
+        // event.preventDefault();
+        const { value } = event.target;
+        this.setState({repaymentSchedule: value });
+        console.log(value);
+        console.log(this.state);
+    }
 
 
 
@@ -33,19 +44,21 @@ class Calculator extends Component {
 
 
     render() {
-        const {loanAmount, loanDuration} = this.state;
+        const {loanAmount, loanDuration,  } = this.state;
         return(
                 <div className="Calculator">
                     <div className="Calculator__inner">
                         <div className="Repayment-schedule">
-                            <div className="Repayment-schedule__weekly">Weekly</div>
+                            <div className="Repayment-schedule__weekly" >
+                                <button onClick={ this.handleRepaymentSchedule} value="weekly">Weekly</button> 
+                            </div>
                             <div className="Repayment-schedule__fortnightly">Fornightly</div>
                             <div className="Repayment-schedule__monthly">Monthly</div>  
                         </div>
                         <div className="Input-wrapper">
                             <div className="Input-wrapper__inner">
                                 <small>I want to borrow</small>
-                                <h4>${loanAmount.toLocaleString('en')}</h4>                  
+                                <h2>${loanAmount.toLocaleString('en')}</h2>                  
                                 <InputRange
                                     step={100}
                                     maxValue={100000}    
@@ -56,10 +69,10 @@ class Calculator extends Component {
                             </div>
                             <div  className="Input-wrapper__inner">
                                 <small>Over </small>
-                                <h4>{loanDuration} year{loanDuration > 1 && "s"}</h4>
+                                <h2>{loanDuration} month{loanDuration > 1 && "s"}</h2>
                                 <InputRange
                                     step={1}
-                                    maxValue={30}
+                                    maxValue={7}
                                     minValue={1}
                                     value={loanDuration}
                                     onChange={this.handleDurationChange}

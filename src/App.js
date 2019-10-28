@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Calculator from './components/calculator/calculator.component';
+import 'normalize.css';
 
 function App() {
   return (
