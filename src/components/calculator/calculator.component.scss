@@ -61,6 +61,16 @@ small {
     &__monthly {
         border-radius: 0 25px 0 0;
     }
+    &__monthly,
+    &__weekly,
+    &__fortnightly {
+        &:hover {
+            background-color: #3F51B5;
+            color: white;
+            // padding-top: 16%;
+        }
+    }
+    &__fornightly:hover {}
 }
 
 .Calculator {

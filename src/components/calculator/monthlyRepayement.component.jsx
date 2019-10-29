@@ -13,7 +13,7 @@ class MonthlyRepayment extends Component {
         super();
 
         this.state = {
-           APR: 1.679
+        //    APR: 1.679
         };
     }
 
@@ -29,8 +29,8 @@ class MonthlyRepayment extends Component {
 
 
     calculateMonthlyPayment = () => {
-        const { amount , years } = this.props;
-        const apr = this.state.APR / 12;
+        const { amount , years, apr } = this.props;
+        // const apr = this.state.APR / 12;
         // const loanDuration = years * 12; 
         // const loanDuration = years; 
 

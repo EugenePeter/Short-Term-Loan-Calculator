@@ -17,7 +17,8 @@ class Calculator extends Component {
         this.state = {
             loanAmount: 5000,
             loanDuration: 1,
-            repaymentSchedule: ''
+            repaymentSchedule: '',
+            APR: 0.06
         };
     }
 
@@ -38,22 +39,60 @@ class Calculator extends Component {
         console.log(this.state);
     }
 
+    test = event => {
+        if(this.state.APR === 0.06) {
+            this.setState({APR:0.06 / 48})
+        } else {
+            this.setState({APR:0.06 / 48})
+        }
+    }
+
+    test2 = event => {
+        if(this.state.APR !== 0.06) {
+          this.setState({APR: 0.0025})
+        } else {
+            this.setState({APR: 0.0025})
+        }
+    }
+
+    test3 = event => {
+        if(this.state.APR !== 0.06) {
+          this.setState({APR: 0.05})
+        } else {
+            this.setState({APR: 0.06})
+        }
+    }
+
+
+    
+
+
 
 
 
 
 
     render() {
-        const {loanAmount, loanDuration,  } = this.state;
+        const {loanAmount, loanDuration, APR  } = this.state;
+        // const weeklyAPR = this.state.APR / 48;
+        // const fornightAPR = this.state.APR / 24;
         return(
                 <div className="Calculator">
                     <div className="Calculator__inner">
                         <div className="Repayment-schedule">
-                            <div className="Repayment-schedule__weekly" >
-                                <button onClick={ this.handleRepaymentSchedule} value="weekly">Weekly</button> 
+                            <div 
+                                className="Repayment-schedule__weekly"
+                                onClick={this.test} >
+                                Weekly
                             </div>
-                            <div className="Repayment-schedule__fortnightly">Fornightly</div>
-                            <div className="Repayment-schedule__monthly">Monthly</div>  
+                            <div 
+                                className="Repayment-schedule__fortnightly"  
+                                onClick={this.test2} >
+                                Fornightly
+                            </div>
+                            <div 
+                                className="Repayment-schedule__monthly"
+                                onClick={this.test3}>Monthly</div>  
                         </div>
                         <div className="Input-wrapper">
                             <div className="Input-wrapper__inner">
@@ -61,8 +100,8 @@ class Calculator extends Component {
                                 <h2>${loanAmount.toLocaleString('en')}</h2>                  
                                 <InputRange
                                     step={100}
-                                    maxValue={100000}    
-                                    minValue={100}
+                                    maxValue={5000}    
+                                    minValue={1000}
                                     value={loanAmount}
                                     onChange={this.handleAmountChange}
                                 />
@@ -79,7 +118,7 @@ class Calculator extends Component {
                                 />
                             </div>
                             <div className="Input-wrapper__inner">
-                                <MonthlyRepayment years={ loanDuration } amount={loanAmount} />
+                                <MonthlyRepayment years={ loanDuration } amount={loanAmount} apr={APR} />
                             </div>
                         </div>
                     </div>
