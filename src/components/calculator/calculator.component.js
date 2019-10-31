@@ -17,9 +17,13 @@ class Calculator extends Component {
         this.state = {
             loanAmount: 5000,
             loanDuration: 1,
-            repaymentSchedule: '',
-            APR: 0.06
+            repaymentSchedule: 'Month',
+            APR: 0.14,
+            schedule: '',
+            maxTerm: ''
         };
+
+        // this.test = this.test.bind(this);
     }
 
     handleAmountChange = value => {
@@ -31,37 +35,54 @@ class Calculator extends Component {
         this.setState({ loanDuration: value});
     };
 
-    handleRepaymentSchedule = event => {
-        // event.preventDefault();
-        const { value } = event.target;
-        this.setState({repaymentSchedule: value });
-        console.log(value);
-        console.log(this.state);
+    // handleRepaymentSchedule = event => {
+    //     // event.preventDefault();
+    //     const { value } = event.target;
+    //     this.setState({repaymentSchedule: value });
+    //     console.log(value);
+    //     console.log(this.state);
+    // }
+
+    handleRepaymentAmount = e => {
+        const value = e.target.value;
+        const {APR} = this.state;
+        const apr = APR / value;
+        const baseApr = 1.697;
+        const Sched = e.target.name;
+        const maximumTerm = e.target.term;
+
+        console.log(maximumTerm)
+
+
+    //    this.setState({schedule: Sched})
+        
+        if(this.state.APR !== 1.697) {
+            this.setState({APR: baseApr / value  })
+            this.setState({repaymentSchedule: Sched})
+            this.setState({maxTerm: maximumTerm})
+
+        } else {
+            this.setState({APR: apr})
+            
+        }
+
     }
 
-    test = event => {
-        if(this.state.APR === 0.06) {
-            this.setState({APR:0.06 / 48})
-        } else {
-            this.setState({APR:0.06 / 48})
-        }
-    }
+    // test2 = event => {
+    //     if(this.state.APR !== 0.06) {
+    //       this.setState({APR: 0.0025})
+    //     } else {
+    //         this.setState({APR: 0.0025})
+    //     }
+    // }
 
-    test2 = event => {
-        if(this.state.APR !== 0.06) {
-          this.setState({APR: 0.0025})
-        } else {
-            this.setState({APR: 0.0025})
-        }
-    }
-
-    test3 = event => {
-        if(this.state.APR !== 0.06) {
-          this.setState({APR: 0.05})
-        } else {
-            this.setState({APR: 0.06})
-        }
-    }
+    // test3 = event => {
+    //     if(this.state.APR !== 0.06) {
+    //       this.setState({APR: 0.05})
+    //     } else {
+    //         this.setState({APR: 0.06})
+    //     }
+    // }
 
 
     
@@ -73,26 +94,30 @@ class Calculator extends Component {
 
 
     render() {
-        const {loanAmount, loanDuration, APR  } = this.state;
+        const {loanAmount, loanDuration, APR, repaymentSchedule  } = this.state;
+        // const {sched} = this.props;
+
         // const weeklyAPR = this.state.APR / 48;
         // const fornightAPR = this.state.APR / 24;
         return(
                 <div className="Calculator">
                     <div className="Calculator__inner">
                         <div className="Repayment-schedule">
-                            <div 
+                            <button
                                 className="Repayment-schedule__weekly"
-                                onClick={this.test} >
-                                Weekly
-                            </div>
-                            <div 
+                                onClick={this.handleRepaymentAmount} name="Week" value="48" term="14">
+                               Weekly
+                            </button>
+                            <button 
                                 className="Repayment-schedule__fortnightly"  
-                                onClick={this.test2} >
+                                onClick={this.handleRepaymentAmount} name="Fornight" value="24" >
                                 Fornightly
-                            </div>
-                            <div 
+                            </button>
+                            <button 
                                 className="Repayment-schedule__monthly"
-                                onClick={this.test3}>Monthly</div>  
+                                onClick={this.handleRepaymentAmount} name="Month" value="12">
+                                MOnthly
+                            </button>  
                         </div>
                         <div className="Input-wrapper">
                             <div className="Input-wrapper__inner">
@@ -108,7 +133,7 @@ class Calculator extends Component {
                             </div>
                             <div  className="Input-wrapper__inner">
                                 <small>Over </small>
-                                <h2>{loanDuration} month{loanDuration > 1 && "s"}</h2>
+                                <h2>{loanDuration} {repaymentSchedule}{loanDuration> 1 && 's'}</h2>
                                 <InputRange
                                     step={1}
                                     maxValue={7}

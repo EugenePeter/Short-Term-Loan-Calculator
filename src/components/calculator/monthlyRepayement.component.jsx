@@ -33,11 +33,17 @@ class MonthlyRepayment extends Component {
         // const apr = this.state.APR / 12;
         // const loanDuration = years * 12; 
         // const loanDuration = years; 
+        console.log(apr)
 
         const a = Math.pow(1 + apr, years ) - 1;
         const b = Math.pow(1 + apr, years ) * apr;
         const discountFactor = a / b;
         const monthlyPayment = amount / discountFactor;
+
+        console.log(a)
+        console.log(b)
+        console.log(discountFactor)
+        console.log(monthlyPayment)
 
         // return <p>${Math.round(monthlyPayment)}</p>;
         // return <p>{monthlyPayment}</p>
