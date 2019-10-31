@@ -8,7 +8,7 @@
 
 .App-header {
     /* background-color: #282c34; */
-    background-image: linear-gradient(to bottom right, #9D6DFF, #FF46B5, #FFCA3A);
+    /* background-image: linear-gradient(to bottom right, #9D6DFF, #FF46B5, #FFCA3A); */
     min-height: 100vh;
     display: flex;
     flex-direction: column;
