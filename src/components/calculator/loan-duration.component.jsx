@@ -12,7 +12,7 @@ class LoanDuration extends Component {
         super();
 
         this.state = {
-            loanDuration: ''
+            loanDuration: '2'
         };
     }
 
@@ -27,7 +27,7 @@ class LoanDuration extends Component {
         const {loanDuration} = this.state;
         const {lAmount} = this.props;
         return (
-            <div>
+            <div className="Input-wrapper__inner">
                 <small>Over </small>
                 <h2>{loanDuration} month{loanDuration > 1 && "s"}</h2>
                 <InputRange

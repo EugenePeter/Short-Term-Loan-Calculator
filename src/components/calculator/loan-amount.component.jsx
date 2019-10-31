@@ -29,7 +29,7 @@ class LoanAmount extends Component {
     render() {
         const {loanAmount } = this.state;
         return(
-            <div>
+            <div className="Input-wrapper__inner">
                 <small>I want to borrow</small>
                 <h2>${loanAmount.toLocaleString('en')}</h2>                  
                 <InputRange

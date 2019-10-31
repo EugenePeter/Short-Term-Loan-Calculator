@@ -42,12 +42,27 @@ small {
     // background-color: red;
 }
 
+button {
+
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+}
+
 .Repayment-schedule {
+    
     display: flex;
     justify-content: center;
     width: 60vw;
     // background-color: green;
     box-sizing: border-box;
+    border: none;
+
+
+
     * {
         background-color: #fff;
         padding: 10% 6% 20% 6%;
@@ -76,7 +91,7 @@ small {
     text-align: center;
     // padding: 2rem;
     border-radius: 2rem;
-    width: 40%;
+    width: 100%;
     margin: 0 auto;
     // box-shadow: 15px 20px 70px -10px;
     // background-color: white;
@@ -87,11 +102,12 @@ small {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100vw;
-    background-color: #fff;
+    width: 80%;
+    background-color: #fff!important;
     border-radius: 2rem;
     box-shadow: 0 10px 32px 4px rgba(0, 0, 0, 0.2), 0 2px 6px 1px rgba(0, 0, 0, 0.1);
     z-index: 1000;
+    padding: 4%;
 }
 
 .Input-wrapper__inner {
@@ -99,7 +115,7 @@ small {
     flex-direction: column;
     justify-content: center;
     padding: 6% 0 6% 0;
-    width: 90vw;
+    width: 100%;
     // background-color: yellow;
 }
 

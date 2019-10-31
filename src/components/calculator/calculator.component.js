@@ -28,11 +28,12 @@ class Calculator extends Component {
     };
 
     handleRepaymentSchedule = event => {
-        // event.preventDefault();
+        event.preventDefault();
         const { value } = event.target;
         this.setState({repaymentSchedule: value });
         console.log(value);
         console.log(this.state);
+        alert("test")
     }
 
 
@@ -46,17 +47,22 @@ class Calculator extends Component {
                 <div className="Calculator">
                     <div className="Calculator__inner">
                         <div className="Repayment-schedule">
-                            <div className="Repayment-schedule__weekly" >
-                                <button onClick={ this.handleRepaymentSchedule} value="weekly">Weekly</button> 
-                            </div>
-                            <div className="Repayment-schedule__fortnightly">Fornightly</div>
-                            <div className="Repayment-schedule__monthly">Monthly</div>  
+                            <button 
+                                className="Repayment-schedule__weekly" 
+                                onClick={ this.handleRepaymentSchedule} value="weekly">Weekly
+                            </button> 
+                            <button 
+                                className="Repayment-schedule__fornightly" 
+                                onClick={ this.handleRepaymentSchedule} value="weekly">Fornightly
+                            </button> 
+                            <button 
+                                className="Repayment-schedule__monthly" 
+                                onClick={ this.handleRepaymentSchedule} value="weekly">Monthly
+                            </button> 
                         </div>
 
                         <div className="Input-wrapper">
-                            <div className="Input-wrapper__inner">
-                                <LoanAmount />
-                            </div>
+                            <LoanAmount />
                         </div>
                     </div>
                 </div>
