@@ -11,31 +11,51 @@ import 'normalize.css';
 
 
 
+
 class Calculator extends Component {
     constructor() {
         super();
 
         this.state = {
-            loanDuration: 1,
-            repaymentSchedule: ''
+            // loanDuration: 1,
+            repaymentSchedule: '',
+
+            schedule: [
+                {
+                    scheduleValue: 'weekly',
+                    scheduleName: 'Weekly'
+                },
+                {
+                    scheduleValue: 'fornightly',
+                    scheduleName: 'Fornightly'
+                },
+                {
+                    scheduleValue: 'monthly',
+                    scheduleName: 'Monthly'
+                }
+            ]
         };
     }
 
 
 
-    handleDurationChange = value => {
-        this.setState({ loanDuration: value});
-    };
+    // handleDurationChange = value => {
+    //     this.setState({ loanDuration: value});
+    // };
 
     handleRepaymentSchedule = event => {
         event.preventDefault();
         const { value } = event.target;
-        this.setState({repaymentSchedule: value });
-        console.log(value);
-        console.log(this.state);
-        alert("test")
+        // this.setState({repaymentSchedule: value });
+        // console.log(value);
+        // console.log(this.state);
+        // alert("test")
+        alert(value)
+        console.log(value)
+        this.setState({repaymentSchedule: value})
     }
 
+    
 
 
 
@@ -43,29 +63,30 @@ class Calculator extends Component {
 
     render() {
         // const {loanDuration } = this.state;
+        const { repaymentSchedule ,schedule}  = this.state;
         return(
-                <div className="Calculator">
-                    <div className="Calculator__inner">
-                        <div className="Repayment-schedule">
+        <div className="Calculator">
+            <div className="Calculator__inner">
+                <div className="Repayment-schedule">
+                    { 
+                        schedule.map(({scheduleValue,  scheduleName}) => (
                             <button 
                                 className="Repayment-schedule__weekly" 
-                                onClick={ this.handleRepaymentSchedule} value="weekly">Weekly
+                                onClick={ this.handleRepaymentSchedule} 
+                                value={scheduleValue}>
+                                { scheduleName }
+                                    
                             </button> 
-                            <button 
-                                className="Repayment-schedule__fornightly" 
-                                onClick={ this.handleRepaymentSchedule} value="weekly">Fornightly
-                            </button> 
-                            <button 
-                                className="Repayment-schedule__monthly" 
-                                onClick={ this.handleRepaymentSchedule} value="weekly">Monthly
-                            </button> 
-                        </div>
+                        )) 
+                    }
 
-                        <div className="Input-wrapper">
-                            <LoanAmount />
-                        </div>
-                    </div>
                 </div>
+
+                <div className="Input-wrapper">
+                    <LoanAmount sched={repaymentSchedule}/>
+                </div>
+            </div>
+        </div>
         );
     }
 }
