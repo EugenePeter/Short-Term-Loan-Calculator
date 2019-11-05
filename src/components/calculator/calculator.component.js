@@ -1,10 +1,11 @@
 import React, { Component} from 'react';
 
 // import InputRange from "react-input-range";
-import "react-input-range/lib/css/index.css";
 import './calculator.component.scss';
 
-import LoanAmount from './loan-amount.component';
+// import LoanAmount from './loan-amount.component';
+
+import  RepaymentSchedule from './repayment-schedule.component';
 
 
 import 'normalize.css';
@@ -19,21 +20,6 @@ class Calculator extends Component {
         this.state = {
             // loanDuration: 1,
             repaymentSchedule: '',
-
-            schedule: [
-                {
-                    scheduleValue: 'weekly',
-                    scheduleName: 'Weekly'
-                },
-                {
-                    scheduleValue: 'fornightly',
-                    scheduleName: 'Fornightly'
-                },
-                {
-                    scheduleValue: 'monthly',
-                    scheduleName: 'Monthly'
-                }
-            ]
         };
     }
 
@@ -63,28 +49,11 @@ class Calculator extends Component {
 
     render() {
         // const {loanDuration } = this.state;
-        const { repaymentSchedule ,schedule}  = this.state;
+        // const { repaymentSchedule }  = this.state;
         return(
         <div className="Calculator">
             <div className="Calculator__inner">
-                <div className="Repayment-schedule">
-                    { 
-                        schedule.map(({scheduleValue,  scheduleName}) => (
-                            <button 
-                                className="Repayment-schedule__weekly" 
-                                onClick={ this.handleRepaymentSchedule} 
-                                value={scheduleValue}>
-                                { scheduleName }
-                                    
-                            </button> 
-                        )) 
-                    }
-
-                </div>
-
-                <div className="Input-wrapper">
-                    <LoanAmount sched={repaymentSchedule}/>
-                </div>
+                <RepaymentSchedule />
             </div>
         </div>
         );
