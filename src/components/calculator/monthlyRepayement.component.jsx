@@ -12,10 +12,12 @@ class MonthlyRepayment extends Component {
     constructor() {
         super();
 
-        this.state = {
-           APR: 1.679
-        };
+        // this.state = {
+        //   total: ''
+        // };
     }
+
+
 
 
 
@@ -29,10 +31,11 @@ class MonthlyRepayment extends Component {
 
 
     calculateMonthlyPayment = () => {
-        const { amount , years } = this.props;
-        const apr = this.state.APR / 12;
+        const { amount , years, aprValue } = this.props;
+        const apr = aprValue;
         // const loanDuration = years * 12; 
         // const loanDuration = years; 
+
 
         const a = Math.pow(1 + apr, years ) - 1;
         const b = Math.pow(1 + apr, years ) * apr;
@@ -41,18 +44,24 @@ class MonthlyRepayment extends Component {
 
         // return <p>${Math.round(monthlyPayment)}</p>;
         // return <p>{monthlyPayment}</p>
+        // const totalPayment = monthlyPayment * years;
 
-        // return <h1> {loanDuration} </h1>
-        return Math.round(monthlyPayment).toLocaleString('en')
+        // this.setState({total: totalPayment})
+        return Math.round(monthlyPayment)
         // return Math.round(monthlyPayment).toFixed(2).toLocaleString('en')
         // return monthlyPayment.toLocaleString('en')
+     
 
     };
 
 
     render() {
+        const {years} = this. props
         return(
-                <DisplayMonthlyRepayment calculateMonthlyPayment={this.calculateMonthlyPayment()} text="Monthly Payment" />
+                <DisplayMonthlyRepayment calculateMonthlyPayment={this.calculateMonthlyPayment()} 
+                text="Monthly Payment" 
+                total={years}
+                />
         );
     }
 }

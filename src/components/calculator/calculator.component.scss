@@ -17,7 +17,7 @@ p {
 
 h2 {
     margin: 0;
-    color: #3f51b5;
+    color:#55D251;
 }
 
 h4 {
@@ -65,17 +65,60 @@ button {
 
     * {
         background-color: #fff;
-        padding: 10% 6% 20% 6%;
+        padding: 10% 6% 8% 6%;
         box-sizing: border-box;
-        transform: translateY(40%);
+        height: 60px;
+        transform: translateY(20%);
     }
-    &__weekly {
+    &__Week {
         border-radius: 25px 0 0 0;
+
+        // transform-origin: center center;
+        transition: transform .2s;
+        outline: none;
+        
+        
     }
-    &__fornightly {}
-    &__monthly {
+
+    &__Week:focus {
+       background-color: #61A261;
+       border-radius: 25px 12px 0 0;
+       color: #fff;
+       transform: scale(1.1, 1.1);
+       -webkit-tap-highlight-color: transparent;
+    }
+
+    &__Fornight {
+        transition: transform .2s;
+        outline: none;
+    }
+
+    &__Fornight:focus {
+        background-color: #61A261;
+        border-radius:  20px 20px 0 0;
+        color: #fff;
+        transform: scale(1.1, 1.1);
+        -webkit-tap-highlight-color: transparent;
+        }
+
+    &__Month {
         border-radius: 0 25px 0 0;
+        transition: transform .2s;
+        outline: none;
     }
+    &__Month:focus {
+        background-color: #61A261;
+        border-radius: 12px 25px 0 0;
+        color: #fff;
+        transform: scale(1.1, 1.1);
+        -webkit-tap-highlight-color: transparent;
+        }
+
+  
+}
+
+.Repayment-schedule__week {
+    background-color: green;
 }
 
 .Calculator {
@@ -145,3 +188,22 @@ button {
     position: relative;
     display: none;
 }
+
+.input-range {
+    
+    &__slider {
+        background-color: #5AD356!important;
+        border: none!important;
+    }
+
+    &__track--active {
+        background-color: #B3D5B2!important;
+    }
+}
+
+.payment-amount__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
