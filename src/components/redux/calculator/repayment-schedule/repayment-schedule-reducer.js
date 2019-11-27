@@ -35,7 +35,16 @@ const INITIAL_STATE = {
         child: 4,
         name: "jenny3"
     },
-    maxTerm: ''
+
+    b: {
+        term: '2'
+    },
+
+    maxTerm: {
+        term: '8'
+    },
+
+    sched: 'month'
     
 }
 
@@ -45,8 +54,8 @@ const testReducer = (state = INITIAL_STATE, action) => {
         case testTypes.TEST:
             return {
                 ...state,
-                name: action.payload,
-                maxTerm: action.month
+                term: action.payload,
+                sched: action.schedule
             }
 
         default:

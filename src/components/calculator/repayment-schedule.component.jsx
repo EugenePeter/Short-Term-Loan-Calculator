@@ -4,13 +4,16 @@ import InputRange from "react-input-range";
 import "react-input-range/lib/css/index.css";
 import './calculator.component.scss';
 
-import {testAction} from '../redux/calculator/repayment-schedule/repayment-schedule.actions'
+import {  month, fortnightAction, weekAction } from '../redux/calculator/repayment-schedule/repayment-schedule.actions'
 
 // import LoanAmount from './loan-amount.component';
 
 import MonthlyRepayment from './monthlyRepayement.component'
 
 import { connect } from 'react-redux';
+import {  bindActionCreators } from 'redux';
+
+import { updateInput } from '../redux/calculator/loan-duration/loan-duration-actions'
 
 // import LoanDuration from './loan-duration.component';
 
@@ -30,12 +33,19 @@ class RepaymentSchedule extends Component {
             repaymentSchedule: 'Month',  
             aprValue: '',
             loanAmount: 5000,
-            loanDuration: 2,
+            loanDuration: 6,
             APR: 0.14141666666666666,
         };
 
+
+        
+
         // this.handleRepaymentSchedule = this.handleRepaymentSchedule.bind(this)
     }
+
+
+
+    
 
     handleRepaymentSchedule = event => {
         const {maxTerm } = this.state;
@@ -86,6 +96,11 @@ class RepaymentSchedule extends Component {
         this.setState({ loanDuration: value});
     };
 
+    handleChange = value => {
+        const { updateInput } = this.props;
+        updateInput(value)
+    }
+
 
     
 
@@ -100,16 +115,32 @@ class RepaymentSchedule extends Component {
 
         // const {a:{child, name}, week:{scheduleName}}= this.props
 
-        const { week, fornight, month, maxTerm, maximumTerm} = this.props
+        const { week, fornight, month, doSomeThing, test, sched, fornightSched, weekSched  } = this.props
+
+        const monthValue = test.maxTerm.term    
+
           
+        const re = test.term
+
         const weekly = week.scheduleName
         const fornightly = fornight.scheduleName
         const monthly = month.scheduleName
 
         console.log(this.props)
+        // console.log(re)
+        console.log(monthValue)
+        console.log(sched)
    
         
-        const { scheduleValue, aprValue, i, id } = this.props;
+        const { aprValue, i, id } = this.props;
+
+        const { loanDuration: { input: {txt}} } = this.props;
+        const {loanDuration: { input: { len = 5000 }} } = this.props;
+
+        console.log(txt)
+        console.log(len)
+     
+  
 
 
 
@@ -121,7 +152,7 @@ class RepaymentSchedule extends Component {
                 
                     <button  
                         className={`Repayment-schedule__${weekly}`}
-                        onClick={ this.handleRepaymentSchedule} 
+                        onClick={ weekSched } 
                         key={id}
                         value={weekly}
                         data-max={32}
@@ -131,7 +162,7 @@ class RepaymentSchedule extends Component {
                     </button> 
                     <button  
                         className={`Repayment-schedule__${fornightly}`}
-                        onClick={ this.handleRepaymentSchedule} 
+                        onClick={ fornightSched } 
                         key={id}
                         value={fornightly}
                         data-max={16}
@@ -141,7 +172,7 @@ class RepaymentSchedule extends Component {
                     </button> 
                     <button  
                         className={`Repayment-schedule__${monthly}`}
-                        onClick={ this.doSomeThing} 
+                        onClick={ doSomeThing } 
                         key={id}
                         value={monthly}
                         data-max={8}
@@ -165,18 +196,27 @@ class RepaymentSchedule extends Component {
                 
 
                         <small>Over </small>
-                        <h2>{loanDuration} {repaymentSchedule}{loanDuration > 1 && "s"}</h2>
+                        <h2>{loanDuration} {sched}{loanDuration > 1 && "s"}</h2>
                         <InputRange
                             step={1}
-                            maxValue={maxTerm}
+                            maxValue={re}
                             minValue={1}
                             value={loanDuration}
                             onChange={this.handleDurationChange}
                         />
+                        <h1>check{monthValue}</h1>
 
                         <div className="Input-wrapper__inner">
                             <MonthlyRepayment amount={loanAmount} years={ loanDuration } aprValue={ APR }/>
                         </div>
+                        <InputRange
+                            step={1}
+                            maxValue={re}
+                            minValue={1}
+                            value={txt}
+                            onChange={this.handleChange}
+                        />
+                        <h4>check{len}</h4>
                     </div>
                 </div>
             </div>
@@ -189,18 +229,25 @@ class RepaymentSchedule extends Component {
 
 
 
-const mapStateToProps = ({test:{a, testz, week, fornight, month}}) => {
+const mapStateToProps = ({test:{a, testz, week, fornight, month, b, sched}, test, loanDuration}) => {
     return {
        a,
        week,
        fornight,
-       month
+       month,
+       b,
+       test,
+       sched,
+       loanDuration
     
     }
 }
-const mapDispatchToProps = dispatch => ({
-    doSomeThing: () => dispatch(testAction())
-    });
+const mapDispatchToProps = dispatch =>  bindActionCreators({
+    doSomeThing: () => dispatch(month()),
+    fornightSched: () => dispatch(fortnightAction()),
+    weekSched : () => dispatch(weekAction()),
+    updateInput
+    }, dispatch);
     
 
 export default connect(
