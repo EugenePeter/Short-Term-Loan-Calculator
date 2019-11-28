@@ -1,22 +1,21 @@
 // import repaymentScheduleTypes from './repayment-schedule-types';
-import  loanDurationTypes  from './loan-duration-types';
+import  loanAmountTypes  from './loan-amount-types';
 
 
 const INITIAL_STATE = {
 
-  input: {
-     txt: 4,
-  }
-    
+    input : {
+        amount: 4
+    }
 }
 
 
-const loanDurationReducer = (state = INITIAL_STATE, action) => {
+const loanAmountReducer = (state = INITIAL_STATE, action) => {
     switch(action.type){
-        case loanDurationTypes.UPDATE_INPUT:
+        case loanAmountTypes.UPDATE_INPUT_AMOUNT:
             return { 
                 input: action.payload
-             }
+            }
 
         default:
             return state
@@ -24,5 +23,5 @@ const loanDurationReducer = (state = INITIAL_STATE, action) => {
     return state
 }
 
-export default loanDurationReducer;
+export default loanAmountReducer;
 

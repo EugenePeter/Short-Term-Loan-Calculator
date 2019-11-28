@@ -4,7 +4,10 @@ import testReducer from '../redux/calculator/repayment-schedule/repayment-schedu
 
 import loanDurationReducer from '../redux/calculator/loan-duration/loan-duration-reducer'
 
+import loanAmountReducer from '../redux/calculator/loan-amount/loan-amount-reducer'
+
 export default combineReducers({
     test: testReducer,
-    loanDuration: loanDurationReducer
+    loanDuration: loanDurationReducer,
+    loanAmount : loanAmountReducer
 });
