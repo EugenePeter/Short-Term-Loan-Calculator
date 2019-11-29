@@ -16,19 +16,22 @@ export const testActionTwo = () => ({
 export const month = () => ({
     type: testTypes.TEST,
     payload: '8',
-    schedule: 'month'
+    schedule: 'month',
+    aprValue: 12
 });
 
 export const fortnightAction = () => ({
     type: testTypes.TEST,
     payload: '16',
-    schedule: 'fornight'
+    schedule: 'fornight',
+    aprValue: 24
 });
 
 export const weekAction = () => ({
     type: testTypes.TEST,
     payload: '32',
-    schedule: 'Week'
+    schedule: 'Week',
+    aprValue: 48
 });
 
 

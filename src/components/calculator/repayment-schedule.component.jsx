@@ -39,6 +39,44 @@ class RepaymentSchedule extends Component {
 
     
 
+    handleRepaymentSchedule = event => {
+        const {maxTerm } = this.state;
+        // event.preventDefault();
+        const { value } = event.target;
+        const  schedName = event.target.dataset.max
+        const aprValue = event.target.dataset.value
+
+        this.setState({repaymentSchedule: value})
+
+        this.setState({maxTerm: schedName})
+
+        // this.setState({test: aprValue })
+
+        console.log(schedName)
+
+
+        console.log(schedName)
+
+
+        const {APR} = this.state;
+        const apr = APR / aprValue;
+        const baseApr = 1.697;
+        // const Sched = e.target.name;
+        // const maximumTerm = e.target.term;
+
+        
+        if(this.state.APR !== 1.697) {
+            this.setState({APR: baseApr / aprValue  })
+            // this.setState({repaymentSchedule: Sched})
+            // this.setState({maxTerm: maximumTerm})
+
+        } else {
+            this.setState({APR: apr})
+            
+        }
+
+    }
+
 
 
     handleAmountChange = value => {
@@ -70,6 +108,10 @@ class RepaymentSchedule extends Component {
           
         const re = test.term
 
+        const f = test.aprValuess
+
+        console.log(f)
+
         const weekly = week.scheduleName
         const fornightly = fornight.scheduleName
         const monthly = month.scheduleName
@@ -84,7 +126,7 @@ class RepaymentSchedule extends Component {
         const { aprValue, i, id } = this.props;
 
         const { 
-            loanDuration: { input: { txt }}} = this.props;
+            loanDuration: { input: { txt = 8 }}} = this.props;
 
         console.log(txt)
      

@@ -34,7 +34,7 @@ class LoanAmount extends Component {
 
     render() {
       
-        const { loanAmount: { input: { amount }}} = this.props;
+        const { loanAmount: { input: { amount = 4 }}} = this.props;
 
         return(
             

@@ -5,7 +5,7 @@ import  loanAmountTypes  from './loan-amount-types';
 const INITIAL_STATE = {
 
     input : {
-        amount: 4
+        // amount: 4
     }
 }
 
@@ -14,6 +14,7 @@ const loanAmountReducer = (state = INITIAL_STATE, action) => {
     switch(action.type){
         case loanAmountTypes.UPDATE_INPUT_AMOUNT:
             return { 
+                ...state,
                 input: action.payload
             }
 

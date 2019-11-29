@@ -36,26 +36,35 @@ const INITIAL_STATE = {
         name: "jenny3"
     },
 
-    b: {
-        term: '2'
-    },
+    // b: {
+    //     term: '2'
+    // },
 
     maxTerm: {
         term: '8'
+    },
+
+    APR: {
+        value: 1.697
     },
 
     sched: 'month'
     
 }
 
-
 const testReducer = (state = INITIAL_STATE, action) => {
+    // const ff = state.APR
+    // const dd = ff.value
+
+    const {APR:{value}} = state;
+    console.log("reducer" + value)
     switch (action.type) {
         case testTypes.TEST:
             return {
                 ...state,
                 term: action.payload,
-                sched: action.schedule
+                sched: action.schedule,
+                aprValuess: value / action.aprValue 
             }
 
         default:
