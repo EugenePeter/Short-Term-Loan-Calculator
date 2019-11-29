@@ -2,25 +2,26 @@
 import React from "react";
 import 'normalize.css';
 import './calculator.component.scss';
+import { connect } from 'react-redux'
 
 
-const RepaymentAmount = () => {
-
+const RepaymentAmount = ({ test }) => {
+    const dd = test.aprValuess
+    console.log("from repayment amount" + dd)
     return (
             <div className="payment-amount__container">
-                <div className="paymentAmount">
-                    <small>{text}</small>
-                    <h2>{calculateMonthlyPayment.toLocaleString('en')}</h2>
-                </div>
-                <div className="paymentAmount">
-                    <small>Total payment</small>
-                    <h2>{Total.toLocaleString('en')}</h2>
-                </div>
+                <h4>{dd}</h4>
             </div>
 
     );
 };
 
 
+const mapStateToProps = ({ test }) => {
+    return {
+        test
+    }
+}
 
-export default RepaymentAmount;
+
+export default connect(mapStateToProps)(RepaymentAmount);

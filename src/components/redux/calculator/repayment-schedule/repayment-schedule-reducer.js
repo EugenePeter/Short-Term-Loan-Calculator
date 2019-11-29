@@ -36,9 +36,9 @@ const INITIAL_STATE = {
         name: "jenny3"
     },
 
-    // b: {
-    //     term: '2'
-    // },
+    b: {
+        term: '8'
+    },
 
     maxTerm: {
         term: '8'
@@ -48,7 +48,9 @@ const INITIAL_STATE = {
         value: 1.697
     },
 
-    sched: 'month'
+    sched: 'month',
+
+    term: 3
     
 }
 

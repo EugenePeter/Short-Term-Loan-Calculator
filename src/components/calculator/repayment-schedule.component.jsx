@@ -20,6 +20,7 @@ import { updateAmountInput } from '../redux/calculator/loan-amount/loan-amount-a
 import LoanAmount from './loan-amount.component';
 
 import 'normalize.css';
+import RepaymentAmount from './repayment-amount.component';
 
 class RepaymentSchedule extends Component {
     constructor() {
@@ -161,6 +162,7 @@ class RepaymentSchedule extends Component {
                                 
                     </button> 
                     <button  
+                        autoFocus
                         className={`Repayment-schedule__${monthly}`}
                         onClick={ monthSched } 
                         key={id}
@@ -212,6 +214,10 @@ class RepaymentSchedule extends Component {
                             value={txt}
                             onChange={this.handleDurationChange}
                         />
+                    <div className="Input-wrapper__inner">
+                        <RepaymentAmount />
+                    </div>
+                        
                 </div>
             </div>
             
