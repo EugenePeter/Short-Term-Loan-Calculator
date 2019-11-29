@@ -45,12 +45,15 @@ const INITIAL_STATE = {
     },
 
     APR: {
-        value: 1.697
+        value: 1.697,
     },
 
     sched: 'month',
 
-    term: 3
+    term: 3,
+
+    aprValuess: 0.14141666666666666
+
     
 }
 
@@ -58,7 +61,7 @@ const testReducer = (state = INITIAL_STATE, action) => {
     // const ff = state.APR
     // const dd = ff.value
 
-    const {APR:{value}} = state;
+    const {APR:{baseValue, value}} = state;
     console.log("reducer" + value)
     switch (action.type) {
         case testTypes.TEST:
