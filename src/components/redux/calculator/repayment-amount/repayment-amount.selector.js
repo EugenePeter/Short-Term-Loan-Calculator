@@ -1,31 +1,55 @@
 import { createSelector } from 'reselect';
 
-const selectAmountandSched = state => state.cart;
-
-export const selectSched  = createSelector(
-    [selectAmountandSched],
-    loanDuration => loanDuration.input
-
-);
-
-export const selectAmount = createSelector(
-    [selectAmountandSched],
-    loanAmount => loanAmount.input
-
-);
-
-
-export  const selectAmountandSchedCompute = createSelector(
-    [selectAmount, selectSched],
-    (input) => 
-
-
-)
-
+const repaymentSched = state => state.repaymentSchedule;
+const loanDuration = state => state.loanDuration;
 const selectAmount = state => state.loanAmount;
-const selectSched = state => state.loanDuration;
 
-export const selectComputeApr = createSelector(
-    [selectAmount,selectSched],
-    (loanAmount, loanDuration) =>  
-)
+
+// const loanAmount = state => state.loanAmount;
+
+export const apr = createSelector(
+    [repaymentSched],
+    repaymentSchedule => 
+    repaymentSchedule.aprValuess
+);
+
+export const schedule = createSelector(
+    [repaymentSched],
+    repaymentSchedule => 
+    repaymentSchedule.sched
+);
+
+export const durationOfLoan = createSelector(
+    [loanDuration],
+    loanDuration => 
+    loanDuration.input.txt
+);
+
+export const amount = createSelector(
+    [selectAmount],
+    loanAmount => loanAmount.input.amount
+);
+
+export const a = createSelector(
+    [apr, durationOfLoan],
+    (apr, durationOfLoan) => 
+    Math.pow(1 + apr,durationOfLoan ) - 1
+);
+
+export const b = createSelector(
+    [apr, durationOfLoan],
+    (apr, durationOfLoan) => 
+    Math.pow(1 + apr,durationOfLoan ) * apr
+);
+
+export const discountFactor = createSelector(
+    [a, b],
+    (a,b) => a / b
+);
+
+export const repayment = createSelector(
+    [discountFactor, amount],
+    (discountFactor, amount) => Math.round(amount / discountFactor)
+);
+
+

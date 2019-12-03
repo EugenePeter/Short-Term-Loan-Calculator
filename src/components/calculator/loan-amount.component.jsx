@@ -11,28 +11,29 @@ import {  bindActionCreators } from 'redux';
 
 import { updateAmountInput } from '../redux/calculator/loan-amount/loan-amount-action';
 
+import { amount } from '../redux/calculator/loan-amount/loan-amount.selectors'
+
+import { createStructuredSelector } from 'reselect'
+
 import 'normalize.css';
 
 class LoanAmount extends Component {
-
 
     handleAmountChange = value => {
         const { updateAmountInput } = this.props;
         updateAmountInput(value)
         console.log("amount input is " + updateAmountInput)
-        
     }
-
 
     render() {
       
-        const { loanAmount: { input: { amount }}} = this.props;
+        const { amount } = this.props;
 
         return(
             
            <Fragment>
                 <small>I want to borrow</small>   
-                <h2>${amount}</h2>                  
+                <h2>${amount}</h2>      
                 <InputRange
                     step={100}
                     maxValue={5000}    
@@ -47,11 +48,9 @@ class LoanAmount extends Component {
 
 
 
-const mapStateToProps = ({ loanAmount }) => {
-    return {
-        loanAmount
-    }
-}
+const mapStateToProps =  createStructuredSelector({
+    amount
+});
 
 const mapDispatchToProps = dispatch =>  bindActionCreators({
     updateAmountInput
