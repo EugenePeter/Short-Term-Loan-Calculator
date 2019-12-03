@@ -1,34 +1,21 @@
-import testTypes from './repayment-schedule-types';
-
-export const testAction = () => ({
-    type: testTypes.TEST,
-    payload: 'jennifer',
-    month: 8
-});
-
-export const testActionTwo = () => ({
-    type: testTypes.TEST,
-    payload: '32',
-    month: 8
-});
-
+import repaySchedTypes from './repayment-schedule-types';
 
 export const month = () => ({
-    type: testTypes.TEST,
+    type: repaySchedTypes.REPAYSCHED,
     payload: '8',
-    schedule: 'month',
+    schedule: 'Month',
     aprValue: 12
 });
 
 export const fortnightAction = () => ({
-    type: testTypes.TEST,
+    type: repaySchedTypes.REPAYSCHED,
     payload: '16',
-    schedule: 'fornight',
+    schedule: 'Fornight',
     aprValue: 24
 });
 
 export const weekAction = () => ({
-    type: testTypes.TEST,
+    type: repaySchedTypes.REPAYSCHED,
     payload: '32',
     schedule: 'Week',
     aprValue: 48

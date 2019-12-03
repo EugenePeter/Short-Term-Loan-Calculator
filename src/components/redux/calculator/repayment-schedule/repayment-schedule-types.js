@@ -1,5 +1,5 @@
-const testTypes = {
-    TEST: 'TEST'
+const repaySchedTypes = {
+    REPAYSCHED: 'REPAYSCHED'
 }
 
-export default  testTypes;
+export default repaySchedTypes;

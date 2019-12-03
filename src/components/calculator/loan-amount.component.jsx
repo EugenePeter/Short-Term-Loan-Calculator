@@ -15,14 +15,6 @@ import 'normalize.css';
 
 class LoanAmount extends Component {
 
-    constructor() {
-        super();
-
-        this.state = {
-     
-            APR: 0.14141666666666666,
-        };
-    }
 
     handleAmountChange = value => {
         const { updateAmountInput } = this.props;
@@ -34,12 +26,12 @@ class LoanAmount extends Component {
 
     render() {
       
-        const { loanAmount: { input: { amount = 4 }}} = this.props;
+        const { loanAmount: { input: { amount }}} = this.props;
 
         return(
             
            <Fragment>
-                <small>redux I want to borrow</small>   
+                <small>I want to borrow</small>   
                 <h2>${amount}</h2>                  
                 <InputRange
                     step={100}

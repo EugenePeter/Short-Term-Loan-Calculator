@@ -1,5 +1,5 @@
 // import repaymentScheduleTypes from './repayment-schedule-types';
-import  testTypes  from './repayment-schedule-types';
+import  repaySchedTypes  from './repayment-schedule-types';
 
 
 const INITIAL_STATE = {
@@ -31,15 +31,6 @@ const INITIAL_STATE = {
         maxTerm: 8
     },
 
-    a: {
-        child: 4,
-        name: "jenny3"
-    },
-
-    b: {
-        term: '8'
-    },
-
     maxTerm: {
         term: '8'
     },
@@ -48,23 +39,23 @@ const INITIAL_STATE = {
         value: 1.697,
     },
 
-    sched: 'month',
+    sched: 'Month',
 
-    term: 3,
+    term: 8,
 
     aprValuess: 0.14141666666666666
 
     
 }
 
-const testReducer = (state = INITIAL_STATE, action) => {
+const repaySchedReducer = (state = INITIAL_STATE, action) => {
     // const ff = state.APR
     // const dd = ff.value
 
-    const {APR:{baseValue, value}} = state;
+    const {APR:{value}} = state;
     console.log("reducer" + value)
     switch (action.type) {
-        case testTypes.TEST:
+        case repaySchedTypes.REPAYSCHED:
             return {
                 ...state,
                 term: action.payload,
@@ -79,5 +70,5 @@ const testReducer = (state = INITIAL_STATE, action) => {
 
 }
 
-export default testReducer;
+export default repaySchedReducer;
 

@@ -5,7 +5,7 @@ import  loanAmountTypes  from './loan-amount-types';
 const INITIAL_STATE = {
 
     input : {
-        // amount: 4
+        amount: 2000
     }
 }
 
@@ -21,7 +21,6 @@ const loanAmountReducer = (state = INITIAL_STATE, action) => {
         default:
             return state
     }
-    return state
 }
 
 export default loanAmountReducer;

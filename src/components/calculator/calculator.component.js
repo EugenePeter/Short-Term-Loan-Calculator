@@ -2,6 +2,10 @@ import React, { Component} from 'react';
 
 import './calculator.component.scss';
 
+import LoanAmount from './loan-amount.component';
+import LoanDuration from './loan-duration.component';
+import RepaymentAmount from './repayment-amount.component'
+
 import  RepaymentSchedule from './repayment-schedule.component';
 
 
@@ -29,17 +33,21 @@ x
     }
 
     
-
-
-
-
-
     render() {
 
         return(
         <div className="Calculator">
             <div className="Calculator__inner">
                 <RepaymentSchedule />
+                <div className="Input-wrapper"> 
+                    <div className="Input-wrapper__inner">
+                        <LoanAmount />
+                        <LoanDuration />
+                    </div>
+                    <div className="Input-wrapper__inner">
+                        <RepaymentAmount />
+                    </div>
+                </div>
             </div>
         </div>
         );

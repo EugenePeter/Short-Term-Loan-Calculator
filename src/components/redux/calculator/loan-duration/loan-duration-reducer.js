@@ -5,7 +5,7 @@ import  loanDurationTypes  from './loan-duration-types';
 const INITIAL_STATE = {
 
   input: {
-    //  txt: 4,
+     txt: 4,
   }
     
 }
@@ -22,7 +22,6 @@ const loanDurationReducer = (state = INITIAL_STATE, action) => {
         default:
             return state
     }
-    return state
 }
 
 export default loanDurationReducer;
