@@ -1,13 +1,37 @@
 import styled, { css, keyframes } from 'styled-components';
 
+const signInButton = css `
+    font-size: 12px;
+    margin-bottom: 10px;
+    background-color: #18DE88;
+    width: 100%;
+`;
+
+const googleSignInButton = css `
+    font-size: 12px;
+    margin-top;
+    background-color: #18DE88;
+`;
+
+const defaultButton = css `
+    background-color: #3BC453;    
+`;
+
+const getButtonStyles = props => {
+    if(props.signIn) {
+        return signInButton;
+    }
+    return props.googleSignIn ? googleSignInButton : defaultButton;
+}
+
 export const CustomButtonContainer = styled.button`
-    width: auto;
+    width :100%;
     height:60px;
     letter-spacing: 0.5px;
     line-height: 50px;
     padding: 0 35px 0 35px;
     font-size: 15px;
-    background-color: #3BC453;
+   
     border-radius: 50px;
     color: white;
     text-transform: uppercase;
@@ -15,7 +39,7 @@ export const CustomButtonContainer = styled.button`
     font-weight: bolder;
     border: none;
     cursor: pointer;
-    display: ${({isActive}) => isActive ? 'none' : 'flex' 
+    display: ${({isActive}) => isActive ? 'none' : 'inline-block' 
         };
 
     justify-content: center;
@@ -37,34 +61,51 @@ export const CustomButtonContainer = styled.button`
         }
     }
 
+
+    ${getButtonStyles}
+
 `;
 
 const test = keyframes`
     0%{
-        transform: scale(1.5);
+        transform: translateY(-70%);
     }
+
+   65% {
+        transform: translateY(20%);
+    }
+
     100% {
-        transform: scale(2);
+        transform: translateY(-10%);
     }
 `;
 
-// const animate = styled(test)`
-//     animation: ${test}  5s linear infinite alternate;
-// `;
+const close = keyframes`
+    0%{
+        transform: translateY(-70%);
+        transform : scale(0);
+    }
+    100% {
+        transform: translateY(-90%);
+        transform : scale(0);
+    }
+`;
+
 
 export const FormInputContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    border-radius: 2rem;
     width: 100%;
     margin: 0 auto;
-    box-sizing: border-box;   
 
-    animation: ${({isActive}) => isActive ? css`${test} 1s ease-in-out forwards ` : ''};
+    animation: ${({isActive}) => isActive ? css`${test} .7s cubic-bezier(.48,0,.22,1.02) forwards ` : css`${close} 1s ease-in-out forwards `};
 
-   
+    h1,h2,h3,h4 {
+        color: white;
+    }
+
 `;
 
 
@@ -73,11 +114,12 @@ export const FormInputWrapper = styled.div`
     flex-direction: column;
     align-items: center;
     width: 80%;
-    background-color: #fff!important;
-    border-radius: 2rem;
+    background-color: #408765;
+    border-radius: 25px 25px 50px 50px;
     box-shadow: 0 10px 32px 4px rgba(0, 0, 0, 0.2), 0 2px 6px 1px rgba(0, 0, 0, 0.1);
     z-index: 1000;
-    padding: 4%;
+    /* padding: 4%; */
+    padding-top: 8%;
 `;
 
 export const FormInputInner = styled.div`

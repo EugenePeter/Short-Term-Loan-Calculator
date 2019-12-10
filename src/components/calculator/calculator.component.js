@@ -30,7 +30,6 @@ class Calculator extends Component {
         const{ getStarted } = this.state;
         event.preventDefault();
         this.setState({getStarted:!getStarted})
-        alert()
     }
 
 

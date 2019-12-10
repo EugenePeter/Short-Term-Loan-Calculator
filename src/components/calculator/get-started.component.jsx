@@ -1,12 +1,14 @@
 import React, { Component} from 'react';
 
-import './calculator.component.scss';
+// import './calculator.component.scss';
 
 import { 
         FormInputContainer, 
         FormInputWrapper, 
         FormInputInner 
     } from '../custom-button/custom-button.styles';
+
+import SignInAndSignUp from '../sign-in-sign-up-form/signInAndSignUp.component'
 
 import styled, { css } from 'styled-components'
 
@@ -32,7 +34,7 @@ class GetStarted extends Component {
             <FormInputContainer { ...props }>
                 <FormInputWrapper> 
                     <FormInputInner>
-                       <h1>test</h1>
+                        <SignInAndSignUp></SignInAndSignUp>
                     </FormInputInner>
                 </FormInputWrapper>
             </FormInputContainer>
