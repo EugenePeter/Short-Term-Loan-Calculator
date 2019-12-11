@@ -2,14 +2,17 @@ import React, { Fragment } from 'react';
 
 import{ Nav, NavItems, NavItemsInner, LogoContainer } from './navigation.styles'
 
-const Navigation = () => {
+import { auth } from '../firebase/firebase.utils';
+import { a } from '../redux/calculator/repayment-amount/repayment-amount.selector';
+
+const Navigation = ({ currentUser }) => {
 
     return (
         <Fragment>
             <Nav>
                 <LogoContainer>test</LogoContainer>
                 <NavItems>
-                    <NavItemsInner>SIGN OUT</NavItemsInner>
+                    <NavItemsInner onClick={() => auth.signOut() } >SIGN OUT</NavItemsInner>
                 </NavItems>
             </Nav>
         </Fragment>
