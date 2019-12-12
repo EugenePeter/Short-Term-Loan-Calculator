@@ -122,10 +122,7 @@ button {
 }
 
 .Calculator {
-    // display: flex;
-    justify-content: center;
-    // background-color: red;
-    width: 100%;
+    max-height: 500px;
 }
 
 .Calculator__inner {

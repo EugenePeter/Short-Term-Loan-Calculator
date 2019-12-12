@@ -16,6 +16,10 @@ import { durationOfLoan } from '../redux/calculator/repayment-amount/repayment-a
 
 import { apr, repayment } from '../redux/calculator/repayment-amount/repayment-amount.selector'
 
+import RepaymentAmountFigure from './repayment-figure.component';
+
+import TotalRepayment from './total-repayment.component';
+
 
 
 const RepaymentAmount = ({ durationOfLoan, amount, schedule, apr, repayment }) => {
@@ -31,34 +35,19 @@ const RepaymentAmount = ({ durationOfLoan, amount, schedule, apr, repayment }) =
 
     console.log("duration is = " + durationOfLoan)
 
-
-
-    
     console.log("from repayment amount" + apr)
+
     return (
         <div className="payment-amount__container">
             <div className="paymentAmount">
-                <small>{`${schedule}ly repayment`}</small>
-                <h2>{`${ repayment }`}</h2>
+                <RepaymentAmountFigure />  
             </div>
             <div className="paymentAmount">
-                <small>Total Payment</small>
-                <h2>{`${ total }`}</h2>
+                <TotalRepayment />
             </div>
         </div>
     );
-
-    // return (
-    //     <div className="payment-amount__container">
-    //         <h1> {schedule} </h1>
-    //         <h4> {durationOfLoan} </h4>
-    //     </div>
-    // );
 };
-
-
-// repaymentSchedule, loanAmount, loanDuration 
-
 
 const mapStateToProps = createStructuredSelector({ 
     schedule,

@@ -27,6 +27,8 @@ const FormInput = ({ handleChange, label, value, ...props }) => {
                 : null
             }
 
+            
+
         </GroupContainer>
     );
 };

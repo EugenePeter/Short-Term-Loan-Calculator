@@ -1,5 +1,8 @@
 import React, { Component} from 'react';
 import './App.css';
+
+import { Switch, Route, Redirect } from 'react-router-dom';
+
 import Calculator from './components/calculator/calculator.component';
 
 import Navigation from './components/navigation/navigation.component';
@@ -8,6 +11,13 @@ import 'normalize.css';
 
 
 import { auth, createUserProfileDocument } from './components/firebase/firebase.utils';
+
+import SignIn from './components/Form/sign-in/signIn.component';
+
+import ApplicationPage from './pages/application-page/application-page';
+
+import Home from './pages/home/home';
+
 
 class App extends Component {
 
@@ -26,6 +36,7 @@ class App extends Component {
       this.setState({ currentUser: user });
 
       console.log(user);
+      console.log(user.displayName)
     });
   }
 
@@ -34,10 +45,39 @@ class App extends Component {
   }
 
   render() {
+
+    console.log("mao kini " + this.state.currentUser);
+
     return (
-      <div className="App-header">
+      <div>
           <Navigation currentUser={this.state.currentUser} />
-          <Calculator className="Calculator" />
+          <Switch>
+            <Route exact path = '/'
+              render={()=> this.state.currentUser ? 
+                (<Redirect to = '/application-page' />)
+                :
+                (<Home/>)
+              }  
+            />
+
+            <Route exact path = '/application-page'
+              render={()=> this.state.currentUser ? 
+                (<ApplicationPage />)
+                :
+                (<Redirect to = '/' />)
+              }  
+            />
+
+            <Route exact path = '/signin' 
+            render={() =>
+              this.state.currentUser ? (
+                <Redirect to='/application-page' />
+              ) : (
+                <Calculator />
+              )
+            }
+            />
+          </Switch>
       </div>
     );
   }

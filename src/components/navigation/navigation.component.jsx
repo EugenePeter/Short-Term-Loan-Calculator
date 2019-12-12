@@ -3,16 +3,19 @@ import React, { Fragment } from 'react';
 import{ Nav, NavItems, NavItemsInner, LogoContainer } from './navigation.styles'
 
 import { auth } from '../firebase/firebase.utils';
-import { a } from '../redux/calculator/repayment-amount/repayment-amount.selector';
 
 const Navigation = ({ currentUser }) => {
-
+    console.log("from nav " + currentUser);
     return (
         <Fragment>
             <Nav>
-                <LogoContainer>test</LogoContainer>
+                <LogoContainer to='/'>test</LogoContainer>
                 <NavItems>
-                    <NavItemsInner onClick={() => auth.signOut() } >SIGN OUT</NavItemsInner>
+                    {
+                        currentUser ? 
+                        (<NavItemsInner as='div' onClick={() => auth.signOut()}>SIGN OUT</NavItemsInner>)
+                        : (<NavItemsInner to='/signin'>signin</NavItemsInner>)
+                    }
                 </NavItems>
             </Nav>
         </Fragment>
