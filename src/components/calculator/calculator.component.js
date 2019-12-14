@@ -8,9 +8,12 @@ import RepaymentAmount from './repayment-amount.component'
 
 import  RepaymentSchedule from './repayment-schedule.component';
 
+import CustomButton from '../custom-button/custom-button.component.jsx'
+
+import SignIn from '../sign-in/sign-in.component'
+
 
 import 'normalize.css';
-
 
 
 
@@ -19,22 +22,23 @@ class Calculator extends Component {
         super();
 
         this.state = {
-            repaymentSchedule: '',
+            getStartedBtn: 'false'
         };
     }
-x
-    handleRepaymentSchedule = event => {
-        event.preventDefault();
-        const { value } = event.target;
 
-        alert(value)
-        console.log(value)
-        this.setState({repaymentSchedule: value})
+ 
+
+    handleGetStartedBtn = event => {
+        // event.preventDefault();
+       const getStartedBtn = this.state.getStartedBtn
+        this.setState({getStartedBtn: !getStartedBtn });
+        alert()
+        console.log("eeeee" + this.state)
     }
 
     
     render() {
-
+        const {getStartedBtn} = this.state
         return(
         <div className="Calculator">
             <div className="Calculator__inner">
@@ -47,8 +51,22 @@ x
                     <div className="Input-wrapper__inner">
                         <RepaymentAmount />
                     </div>
+                    <div className="Input-wrapper__inner" 
+                        onClick={ this.handleGetStartedBtn} >
+                        <CustomButton 
+                            onClick={ this.handleGetStartedBtn} 
+                            clicked={getStartedBtn}
+                        > Get Started {getStartedBtn} </CustomButton>
+                    </div>
                 </div>
             </div>
+
+            <div className="form__inner">
+                <div className="form-wrapper"> 
+                    <SignIn />
+                </div>
+            </div>
+
         </div>
         );
     }
