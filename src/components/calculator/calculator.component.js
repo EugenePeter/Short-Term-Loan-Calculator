@@ -8,9 +8,9 @@ import RepaymentAmount from './repayment-amount.component'
 
 import  RepaymentSchedule from './repayment-schedule.component';
 
-import CustomButton from '../custom-button/custom-button.component.jsx'
+import CustomButton from '../custom-button/custom-button.component';
+import GetStarted from './get-started.component';
 
-import SignIn from '../sign-in/sign-in.component'
 
 
 import 'normalize.css';
@@ -22,23 +22,21 @@ class Calculator extends Component {
         super();
 
         this.state = {
-            getStartedBtn: 'false'
+            getStarted: false
         };
     }
 
- 
-
-    handleGetStartedBtn = event => {
-        // event.preventDefault();
-       const getStartedBtn = this.state.getStartedBtn
-        this.setState({getStartedBtn: !getStartedBtn });
-        alert()
-        console.log("eeeee" + this.state)
+    handleGetStarted = event => {
+        const{ getStarted } = this.state;
+        event.preventDefault();
+        this.setState({getStarted:!getStarted})
     }
+
+
 
     
     render() {
-        const {getStartedBtn} = this.state
+        const{ getStarted} = this.state;
         return(
         <div className="Calculator">
             <div className="Calculator__inner">
@@ -51,22 +49,12 @@ class Calculator extends Component {
                     <div className="Input-wrapper__inner">
                         <RepaymentAmount />
                     </div>
-                    <div className="Input-wrapper__inner" 
-                        onClick={ this.handleGetStartedBtn} >
-                        <CustomButton 
-                            onClick={ this.handleGetStartedBtn} 
-                            clicked={getStartedBtn}
-                        > Get Started {getStartedBtn} </CustomButton>
+                    <div className="Input-wrapper__inner">
+                        <CustomButton onClick={this.handleGetStarted} isActive={getStarted}>Get Started</CustomButton>
                     </div>
                 </div>
             </div>
-
-            <div className="form__inner">
-                <div className="form-wrapper"> 
-                    <SignIn />
-                </div>
-            </div>
-
+            <GetStarted isActive={getStarted} />
         </div>
         );
     }
