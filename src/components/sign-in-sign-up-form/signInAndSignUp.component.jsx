@@ -9,7 +9,7 @@ class SignInAndSignUp extends Component {
         super();
 
         this.state = {
-            continue: false
+            
         };
     }
 

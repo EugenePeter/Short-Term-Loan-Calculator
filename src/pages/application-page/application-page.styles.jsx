@@ -61,7 +61,9 @@ export const WarningInner = styled.div `
     position: absolute;
     margin: 0 auto;
     color: #fff;
-    h1,h2,h3,h4 {
+    
+    
+        h1,h2,h3,h4 {
         color: #fff;
     }
 `;

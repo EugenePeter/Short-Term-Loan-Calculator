@@ -15,6 +15,8 @@ class UserDetails extends Component{
         return(
             <Container >
                 <h1 className="ui centered">Enter User Details</h1>
+
+                    
                     <label>First Name</label>
                     <input
                     placeholder='First Name'
