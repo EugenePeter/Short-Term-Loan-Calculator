@@ -6,34 +6,40 @@ import SignUp from '../Form/sign-up/sign-up.component';
 
 import { auth } from '../firebase/firebase.utils';
 
-const Navigation = ({ currentUser }) => {
-    console.log("from nav " + currentUser);
+import { connect} from 'react-redux';
+
+import { createStructuredSelector } from 'reselect';
+
+import { selectCurrentUser } from '../redux/user/user.selectors';
+
+const Navigation = ({ currentUsers }) => {
+    console.log("from nav " + currentUsers);
     return (
         <Fragment>
             <Nav>
                 <LogoContainer to='/'>test</LogoContainer>
                 <NavItems>
                     {
-                        currentUser ? 
+                        currentUsers ? 
                         (<NavItemsInner as='div' onClick={() => auth.signOut()}>SIGN OUT</NavItemsInner>)
                         : (<NavItemsInner to='/signin'>signin</NavItemsInner>
                          )
                     }
-
-
                     {
-                        currentUser ? 
+                        currentUsers ? 
                         (<NavItemsInner as='div' onClick={() => auth.signOut()}>SIGN OUT</NavItemsInner>)
                         : (<NavItemsInner to='/signup'>signup</NavItemsInner>
                          )
                     }
-                    {/* <NavItemsInner to='/signup'>
-                        signup
-                    </NavItemsInner> */}
+              
                 </NavItems>
             </Nav>
         </Fragment>
     );
 };
 
-export default Navigation;
+const mapStateToProps = createStructuredSelector({
+    currentUsers: selectCurrentUser, 
+})
+
+export default connect(mapStateToProps)(Navigation);

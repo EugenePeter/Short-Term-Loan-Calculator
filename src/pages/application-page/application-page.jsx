@@ -11,9 +11,11 @@ import {  UpdateLoanContainer,
     InputWrapperInner, 
     ContinueBtn, WarningContainer, WarningInner } from './application-page.styles'
 
+    import { connect} from 'react-redux';
 
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect'
+    import { createStructuredSelector } from 'reselect';
+    
+    import { selectCurrentUser } from '../../components/redux/user/user.selectors';
 
 
 import RepaymentAmountFigure from '../../components/calculator/repayment-figure.component';
@@ -29,6 +31,7 @@ import LoanDuration from '../../components/calculator/loan-duration.component';
 import CustomButton from '../../components/custom-button/custom-button.component';
 
 import Warning from './warning.component';
+
 
 
 
@@ -52,9 +55,11 @@ class ApplicationPage extends Component {
 
     render() {
         const  clicked  = this.state.continue;
+        const { selectCurrentUser: {displayName} } = this.props
+        console.log( displayName)
         return(
             <Container>
-                <h2> Hi you are borrowing</h2>
+                <h2> Hi {displayName}, you are borrowing</h2>
                 <RepaymentAmountFigure />
                 <TotalRepayment />
                 <Small className='margin-top'> You can update loan amount, repayment schedule and duration below</Small>
@@ -82,7 +87,7 @@ class ApplicationPage extends Component {
 }
 
 const mapStateToProps = createStructuredSelector({
-
+    selectCurrentUser
 });
 
 export default connect(mapStateToProps)(ApplicationPage);

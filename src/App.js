@@ -24,36 +24,32 @@ import { WarningContainer } from './pages/application-page/application-page.styl
 
 import MainApplication from './pages/application-page/main-application.component';
 
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+
+
+import { setCurrentUser } from './components/redux/user/user.actions';
+import { selectCurrentUser } from './components/redux/user/user.selectors';
+
 class App extends Component {
-
-  constructor() {
-    super();
-
-    this.state = {
-      currentUser: null
-    };
-  }
-
   unsubscribeFromAuth = null;
 
   componentDidMount() {
+    const { setCurrentUser } = this.props;
+
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
       if (userAuth) {
         const userRef = await createUserProfileDocument(userAuth);
 
         userRef.onSnapshot(snapShot => {
-          this.setState({
-            currentUser: {
-              id: snapShot.id,
-              ...snapShot.data()
-            }
+          setCurrentUser({
+            id: snapShot.id,
+            ...snapShot.data()
           });
-
-          console.log(this.state);
         });
       }
 
-      this.setState({ currentUser: userAuth });
+      setCurrentUser(userAuth);
     });
   }
 
@@ -63,14 +59,14 @@ class App extends Component {
 
   render() {
 
-    console.log("mao kini " + this.state.currentUser);
+    console.log("mao kini " + this.props.currentUser);
 
     return (
       <div>
-          <Navigation currentUser={this.state.currentUser} />
+          <Navigation  />
           <Switch>
             <Route exact path = '/'
-              render={()=> this.state.currentUser ? 
+              render={()=> this.props.currentUser ? 
                 (<Redirect to = '/application-page' />)
                 :
                 (<Home/>)
@@ -78,7 +74,7 @@ class App extends Component {
             />
 
             <Route exact path = '/application-page'
-              render={()=> this.state.currentUser ? 
+              render={()=> this.props.currentUser ? 
                 (<ApplicationPage />)
                 :
                 (<Redirect to = '/' />)
@@ -87,7 +83,7 @@ class App extends Component {
 
             <Route exact path = '/signin' 
             render={() =>
-              this.state.currentUser ? (
+              this.props.currentUser ? (
                 <Redirect to='/application-page' />
               ) : (
                 <Calculator />
@@ -98,7 +94,7 @@ class App extends Component {
             <Route exact path='/main-application' component={MainApplication} /> 
             <Route exact path='/signup' 
                render={() =>
-                  this.state.currentUser ? (
+                  this.props.currentUser ? (
                   <Redirect to='/application-page' />
                   ) : (
                   <SignUp />
@@ -111,4 +107,15 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = createStructuredSelector({
+  currentUser: selectCurrentUser
+});
+
+const mapDispatchToProps = dispatch => ({
+  setCurrentUser: user => dispatch(setCurrentUser(user))
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
