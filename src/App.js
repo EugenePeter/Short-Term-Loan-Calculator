@@ -14,6 +14,8 @@ import { auth, createUserProfileDocument } from './components/firebase/firebase.
 
 import SignIn from './components/Form/sign-in/signIn.component';
 
+import SignUp from './components/Form/sign-up/sign-up.component';
+
 import ApplicationPage from './pages/application-page/application-page';
 
 import Home from './pages/home/home';
@@ -29,22 +31,34 @@ class App extends Component {
 
     this.state = {
       currentUser: null
-    }
+    };
   }
 
-  unSubscribeFromAuth = null;
+  unsubscribeFromAuth = null;
 
   componentDidMount() {
-    this.unSubscribeFromAuth = auth.onAuthStateChanged(user => {
-      this.setState({ currentUser: user });
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
+      if (userAuth) {
+        const userRef = await createUserProfileDocument(userAuth);
 
-      console.log(user);
-      console.log(user.displayName)
+        userRef.onSnapshot(snapShot => {
+          this.setState({
+            currentUser: {
+              id: snapShot.id,
+              ...snapShot.data()
+            }
+          });
+
+          console.log(this.state);
+        });
+      }
+
+      this.setState({ currentUser: userAuth });
     });
   }
 
   componentWillUnmount() {
-    this.unSubscribeFromAuth();
+    this.unsubscribeFromAuth();
   }
 
   render() {
@@ -82,6 +96,15 @@ class App extends Component {
             />
 
             <Route exact path='/main-application' component={MainApplication} /> 
+            <Route exact path='/signup' 
+               render={() =>
+                  this.state.currentUser ? (
+                  <Redirect to='/application-page' />
+                  ) : (
+                  <SignUp />
+                  )
+                }
+         /> 
           </Switch>
       </div>
     );
