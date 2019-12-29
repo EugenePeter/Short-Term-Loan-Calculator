@@ -96,11 +96,11 @@ class App extends Component {
             }
             />
 
-            {/* <Route exact path='/main-application' component={MainApplication} />  */}
+            <Route exact path='/main-application' component={MainApplication} /> 
             <Route exact path = '/main-application' 
             render={() =>
               this.props.currentUser ? (
-                <Redirect to='/main-application' />
+               ''
               ) : (
                 <Home />
               )
