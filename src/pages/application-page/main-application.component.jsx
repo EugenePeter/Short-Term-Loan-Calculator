@@ -9,9 +9,20 @@ import { createStructuredSelector } from 'reselect';
 
 import FormInput from '../../components/Form/form-input/form-input.component';
 
-import UserDetails from '../../components/Form/user-details/user-details.component';
+import UserDetails from './user-details.component';
 
 import PersonalDetails from './personal-details.component';
+
+import { Form, Field } from 'react-final-form';
+
+import { FormContainer, ButtonsBarContainer } from '../../components/Form/form-input/form-input.styles';
+
+import CustomButton from '../../components/custom-button/custom-button.component';
+
+import { auth, addUserApplication } from '../../components/firebase/firebase.utils';
+
+import  LoanData from './data';
+
 
 
 
@@ -25,9 +36,12 @@ class MainApplication extends Component {
             firstName: '',
             lastName: '',
             email: '',
+            mobileNumber: '',
+            dateOfBirth: 'date',
             age: '',
             city: '',
-            country: ''
+            country: '',
+
         }
     }
     
@@ -54,13 +68,29 @@ class MainApplication extends Component {
         this.setState({ [input] : event.target.value })
     }
 
+    submitForm = () =>{
+        auth.onAuthStateChanged(async userAuth => {
+            // const signedInUser = userAuth.uid;
+            // alert(signedInUser)
+            // console.log(signedInUser)
+           addUserApplication(userAuth)
+           const formApplication = this.state
+           
+        }); 
+    }
+
     render() {
 
         const {step} = this.state;
-        const { firstName, lastName, email, age, city, country } = this.state;
-        const values = { firstName, lastName, email, age, city, country };
+        const { firstName, lastName, mobileNumber, dateOfBirth, email, age, city, country } = this.state;
+        const values = { firstName, lastName, mobileNumber, dateOfBirth, email, age, city, country };
+
+        console.log(values)
+
+
 
         switch(step) {
+            
             case 1: 
                 return <UserDetails
                             nextStep={this.nextStep} 
@@ -73,9 +103,15 @@ class MainApplication extends Component {
                         prevStep={this.prevStep}
                         handleChange = {this.handleChange}
                         values={values}
-                        />   
+                        />  
+            case 3:
+                return (
+
+                    <LoanData  loanData test />
+                );
+            default:
         }
-      }
+    }
 }
 
 export default MainApplication;

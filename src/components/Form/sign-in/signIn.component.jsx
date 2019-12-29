@@ -2,7 +2,9 @@ import React, { Component, Fragment} from 'react';
 
 import 'normalize.css';
 
-import FormInput from '../form-input/form-input.component';
+import  FormInput from '../form-input/form-input.component';
+
+import { FormContainer, ButtonWrapper } from '../form-input/form-input.styles';
 
 import CustomButton from '../../custom-button/custom-button.component';
 
@@ -12,7 +14,7 @@ import {
     SignInContainer,
     SignInTitle,
     ButtonsBarContainer,
-    Form
+    
     } from './sign-in.styles';
 
 
@@ -58,7 +60,7 @@ class SignIn extends Component {
             <SignInTitle>I already have an account</SignInTitle>
             <span>Sign in with your email and password</span>
 
-            <Form onSubmit={this.handleSubmit}>
+            <FormContainer onSubmit={this.handleSubmit}>
                 <FormInput
                     name='email'
                     type='email'
@@ -76,14 +78,15 @@ class SignIn extends Component {
                     required
                 />
 
-                <ButtonsBarContainer>
+                <ButtonWrapper>
                     <CustomButton type='submit' signIn> Sign in </CustomButton>
                     <CustomButton onClick={signInWithGoogle} googleSignIn>Sign in with Google </CustomButton>
-                </ButtonsBarContainer>
-            </Form>
+                </ButtonWrapper>
+            </FormContainer>
         </SignInContainer>
         );
     }
 }
 
 export default SignIn;
+

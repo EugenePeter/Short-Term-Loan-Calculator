@@ -10,7 +10,7 @@ import Navigation from './components/navigation/navigation.component';
 import 'normalize.css';
 
 
-import { auth, createUserProfileDocument } from './components/firebase/firebase.utils';
+import { auth, createUserProfileDocument, signedInUser, dd } from './components/firebase/firebase.utils';
 
 import SignIn from './components/Form/sign-in/signIn.component';
 
@@ -49,16 +49,21 @@ class App extends Component {
         });
       }
 
+
       setCurrentUser(userAuth);
     });
+
+
+
+    
   }
+
 
   componentWillUnmount() {
     this.unsubscribeFromAuth();
   }
 
   render() {
-
     console.log("mao kini " + this.props.currentUser);
 
     return (
@@ -91,7 +96,16 @@ class App extends Component {
             }
             />
 
-            <Route exact path='/main-application' component={MainApplication} /> 
+            {/* <Route exact path='/main-application' component={MainApplication} />  */}
+            <Route exact path = '/main-application' 
+            render={() =>
+              this.props.currentUser ? (
+                <Redirect to='/main-application' />
+              ) : (
+                <Home />
+              )
+            }
+            />
             <Route exact path='/signup' 
                render={() =>
                   this.props.currentUser ? (
@@ -112,7 +126,7 @@ const mapStateToProps = createStructuredSelector({
 });
 
 const mapDispatchToProps = dispatch => ({
-  setCurrentUser: user => dispatch(setCurrentUser(user))
+  setCurrentUser: user => dispatch(setCurrentUser(user)),
 });
 
 export default connect(

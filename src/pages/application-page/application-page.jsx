@@ -3,13 +3,14 @@ import React, { Component, Fragment} from 'react';
 import 'normalize.css';
 import Calculator from '../../components/calculator/calculator.component';
 
-import { Container, Small }  from '../../global-styles/global.styles';
+import { Container, Small, Wrapper }  from '../../global-styles/global.styles';
 
 import {  UpdateLoanContainer, 
     UpdateLoan, 
     InputWrapper, 
     InputWrapperInner, 
-    ContinueBtn, WarningContainer, WarningInner } from './application-page.styles'
+    ContinueBtn, WarningContainer, WarningInner } from './application-page.styles';
+
 
     import { connect} from 'react-redux';
 
@@ -31,6 +32,8 @@ import LoanDuration from '../../components/calculator/loan-duration.component';
 import CustomButton from '../../components/custom-button/custom-button.component';
 
 import Warning from './warning.component';
+
+import { amount } from '../../components/redux/calculator/loan-amount/loan-amount.selectors'
 
 
 
@@ -55,14 +58,18 @@ class ApplicationPage extends Component {
 
     render() {
         const  clicked  = this.state.continue;
-        const { selectCurrentUser: {displayName} } = this.props
+        const { selectCurrentUser: {displayName}, amount } = this.props;
         console.log( displayName)
         return(
             <Container>
-                <h2> Hi {displayName}, you are borrowing</h2>
-                <RepaymentAmountFigure />
-                <TotalRepayment />
-                <Small className='margin-top'> You can update loan amount, repayment schedule and duration below</Small>
+               <Wrapper>
+                    <small> Hi {displayName} </small>
+                    <h2>you are borrowing</h2>
+                    <h2>${amount}</h2>
+                    <RepaymentAmountFigure />
+                    <TotalRepayment />
+                    <Small className='margin-top'> You can update loan amount, repayment schedule and duration below</Small>
+               </Wrapper>
                 <UpdateLoanContainer>
                     <UpdateLoan>
                         <RepaymentSchedule />
@@ -87,7 +94,8 @@ class ApplicationPage extends Component {
 }
 
 const mapStateToProps = createStructuredSelector({
-    selectCurrentUser
+    selectCurrentUser,
+    amount
 });
 
 export default connect(mapStateToProps)(ApplicationPage);

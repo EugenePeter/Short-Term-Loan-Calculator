@@ -37,7 +37,30 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
     }
   }
 
+    const ggg = firestore.collection("users").doc("signInUsersss").collection("loan");
+
+    // alert(ggg)
+    // ggg.update({
+    //     loanAmount: "dddd"
+    // })
   return userRef;
+
+};
+
+export const addUserApplication = async (userAuth, additionalData) => {
+    const userRef = firestore.doc(`users/${userAuth.uid}`);
+    const signedInUser = userAuth.uid;
+    // alert(signedInUser)
+;
+    const ggg = firestore.collection("users").doc(signedInUser);
+
+    // alert(ggg)
+    ggg.update({
+        loan: {
+            amount: 2000,
+            duration: "25 months"
+        }
+    })
 };
 
 export const auth = firebase.auth();

@@ -23,6 +23,13 @@ export const GroupContainer = styled.div`
         }
 `;
 
+export const FormContainer = styled.form`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%!important;
+`;
+
 export const FormInputContainer = styled.input`
     background: none;
     background-color: white;
@@ -61,3 +68,22 @@ export const FormInputLabel = styled.label`
         ${shrinkLabelStyles}
     }
 `;
+
+export const ButtonsBarContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 8%;
+    /* width: 600px!important: */
+`;
+
+export const ButtonWrapper = styled.div`
+
+    margin-top: 8%;
+    width: 90%;
+`;
+
+
+

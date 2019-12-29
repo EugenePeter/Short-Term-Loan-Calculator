@@ -6,6 +6,7 @@ import Calculator from '../../components/calculator/calculator.component';
 
 
 import { HeaderContainer } from './home.styles';
+import HeroSection from './hero-section/hero-section.component';
 
 
 class Home extends Component {
@@ -23,9 +24,9 @@ class Home extends Component {
     render() {
         return(
             <HeaderContainer>
-                <h1>home</h1>
+                <HeroSection />
                 <Calculator />
-                <h1>section</h1>
+                {/* <h1>section</h1> */}
             </HeaderContainer>
         );
     }

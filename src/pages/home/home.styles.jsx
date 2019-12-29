@@ -10,7 +10,7 @@ export const HeaderLogo = styled.div`
 
 export const HeaderContainer = styled.div`
     background-color: #282c34;
-    background-image: linear-gradient(to bottom right,#55D251, #4AC76C, #31B3C2); 
+    background-image: linear-gradient(to bottom right, #358A49, #2FAA4C); 
     display: flex;
     flex-direction: column;
     align-items: center;

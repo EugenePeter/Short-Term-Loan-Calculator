@@ -29,7 +29,7 @@ h4 {
 small {
     font-weight: lighter;
     color: gray;
-    padding: 2% 0 4% 0;
+    padding: 1% 0 2% 0;
     // background-color: green;
 }
 
@@ -72,22 +72,24 @@ button {
         outline: none;
     }
     &__Week:focus {
-        background-color: #61A261;
+        background-color: #3bc453;
         border-radius: 25px 12px 0 0;
         color: #fff;
         transform: scale(1.1, 1.1);
         -webkit-tap-highlight-color: transparent;
+        z-index: 1000;
     }
     &__Fornight {
         transition: transform .2s;
         outline: none;
     }
     &__Fornight:focus {
-        background-color: #61A261;
+        background-color: #3bc453;
         border-radius: 20px 20px 0 0;
         color: #fff;
         transform: scale(1.1, 1.1);
         -webkit-tap-highlight-color: transparent;
+        z-index: 1000;
     }
     &__Month {
         border-radius: 0 25px 0 0;
@@ -95,7 +97,7 @@ button {
         outline: none;
     }
     &__Month:focus {
-        background-color: #61A261;
+        background-color: #3bc453;
         border-radius: 12px 25px 0 0;
         color: #fff;
         transform: scale(1.1, 1.1);
@@ -109,6 +111,7 @@ button {
 
 .Calculator {
     max-height: 500px;
+    width: 100%;
 }
 
 .Calculator__inner {
@@ -141,7 +144,7 @@ button {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 6% 0 6% 0;
+    padding: 2% 0 6% 0;
     width: 100%;
     // background-color: yellow;
 }

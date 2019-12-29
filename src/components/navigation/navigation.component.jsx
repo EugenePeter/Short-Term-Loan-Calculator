@@ -12,25 +12,28 @@ import { createStructuredSelector } from 'reselect';
 
 import { selectCurrentUser } from '../redux/user/user.selectors';
 
+import { ReactComponent as Logo} from '../../assets/dollar.svg';
+
 const Navigation = ({ currentUsers }) => {
     console.log("from nav " + currentUsers);
     return (
         <Fragment>
             <Nav>
-                <LogoContainer to='/'>test</LogoContainer>
+                <LogoContainer to='/'>
+                    <Logo className="logo" />
+                </LogoContainer>
                 <NavItems>
                     {
                         currentUsers ? 
                         (<NavItemsInner as='div' onClick={() => auth.signOut()}>SIGN OUT</NavItemsInner>)
-                        : (<NavItemsInner to='/signin'>signin</NavItemsInner>
+                        : (
+                          <Fragment>
+                            <NavItemsInner to='/signin'>signin</NavItemsInner>
+                            <NavItemsInner to='/signup'>signup</NavItemsInner>
+                          </Fragment>
                          )
                     }
-                    {
-                        currentUsers ? 
-                        (<NavItemsInner as='div' onClick={() => auth.signOut()}>SIGN OUT</NavItemsInner>)
-                        : (<NavItemsInner to='/signup'>signup</NavItemsInner>
-                         )
-                    }
+              
               
                 </NavItems>
             </Nav>

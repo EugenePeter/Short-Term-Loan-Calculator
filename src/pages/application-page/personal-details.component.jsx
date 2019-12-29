@@ -4,42 +4,98 @@ import CustomButton from '../../components/custom-button/custom-button.component
 
 import { Container } from '../../global-styles/global.styles';
 
+import { auth, addUserApplication } from '../../components/firebase/firebase.utils';
+
+import { Form, Field } from 'react-final-form';
+
+import { FormContainer, ButtonsBarContainer, ButtonWrapper } from '../../components/Form/form-input/form-input.styles';
+
+import  FormInput  from '../../components/Form/form-input/form-input.component';
+
 class PersonalDetails extends Component{
-    saveAndContinue = (e) => {
-        e.preventDefault();
-        this.props.nextStep();
+
+    componentDidMount() {
+        auth.onAuthStateChanged(async userAuth => {
+            // const signedInUser = userAuth.uid;
+            // alert(signedInUser)
+            // console.log(signedInUser)
+           addUserApplication(userAuth)
+
+            
+            }); 
     }
 
-    back  = (e) => {
-        e.preventDefault();
-        this.props.prevStep();
+    handleChange = event => {
+        const { value, name } = event.target;
+    
+        this.setState({ [name]: value });
+      };
+
+      saveAndContinue = (e) => {
+        e.preventDefault()
+        this.props.nextStep()
     }
 
     render(){
-        const { values } = this.props
+        const { values } = this.props;
         return(
-            <Container>
-                <h1 className="ui centered">Enter Personal Details</h1>
-                <label>Age</label>
-                <input placeholder='Age'
-                onChange={this.props.handleChange('age')}
-                defaultValue={values.age}
+            <FormContainer onSubmit={this.handleSubmit}>
+                <FormInput
+                    name='mNumber'
+                    type='number'
+                    handleChange={this.props.handleChange('mobileNumber')}
+                    value={values.mobileNumber}
+                    label='mobile number'
+                    required
                 />
-                <label>City</label>
-                <input placeholder='City'
-                onChange={this.props.handleChange('city')}
-                defaultValue={values.city}
+                <FormInput
+                    name='date of birth'
+                    type='date'
+                    handleChange={this.props.handleChange('dateOfBirth')}
+                    value={values.dateOfBirth}
+                    label='date of birth'
+                    placeholder='date of birth'
+                    required
                 />
-                <label>Country</label>
-                <input placeholder='Country'
-                onChange={this.props.handleChange('country')}
-                defaultValue={values.country}
-                />
-                <CustomButton onClick={this.back}>Back</CustomButton>
+         
+
+                <ButtonWrapper>
                 <CustomButton onClick={this.saveAndContinue}>Save And Continue </CustomButton>
-            </Container>
+                </ButtonWrapper>
+            </FormContainer>
+
         )
     }
 }
 
 export default PersonalDetails;
+
+
+{/* <Form onSubmit={this.nxt}>
+{({ handleSubmit}) => 
+    (
+    <form onSubmit={ handleSubmit }>
+        <Field name= 'name'>
+            {(props) => (
+                <FormContainer onSubmit={this.handleSubmit}>
+                    <FormInput
+                        // name='email'
+                        type='email'
+                        // handleChange={this.handleChange}
+                        // value={this.state.email}
+                        label='email'
+                        required
+
+                        name={props.input.email}
+                        value={props.input.value}
+                        onChange={props.input.onChange}
+
+                    />
+                        <CustomButton type='submit' onClick={this.saveAndContinue} > continue </CustomButton>
+                </FormContainer>
+            )}
+        </Field>
+    </form>
+    )
+}
+</Form> /> */}

@@ -46,7 +46,7 @@ export const CustomButtonContainer = styled.button`
     height:60px;
     letter-spacing: 0.5px;
     line-height: 50px;
-    padding: 0 35px 0 35px;
+    /* padding: 0 35px 0 35px; */
     font-size: 15px;
    
     border-radius: 50px;
@@ -131,7 +131,7 @@ export const FormInputWrapper = styled.div`
     flex-direction: column;
     align-items: center;
     width: 80%;
-    background-color: #408765;
+    background-color: #335145;
     border-radius: 25px 25px 50px 50px;
     box-shadow: 0 10px 32px 4px rgba(0, 0, 0, 0.2), 0 2px 6px 1px rgba(0, 0, 0, 0.1);
     z-index: 1000;

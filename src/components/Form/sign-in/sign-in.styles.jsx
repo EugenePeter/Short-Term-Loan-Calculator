@@ -18,16 +18,10 @@ export const SignInTitle = styled.h2`
 export const ButtonsBarContainer = styled.div`
     display: flex;
     flex-direction: column;
-    align-content: space-between;
-    flex-wrap: wrap;
-    align-items: center;
+    /* align-content: space-between; */
+    /* flex-wrap: wrap; */
+    /* align-items: center; */
     margin-top: 8%;
-    width: 100%!important:
+    width: 100%:
 `;
 
-export const Form = styled.form`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%!important;
-`;
