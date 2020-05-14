@@ -1,35 +1,38 @@
-import React, { Component} from 'react';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
 
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route, Redirect } from "react-router-dom";
 
-import Calculator from './components/calculator/calculator.component';
+import Calculator from "./components/calculator/calculator.component";
 
-import Navigation from './components/navigation/navigation.component';
+import Navigation from "./components/navigation/navigation.component";
 
-import 'normalize.css';
+import "normalize.css";
 
+import {
+  auth,
+  createUserProfileDocument,
+  signedInUser,
+  dd,
+} from "./components/firebase/firebase.utils";
 
-import { auth, createUserProfileDocument, signedInUser, dd } from './components/firebase/firebase.utils';
+import SignIn from "./components/Form/sign-in/signIn.component";
 
-import SignIn from './components/Form/sign-in/signIn.component';
+import SignUp from "./components/Form/sign-up/sign-up.component";
 
-import SignUp from './components/Form/sign-up/sign-up.component';
+import ApplicationPage from "./pages/application-page/application-page";
 
-import ApplicationPage from './pages/application-page/application-page';
+import Home from "./pages/home/home";
 
-import Home from './pages/home/home';
+import { WarningContainer } from "./pages/application-page/application-page.styles";
 
-import { WarningContainer } from './pages/application-page/application-page.styles';
+import MainApplication from "./pages/application-page/main-application.component";
 
-import MainApplication from './pages/application-page/main-application.component';
+import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
 
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
-
-
-import { setCurrentUser } from './components/redux/user/user.actions';
-import { selectCurrentUser } from './components/redux/user/user.selectors';
+import { setCurrentUser } from "./components/redux/user/user.actions";
+import { selectCurrentUser } from "./components/redux/user/user.selectors";
 
 class App extends Component {
   unsubscribeFromAuth = null;
@@ -37,27 +40,21 @@ class App extends Component {
   componentDidMount() {
     const { setCurrentUser } = this.props;
 
-    this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
       if (userAuth) {
         const userRef = await createUserProfileDocument(userAuth);
 
-        userRef.onSnapshot(snapShot => {
+        userRef.onSnapshot((snapShot) => {
           setCurrentUser({
             id: snapShot.id,
-            ...snapShot.data()
+            ...snapShot.data(),
           });
         });
       }
 
-
       setCurrentUser(userAuth);
     });
-
-
-
-    
   }
-
 
   componentWillUnmount() {
     this.unsubscribeFromAuth();
@@ -68,68 +65,69 @@ class App extends Component {
 
     return (
       <div>
-          <Navigation  />
-          <Switch>
-            <Route exact path = '/'
-              render={()=> this.props.currentUser ? 
-                (<Redirect to = '/application-page' />)
-                :
-                (<Home/>)
-              }  
-            />
-
-            <Route exact path = '/application-page'
-              render={()=> this.props.currentUser ? 
-                (<ApplicationPage />)
-                :
-                (<Redirect to = '/' />)
-              }  
-            />
-
-            <Route exact path = '/signin' 
+        <Navigation />
+        <Switch>
+          <Route
+            exact
+            path="/"
             render={() =>
               this.props.currentUser ? (
-                <Redirect to='/application-page' />
-              ) : (
-                <Calculator />
-              )
-            }
-            />
-
-            <Route exact path='/main-application' component={MainApplication} /> 
-            <Route exact path = '/main-application' 
-            render={() =>
-              this.props.currentUser ? (
-               ''
+                <Redirect to="/application-page" />
               ) : (
                 <Home />
               )
             }
-            />
-            <Route exact path='/signup' 
-               render={() =>
-                  this.props.currentUser ? (
-                  <Redirect to='/application-page' />
-                  ) : (
-                  <SignUp />
-                  )
-                }
-         /> 
-          </Switch>
+          />
+
+          <Route
+            exact
+            path="/application-page"
+            render={() =>
+              this.props.currentUser ? <ApplicationPage /> : <Redirect to="/" />
+            }
+          />
+
+          <Route
+            exact
+            path="/signin"
+            render={() =>
+              this.props.currentUser ? (
+                <Redirect to="/application-page" />
+              ) : (
+                <Calculator />
+              )
+            }
+          />
+
+          <Route exact path="/main-application" component={MainApplication} />
+          <Route
+            exact
+            path="/main-application"
+            render={() => (this.props.currentUser ? "" : <Home />)}
+          />
+          <Route
+            exact
+            path="/signup"
+            render={() =>
+              this.props.currentUser ? (
+                <Redirect to="/application-page" />
+              ) : (
+                <SignUp />
+              )
+            }
+          />
+        </Switch>
       </div>
     );
   }
 }
 
 const mapStateToProps = createStructuredSelector({
-  currentUser: selectCurrentUser
+  currentUser: selectCurrentUser,
 });
 
-const mapDispatchToProps = dispatch => ({
-  setCurrentUser: user => dispatch(setCurrentUser(user)),
+const mapDispatchToProps = (dispatch) => ({
+  setCurrentUser: (user) => dispatch(setCurrentUser(user)),
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
