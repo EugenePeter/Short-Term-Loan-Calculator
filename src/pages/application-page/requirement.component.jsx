@@ -46,51 +46,15 @@ function UserDetails() {
     appDispatch({ type: "nxtStep" });
   };
 
+  const handleBack = (e) => {
+    e.preventDefault();
+    appDispatch({ type: "back" });
+  };
+
   return (
     <Container>
       <ContainerNarrower>
         <FormContainer onSubmit={handleSubmit}>
-          <FormBlock>
-            <div className="titleLabel">Preferred Title</div>
-            <div className="titleRadioInputContainer">
-              <div className="titleCheckboxItems" title>
-                {" "}
-                <RadioInput
-                  onClick={(e) =>
-                    appDispatch({ type: "gender", value: e.target.value })
-                  }
-                  type="radio"
-                  name="gender"
-                  value="Mr"
-                />
-                <label htmlFor="gender1">Mr</label>
-              </div>
-              <div className="titleCheckboxItems">
-                {" "}
-                <RadioInput
-                  onClick={(e) =>
-                    appDispatch({ type: "gender", value: e.target.value })
-                  }
-                  type="radio"
-                  name="gender"
-                  value="Mrs"
-                />
-                <label htmlFor="gender1">Mrs</label>
-              </div>
-              <div className="titleCheckboxItems">
-                {" "}
-                <RadioInput
-                  onClick={(e) =>
-                    appDispatch({ type: "gender", value: e.target.value })
-                  }
-                  type="radio"
-                  name="gender"
-                  value="Miss"
-                />
-                <label htmlFor="gender1">Miss</label>
-              </div>
-            </div>
-          </FormBlock>
           <FormInput
             onChange={(e) =>
               appDispatch({ type: "fName", value: e.target.value })
@@ -142,6 +106,9 @@ function UserDetails() {
 
           <ButtonWrapper>
             <GlobalButton filterApplicants>Save And Continue</GlobalButton>
+            <GlobalButton filterApplicant onClick={handleBack}>
+              Back
+            </GlobalButton>
           </ButtonWrapper>
         </FormContainer>
       </ContainerNarrower>

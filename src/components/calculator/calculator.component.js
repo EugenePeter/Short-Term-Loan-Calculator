@@ -1,63 +1,62 @@
-import React, { Component} from 'react';
+import React, { Component } from "react";
 
-import './calculator.component.scss';
+import "./calculator.component.scss";
 
-import LoanAmount from './loan-amount.component';
-import LoanDuration from './loan-duration.component';
-import RepaymentAmount from './repayment-amount.component'
+import LoanAmount from "./loan-amount.component";
+import LoanDuration from "./loan-duration.component";
+import RepaymentAmount from "./repayment-amount.component";
 
-import  RepaymentSchedule from './repayment-schedule.component';
+import RepaymentSchedule from "./repayment-schedule.component";
 
-import CustomButton from '../custom-button/custom-button.component';
-import GetStarted from './get-started.component';
+import CustomButton from "../custom-button/custom-button.component";
+import GetStarted from "./get-started.component";
 
-
-
-import 'normalize.css';
-
-
+import "normalize.css";
 
 class Calculator extends Component {
-    constructor() {
-        super();
+  constructor() {
+    super();
 
-        this.state = {
-            getStarted: false
-        };
-    }
+    this.state = {
+      getStarted: false,
+    };
+  }
 
-    handleGetStarted = event => {
-        const{ getStarted } = this.state;
-        event.preventDefault();
-        this.setState({getStarted:!getStarted})
-    }
+  handleGetStarted = (event) => {
+    const { getStarted } = this.state;
+    event.preventDefault();
+    this.setState({ getStarted: !getStarted });
+  };
 
-
-
-    
-    render() {
-        const{ getStarted} = this.state;
-        return(
-        <div className="Calculator">
-            <div className="Calculator__inner">
-                <RepaymentSchedule />
-                <div className="Input-wrapper"> 
-                    <div className="Input-wrapper__inner">
-                        <LoanAmount />
-                        <LoanDuration />
-                    </div>
-                    <div className="Input-wrapper__inner">
-                        <RepaymentAmount />
-                    </div>
-                    <div className="Input-wrapper__inner">
-                        <CustomButton onClick={this.handleGetStarted} isActive={getStarted}>Get Started</CustomButton>
-                    </div>
-                </div>
+  render() {
+    const { getStarted } = this.state;
+    return (
+      <div className="Calculator">
+        <div className="Calculator__inner">
+          <RepaymentSchedule />
+          <div className="Input-wrapper">
+            <div className="Input-wrapper__inner">
+              <LoanAmount />
+              <LoanDuration />
             </div>
-            <GetStarted isActive={getStarted} />
+            <div className="Input-wrapper__inner">
+              <RepaymentAmount />
+            </div>
+            <div className="Input-wrapper__inner">
+              <CustomButton
+                onClick={this.handleGetStarted}
+                isActive={getStarted}
+                calculatorBtn
+              >
+                Get Started
+              </CustomButton>
+            </div>
+          </div>
         </div>
-        );
-    }
+        <GetStarted isActive={getStarted} />
+      </div>
+    );
+  }
 }
 
 export default Calculator;

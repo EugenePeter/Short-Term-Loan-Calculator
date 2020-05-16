@@ -54,7 +54,7 @@ button {
 .Repayment-schedule {
   display: flex;
   justify-content: center;
-  width: 60vw;
+  width: 20rem;
   // background-color: green;
   box-sizing: border-box;
   border: none;
@@ -62,7 +62,8 @@ button {
     background-color: #fff;
     padding: 10% 6% 8% 6%;
     box-sizing: border-box;
-    height: 60px;
+    height: 90px;
+    width: 100px;
     transform: translateY(20%);
   }
   &__Week {
@@ -70,6 +71,8 @@ button {
     // transform-origin: center center;
     transition: transform 0.2s;
     outline: none;
+    margin: 0;
+    padding: 0;
   }
   &__Week:focus {
     background-color: #3bc453;
@@ -82,6 +85,8 @@ button {
   &__Fornight {
     transition: transform 0.2s;
     outline: none;
+    margin: 0;
+    padding: 0;
   }
   &__Fornight:focus {
     background-color: #3bc453;
@@ -95,6 +100,8 @@ button {
     border-radius: 0 25px 0 0;
     transition: transform 0.2s;
     outline: none;
+    margin: 0;
+    padding: 0;
   }
   &__Month:focus {
     background-color: #3bc453;
@@ -102,6 +109,17 @@ button {
     color: #fff;
     transform: scale(1.1, 1.1);
     -webkit-tap-highlight-color: transparent;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .Repayment-schedule {
+    width: 800px;
+
+    * {
+      width: 200px;
+      height: 120px;
+    }
   }
 }
 
@@ -195,5 +213,6 @@ button {
 @media screen and (min-width: 992px) {
   .Calculator {
     max-width: 50rem;
+    padding-bottom: 20%;
   }
 }

@@ -20,6 +20,7 @@ import SignIn from "./components/Form/sign-in/signIn.component";
 
 import SignUp from "./components/Form/sign-up/sign-up.component";
 
+import ApplicationState from "./pages/application-page/application.state.jsx";
 import ApplicationPage from "./pages/application-page/application-page";
 
 import Home from "./pages/home/home";
@@ -99,7 +100,7 @@ class App extends Component {
             }
           />
 
-          <Route exact path="/main-application" component={MainApplication} />
+          <Route exact path="/main-application" component={ApplicationState} />
           <Route
             exact
             path="/main-application"

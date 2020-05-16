@@ -1,25 +1,26 @@
-import React from "react";
+import React, { Fragment } from "react";
 
 import {
   GroupContainer,
   FormInputContainer,
   FormInputLabel,
+  FormSelect,
 } from "./form-input.styles";
 
-const FormInput = ({ handleChange, label, value, ...props }) => {
+const FormSelect = ({ handleChange, label, value, ...props }) => {
   const test = value.length;
 
   return (
-    <GroupContainer>
-      <FormInputContainer onChange={handleChange} {...props} />
+    <Fragment>
+      <FormSelect onChange={handleChange} {...props} />
 
       {label ? (
         <FormInputLabel className={test ? "shrink" : ""}>
           {label}
         </FormInputLabel>
       ) : null}
-    </GroupContainer>
+    </Fragment>
   );
 };
 
-export default FormInput;
+export default FormSelect;

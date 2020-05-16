@@ -1,5 +1,11 @@
 import styled, { css, keyframes } from "styled-components";
 
+import {
+  mainColorGreen,
+  subColorGrey,
+  mainColorBlack,
+} from "../../global-styles/global.styles";
+
 const warning = css`
   background-color: white;
   color: #4bc869;
@@ -22,6 +28,15 @@ const defaultButton = css`
   background-color: #3bc453;
 `;
 
+const applicationFrmBtn = css`
+  border-radius: 4px;
+`;
+
+const calculatorBtn = css`
+  border-radius: 50px;
+  background-color: ${mainColorGreen};
+`;
+
 // const clickedBtn = css`
 //         display: ${({isActive}) => isActive ? 'none' : 'inline-block'
 //         };
@@ -36,21 +51,27 @@ const getButtonStyles = (props) => {
     return warning;
   }
 
+  if (props.application) {
+    return applicationFrmBtn;
+  }
+
+  if (props.calculatorBtn) {
+    return calculatorBtn;
+  }
   return props.googleSignIn ? googleSignInButton : defaultButton;
 };
 
 export const CustomButtonContainer = styled.button`
   width: 100%;
-  height: 60px;
+  height: 80px;
   letter-spacing: 0.5px;
   line-height: 50px;
   /* padding: 0 35px 0 35px; */
   font-size: 15px;
 
-  border-radius: 50px;
+  /* border-radius: 50px; */
   color: white;
   text-transform: uppercase;
-  font-family: "Open Sans Condensed" !important;
   font-weight: bolder;
   border: none;
   cursor: pointer;
