@@ -31,7 +31,7 @@ import {
 
 import FormInput from "../../components/Form/form-input/form-input.component";
 
-function UserDetails() {
+function Address() {
   const appState = useContext(StateContext);
   const appDispatch = useContext(DispatchContext);
 
@@ -40,6 +40,11 @@ function UserDetails() {
   const mobileNumber = appState.personalDetails.mobileNumber;
   const birthDay = appState.personalDetails.birthDay;
   const title = appState.personalDetails.gender;
+
+  const suburb = appState.personalDetails.address.suburb;
+  const town = appState.personalDetails.address.town;
+  const city = appState.personalDetails.address.city;
+  const country = appState.personalDetails.address.country;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -57,62 +62,51 @@ function UserDetails() {
         <FormContainer onSubmit={handleSubmit}>
           <FormInput
             onChange={(e) =>
-              appDispatch({ type: "fName", value: e.target.value })
+              appDispatch({ type: "suburb", value: e.target.value })
             }
-            name="fname"
+            name="Address"
             type="text"
-            value={firstName}
-            label="first name"
-            required
+            value={suburb}
+            label="Suburb"
           />
-
-          {appState.firstName}
-
+          {suburb}
           <FormInput
             onChange={(e) =>
-              appDispatch({ type: "lName", value: e.target.value })
+              appDispatch({ type: "town", value: e.target.value })
             }
-            name="lname"
+            name="Address"
             type="text"
-            value={lastName}
-            label="last name"
-            required
+            value={town}
+            label="Town"
           />
-
           <FormInput
             onChange={(e) =>
-              appDispatch({ type: "mobileNumber", value: e.target.value })
+              appDispatch({ type: "city", value: e.target.value })
             }
-            type="number"
-            id="phone"
-            name="phone"
-            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-            required
-            value={mobileNumber}
-            label="mobile number: 123-456-7890"
-            required
+            name="Address"
+            type="text"
+            value={city}
+            label="City"
           />
-
           <FormInput
             onChange={(e) =>
-              appDispatch({ type: "lName", value: e.target.value })
+              appDispatch({ type: "country", value: e.target.value })
             }
-            name="lname"
-            type="date"
-            value={birthDay}
-            label="Birthday"
-            required
+            name="Address"
+            type="text"
+            value={country}
+            label="Country"
           />
 
           <ButtonWrapper>
             <GlobalButton filterApplicants>Save And Continue</GlobalButton>
-            <GlobalButton filterApplicant onClick={handleBack}>
-              Back
-            </GlobalButton>
+          </ButtonWrapper>
+          <ButtonWrapper>
+            <GlobalButton onClick={handleBack}>Back</GlobalButton>
           </ButtonWrapper>
         </FormContainer>
       </ContainerNarrower>
     </Container>
   );
 }
-export default UserDetails;
+export default Address;

@@ -35,7 +35,7 @@ function UserDetails() {
   const appState = useContext(StateContext);
   const appDispatch = useContext(DispatchContext);
 
-  const firstName = appState.personalDetails.firstName;
+  const FirstName = appState.personalDetails.firstName;
   const lastName = appState.personalDetails.lastName;
   const mobileNumber = appState.personalDetails.mobileNumber;
   const birthDay = appState.personalDetails.birthDay;
@@ -46,6 +46,11 @@ function UserDetails() {
     appDispatch({ type: "nxtStep" });
   };
 
+  const handleBack = (e) => {
+    e.preventDefault();
+    appDispatch({ type: "back" });
+  };
+
   return (
     <Container>
       <ContainerNarrower>
@@ -53,7 +58,7 @@ function UserDetails() {
           <FormBlock>
             <div className="titleLabel">Preferred Title</div>
             <div className="titleRadioInputContainer">
-              <div className="titleCheckboxItems" title>
+              <div className="titleCheckboxItems">
                 {" "}
                 <RadioInput
                   onClick={(e) =>
@@ -97,13 +102,9 @@ function UserDetails() {
             }
             name="fname"
             type="text"
-            value={firstName}
+            value={FirstName}
             label="first name"
-            required
           />
-
-          {appState.firstName}
-
           <FormInput
             onChange={(e) =>
               appDispatch({ type: "lName", value: e.target.value })
@@ -112,9 +113,7 @@ function UserDetails() {
             type="text"
             value={lastName}
             label="last name"
-            required
           />
-
           <FormInput
             onChange={(e) =>
               appDispatch({ type: "mobileNumber", value: e.target.value })
@@ -123,12 +122,9 @@ function UserDetails() {
             id="phone"
             name="phone"
             pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-            required
             value={mobileNumber}
             label="mobile number: 123-456-7890"
-            required
           />
-
           <FormInput
             onChange={(e) =>
               appDispatch({ type: "lName", value: e.target.value })
@@ -137,11 +133,12 @@ function UserDetails() {
             type="date"
             value={birthDay}
             label="Birthday"
-            required
           />
-
           <ButtonWrapper>
             <GlobalButton filterApplicants>Save And Continue</GlobalButton>
+          </ButtonWrapper>
+          <ButtonWrapper>
+            <GlobalButton onClick={handleBack}>Back</GlobalButton>
           </ButtonWrapper>
         </FormContainer>
       </ContainerNarrower>

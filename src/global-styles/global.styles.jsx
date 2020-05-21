@@ -12,10 +12,13 @@ export const Container = styled.div`
 `;
 
 export const ContainerRow = styled.div`
+  position: relative;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   width: 100%;
   align-items: center;
+  justify-content: center;
+  /* background-color: red; */
 `;
 
 export const ContainerMid = styled.div`
@@ -63,5 +66,12 @@ export const Wrapper = styled.div`
   width: 80%;
   display: flex;
   flex-direction: column;
+  align-items: center;
+`;
+
+export const TitleContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
   align-items: center;
 `;

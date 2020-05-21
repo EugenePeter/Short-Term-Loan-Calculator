@@ -11,24 +11,43 @@ import RepaymentSchedule from "./repayment-schedule.component";
 import CustomButton from "../custom-button/custom-button.component";
 import GetStarted from "./get-started.component";
 
+import { Link, Switch, Route, Redirect, withRouter } from "react-router-dom";
 import "normalize.css";
 
+import {
+  UpdateLoanContainer,
+  UpdateLoan,
+  InputWrapper,
+  InputWrapperInner,
+  ContinueBtn,
+  WarningContainer,
+  WarningInner,
+} from "../../pages/application-page/application-page.styles";
+
+import Warning from "../../pages/application-page/warning.component";
+
 class Calculator extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       getStarted: false,
+      continue: false,
     };
   }
 
-  handleGetStarted = (event) => {
+  handleGetStarted = (event, props) => {
     const { getStarted } = this.state;
-    event.preventDefault();
+    const clicked = this.state.continue;
     this.setState({ getStarted: !getStarted });
+    this.setState({ continue: !clicked });
+
+    // return <Redirect to="main/application" />;
+    this.props.history.push("/warning");
   };
 
   render() {
+    const clicked = this.state.continue;
     const { getStarted } = this.state;
     return (
       <div className="Calculator">
@@ -53,10 +72,9 @@ class Calculator extends Component {
             </div>
           </div>
         </div>
-        <GetStarted isActive={getStarted} />
       </div>
     );
   }
 }
 
-export default Calculator;
+export default withRouter(Calculator);

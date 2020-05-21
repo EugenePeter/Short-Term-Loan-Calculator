@@ -25,7 +25,7 @@ import ApplicationPage from "./pages/application-page/application-page";
 
 import Home from "./pages/home/home";
 
-import { WarningContainer } from "./pages/application-page/application-page.styles";
+import Warning from "./pages/application-page/warning.component";
 
 import MainApplication from "./pages/application-page/main-application.component";
 
@@ -101,6 +101,7 @@ class App extends Component {
           />
 
           <Route exact path="/main-application" component={ApplicationState} />
+          <Route exact path="/warning" component={Warning} />
           <Route
             exact
             path="/main-application"

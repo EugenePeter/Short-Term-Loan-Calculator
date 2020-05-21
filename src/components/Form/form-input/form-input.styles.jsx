@@ -111,6 +111,7 @@ export const FormBlock = styled.div`
     transition-duration: 0.2s;
     background-color: whitesmoke;
     cursor: pointer;
+    user-select: none;
   }
 
   ${RadioInput}:checked {
@@ -134,6 +135,7 @@ export const FormTwoColumns = styled.div`
 `;
 
 export const FormContainer = styled.form`
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -178,6 +180,36 @@ export const FormInputLabel = styled.label`
   &.shrink {
     ${shrinkLabelStyles}
   }
+`;
+
+const ha = (props) => {
+  if (props.value) {
+    return shrinkLabelStyles;
+  } else {
+    return;
+  }
+};
+
+export const FormInputSpan = styled.label`
+  display: ${({ label, value }) => (label && value ? "none" : "")};
+  display: flex;
+  flex-direction: column;
+  color: ${subColor};
+  /* background-color: red; */
+  font-size: 16px;
+  font-weight: normal;
+  position: absolute;
+  pointer-events: none;
+  left: 26px;
+  top: 30px;
+  /* transform: translateY(200px) */
+  transition: 300ms ease all;
+
+  &.shrink {
+    ${shrinkLabelStyles}
+  }
+
+  ${ha}
 `;
 
 export const ButtonsBarContainer = styled.div`

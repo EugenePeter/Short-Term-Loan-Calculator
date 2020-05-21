@@ -26,17 +26,28 @@ import MainApplication from "./main-application.component";
 
 function ApplicationState() {
   const initialState = {
+    warningModal: false,
     step: 1,
     personalDetails: {
       gender: "",
       firstName: "",
       lastName: "",
-      email: "sss",
+      email: "",
       mobileNumber: "",
       birthDay: "date",
-      age: "sss",
-      city: "",
-      country: "",
+      age: "",
+      address: {
+        suburb: "",
+        town: "",
+        city: "",
+        country: "",
+      },
+    },
+    employmentDetails: {
+      companyName: "",
+      jobTitle: "",
+      jobType: "",
+      salary: "",
     },
     proofOfIdentity: {
       driversLicense: false,
@@ -46,6 +57,9 @@ function ApplicationState() {
 
   function ourReducer(draft, action) {
     switch (action.type) {
+      case "warning":
+        draft.warningModal = !draft.warningModal;
+        return;
       case "nxtStep":
         draft.step++;
         return;
@@ -64,8 +78,29 @@ function ApplicationState() {
       case "mobileNumber":
         draft.personalDetails.mobileNumber = action.value;
         return;
-      case "date":
-        draft.age = action.value;
+      case "suburb":
+        draft.personalDetails.address.suburb = action.value;
+        return;
+      case "town":
+        draft.personalDetails.address.town = action.value;
+        return;
+      case "city":
+        draft.personalDetails.address.city = action.value;
+        return;
+      case "country":
+        draft.personalDetails.address.country = action.value;
+        return;
+      case "companyName":
+        draft.employmentDetails.companyName = action.value;
+        return;
+      case "jobTitle":
+        draft.employmentDetails.jobTitle = action.value;
+        return;
+      case "jobType":
+        draft.employmentDetails.jobType = action.value;
+        return;
+      case "salary":
+        draft.employmentDetails.salary = action.value;
         return;
     }
   }

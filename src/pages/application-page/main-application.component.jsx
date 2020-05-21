@@ -21,9 +21,9 @@ import { createStructuredSelector } from "reselect";
 import FormInput from "../../components/Form/form-input/form-input.component";
 
 import UserDetails from "./user-details.component";
-
-import Requirements from "./requirement.component";
-import IdentificationRequirement from "./IdentificationDetails.component";
+import Requirement from "./requirement";
+import Address from "./address.page";
+import EmploymentDetails from "./employment-details.page";
 
 import { Form, Field } from "react-final-form";
 
@@ -47,12 +47,16 @@ function MainApplication() {
   const currentStep = appState.step;
 
   switch (currentStep) {
+    // case 1:
+    //   return <Requirement />;
     case 1:
-      return <UserDetails />;
+      return <EmploymentDetails />;
     case 2:
-      return <Requirements />;
+      return <UserDetails />;
     case 3:
-      return <IdentificationRequirement />;
+      return <Address />;
+    // case 4:
+    //   return <EmploymentDetails />;
     default:
   }
 }
