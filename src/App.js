@@ -35,6 +35,8 @@ import { createStructuredSelector } from "reselect";
 import { setCurrentUser } from "./components/redux/user/user.actions";
 import { selectCurrentUser } from "./components/redux/user/user.selectors";
 
+import { Container } from "./global-styles/global.styles";
+
 class App extends Component {
   unsubscribeFromAuth = null;
 
@@ -95,7 +97,9 @@ class App extends Component {
               this.props.currentUser ? (
                 <Redirect to="/application-page" />
               ) : (
-                <Calculator />
+                <Container>
+                  <Calculator />
+                </Container>
               )
             }
           />
