@@ -39,8 +39,8 @@ export const CheckMark = styled.span`
   position: absolute;
   top: 0;
   left: 0;
-  width: 25px;
-  height: 25px;
+  width: 16px;
+  height: 16px;
   border: solid 2px;
   border-radius: 50%;
   box-sizing: border-box;
@@ -48,8 +48,8 @@ export const CheckMark = styled.span`
 
 export const RadioBlock = styled.div`
   display: inline-block;
-  width: 25px;
-  height: 25px;
+  width: 16px;
+  height: 16px;
  align-content: center;
   position: relative;
   /* padding-left: 35px; */
@@ -83,10 +83,10 @@ export const RadioBlock = styled.div`
     display: block;
   }
   ${CheckMark}:after {
-    left: 9px;
-    top: 5px;
-    width: 5px;
-    height: 10px;
+    left: 5px;
+    top: 1px;
+    width: 4px;
+    height: 9px;
     border: solid white;
     border-width: 0 3px 3px 0;
     -webkit-transform: rotate(45deg);
