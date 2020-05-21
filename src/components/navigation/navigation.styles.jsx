@@ -10,6 +10,7 @@ export const Nav = styled.nav`
   /* margin-bottom: 25px; */
   background-color: white;
   padding-top: 1rem;
+  padding-bottom: 1rem;
 
   a {
     text-decoration: none;
