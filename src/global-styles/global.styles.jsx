@@ -74,4 +74,5 @@ export const TitleContainer = styled.div`
   flex-direction: column;
   width: 100%;
   align-items: center;
+  margin-top: 1.705882352941176rem;
 `;

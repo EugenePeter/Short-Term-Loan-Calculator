@@ -24,6 +24,7 @@ import UserDetails from "./user-details.component";
 import Requirement from "./requirement";
 import Address from "./address.page";
 import EmploymentDetails from "./employment-details.page";
+import Expenses from "./expenses.page";
 
 import { Form, Field } from "react-final-form";
 
@@ -47,14 +48,15 @@ function MainApplication() {
   const currentStep = appState.step;
 
   switch (currentStep) {
-    // case 1:
-    //   return <Requirement />;
     case 1:
-      return <EmploymentDetails />;
-    case 2:
       return <UserDetails />;
-    case 3:
+    case 2:
       return <Address />;
+    case 3:
+      return <EmploymentDetails />;
+    case 4:
+      return <Expenses />;
+
     // case 4:
     //   return <EmploymentDetails />;
     default:

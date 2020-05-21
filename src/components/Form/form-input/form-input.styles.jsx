@@ -174,7 +174,7 @@ export const FormInputLabel = styled.label`
   position: absolute;
   pointer-events: none;
   left: 26px;
-  top: 30px;
+  top: 38px;
   transition: 300ms ease all;
 
   &.shrink {
@@ -224,7 +224,12 @@ export const ButtonsBarContainer = styled.div`
 
 export const ButtonWrapper = styled.div`
   margin-top: 8%;
+  /* margin-bottom: 8%; */
   width: 100%;
+  display: flex;
+  flex-direction: row;
+  /* align-items: center; */
+  align-self: flex-end;
 `;
 
 export const FormSelect = styled.select`

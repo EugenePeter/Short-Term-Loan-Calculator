@@ -13,10 +13,11 @@ import { useImmerReducer } from "use-immer";
 
 import {
   Container,
+  TitleContainer,
   ContainerNarrower,
 } from "../../global-styles/global.styles";
 import CustomButton from "../../components/custom-button/custom-button.component";
-import { GlobalButton } from "../../global-styles/GlobalButton.styles";
+import { GlobalButton, BackBtn } from "../../global-styles/GlobalButton.styles";
 
 import {
   FormContainer,
@@ -60,6 +61,13 @@ function Address() {
     <Container>
       <ContainerNarrower>
         <FormContainer onSubmit={handleSubmit}>
+          <ButtonWrapper>
+            <BackBtn onClick={handleBack} /> Back
+          </ButtonWrapper>
+          <TitleContainer>
+            <h2>Address</h2> {""}
+            <small>Getting there champ!</small>
+          </TitleContainer>
           <FormInput
             onChange={(e) =>
               appDispatch({ type: "suburb", value: e.target.value })
@@ -100,9 +108,6 @@ function Address() {
 
           <ButtonWrapper>
             <GlobalButton filterApplicants>Save And Continue</GlobalButton>
-          </ButtonWrapper>
-          <ButtonWrapper>
-            <GlobalButton onClick={handleBack}>Back</GlobalButton>
           </ButtonWrapper>
         </FormContainer>
       </ContainerNarrower>

@@ -68,6 +68,7 @@ export const CustomButtonContainer = styled.button`
   line-height: 50px;
   /* padding: 0 35px 0 35px; */
   font-size: 15px;
+  margin-bottom: 8%;
 
   /* border-radius: 50px; */
   color: white;

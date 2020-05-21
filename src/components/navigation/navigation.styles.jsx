@@ -9,6 +9,7 @@ export const Nav = styled.nav`
   justify-content: center;
   /* margin-bottom: 25px; */
   background-color: white;
+  padding-top: 1rem;
 
   a {
     text-decoration: none;

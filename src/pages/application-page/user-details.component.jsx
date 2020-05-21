@@ -13,10 +13,13 @@ import { useImmerReducer } from "use-immer";
 
 import {
   Container,
+  TitleContainer,
   ContainerNarrower,
 } from "../../global-styles/global.styles";
+import RadioBlockComponent from "../../components/Form/tabs-component/RadioBlock.component";
+import { RadioContainer } from "../../components/Form/tabs-component/RadioInputBlock.styles";
 import CustomButton from "../../components/custom-button/custom-button.component";
-import { GlobalButton } from "../../global-styles/GlobalButton.styles";
+import { GlobalButton, BackBtn } from "../../global-styles/GlobalButton.styles";
 
 import {
   FormContainer,
@@ -56,45 +59,20 @@ function UserDetails() {
       <ContainerNarrower>
         <FormContainer onSubmit={handleSubmit}>
           <FormBlock>
-            <div className="titleLabel">Preferred Title</div>
-            <div className="titleRadioInputContainer">
-              <div className="titleCheckboxItems">
-                {" "}
-                <RadioInput
-                  onClick={(e) =>
-                    appDispatch({ type: "gender", value: e.target.value })
-                  }
-                  type="radio"
-                  name="gender"
-                  value="Mr"
-                />
-                <label htmlFor="gender1">Mr</label>
-              </div>
-              <div className="titleCheckboxItems">
-                {" "}
-                <RadioInput
-                  onClick={(e) =>
-                    appDispatch({ type: "gender", value: e.target.value })
-                  }
-                  type="radio"
-                  name="gender"
-                  value="Mrs"
-                />
-                <label htmlFor="gender1">Mrs</label>
-              </div>
-              <div className="titleCheckboxItems">
-                {" "}
-                <RadioInput
-                  onClick={(e) =>
-                    appDispatch({ type: "gender", value: e.target.value })
-                  }
-                  type="radio"
-                  name="gender"
-                  value="Miss"
-                />
-                <label htmlFor="gender1">Miss</label>
-              </div>
-            </div>
+            <TitleContainer>
+              <h2>Preferred Title</h2> {""}
+              <small>Tell us more about you</small>
+            </TitleContainer>
+            <RadioContainer
+              onClick={(e) =>
+                appDispatch({ type: "gender", value: e.target.value })
+              }
+            >
+              <h5>How should we call you?</h5>
+              <RadioBlockComponent label="Mr" value="Mr" name="gender" gender />
+              <RadioBlockComponent label="Mrs" value="Mrs" name="gender" />
+              <RadioBlockComponent label="Miss" value="Miss" name="gender" />
+            </RadioContainer>
           </FormBlock>
           <FormInput
             onChange={(e) =>
@@ -127,18 +105,14 @@ function UserDetails() {
           />
           <FormInput
             onChange={(e) =>
-              appDispatch({ type: "lName", value: e.target.value })
+              appDispatch({ type: "birthday", value: e.target.value })
             }
-            name="lname"
             type="date"
             value={birthDay}
             label="Birthday"
           />
           <ButtonWrapper>
             <GlobalButton filterApplicants>Save And Continue</GlobalButton>
-          </ButtonWrapper>
-          <ButtonWrapper>
-            <GlobalButton onClick={handleBack}>Back</GlobalButton>
           </ButtonWrapper>
         </FormContainer>
       </ContainerNarrower>

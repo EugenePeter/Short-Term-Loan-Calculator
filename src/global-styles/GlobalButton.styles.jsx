@@ -9,6 +9,19 @@ export const mainColorGreen = "#3BC453";
 //   color: ${mainColor};
 // `;
 
+export const BackBtn = styled.div`
+  width: 1rem;
+  height: 1rem;
+  border: solid;
+  border-width: 0 0.5rem 0.5rem 0;
+  border-radius: 4px;
+  border-color: ${mainColorGreen};
+  /* -webkit-transform: rotate(90deg);
+  -ms-transform: rotate(90deg); */
+  transform: rotate(135deg);
+  display: inline-block;
+`;
+
 const warning = css`
   background-color: white;
   color: #4bc869;
@@ -23,9 +36,19 @@ const applicationFrmBtn = css`
   background-color: ${mainColorGreen};
 `;
 
+const goBack = css`
+  width: 4.705882352941176rem;
+  background-color: #ffd76a;
+  border-radius: 4px;
+`;
+
 const getButtonStyles = (props) => {
   if (props.filterApplicants) {
     return applicationFrmBtn;
+  }
+
+  if (props.back) {
+    return goBack;
   }
 };
 
@@ -36,6 +59,7 @@ export const GlobalButton = styled.button`
   line-height: 50px;
   /* padding: 0 35px 0 35px; */
   font-size: 15px;
+  margin-bottom: 8%;
 
   /* border-radius: 50px; */
   color: white;

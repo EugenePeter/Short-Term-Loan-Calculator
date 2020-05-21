@@ -14,8 +14,9 @@ import RadioButtonRaw from "./radio-button--raw";
 //Global styles
 import { GroupContainer } from "../form__global-styles";
 
-const RadioBlockComponent = ({ value }) => {
+const RadioBlockComponent = ({ value, name, ...props }) => {
   const appDispatch = useContext(DispatchContext);
+  const click = props.clicked;
 
   function changeColor(e) {}
 
@@ -26,14 +27,7 @@ const RadioBlockComponent = ({ value }) => {
 
         <RadioBlock__wrapper>
           <RadioBlock>
-            <RadioInput
-              type="radio"
-              name="radio"
-              value={value}
-              onClick={(e) =>
-                appDispatch({ type: "jobType", value: e.target.value })
-              }
-            />
+            <RadioInput type="radio" name={name} value={value} click />
             <CheckMark></CheckMark>
           </RadioBlock>
         </RadioBlock__wrapper>

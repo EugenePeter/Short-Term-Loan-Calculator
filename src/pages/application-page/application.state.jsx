@@ -45,9 +45,19 @@ function ApplicationState() {
     },
     employmentDetails: {
       companyName: "",
+      employerContactNumber: "",
       jobTitle: "",
+      employmentDate: "date",
       jobType: "",
+      paySchedule: "",
       salary: "",
+    },
+
+    expenses: {
+      rentOrMortageSchedule: "Week",
+      totalBills: "",
+      totalLivingExpenseSchedule: "",
+      totalLivingExpenses: "",
     },
     proofOfIdentity: {
       driversLicense: false,
@@ -78,6 +88,9 @@ function ApplicationState() {
       case "mobileNumber":
         draft.personalDetails.mobileNumber = action.value;
         return;
+      case "birthday":
+        draft.personalDetails.birthDay = action.value;
+        return;
       case "suburb":
         draft.personalDetails.address.suburb = action.value;
         return;
@@ -101,6 +114,27 @@ function ApplicationState() {
         return;
       case "salary":
         draft.employmentDetails.salary = action.value;
+        return;
+      case "employerContactNumber":
+        draft.employmentDetails.employerContactNumber = action.value;
+        return;
+      case "employmentDate":
+        draft.employmentDetails.employmentDate = action.value;
+        return;
+      case "paySchedule":
+        draft.employmentDetails.paySchedule = action.value;
+        return;
+      case "rentOrMortageSchedule":
+        draft.expenses.rentOrMortageSchedule = action.value;
+        return;
+      case "totalBills":
+        draft.expenses.totalBills = action.value;
+        return;
+      case "totalLivingExpenseSchedule":
+        draft.expenses.totalLivingExpenseSchedule = action.value;
+        return;
+      case "totalLivingExpenses":
+        draft.expenses.totalLivingExpenses = action.value;
         return;
     }
   }
