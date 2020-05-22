@@ -29,6 +29,8 @@ import Warning from "./pages/application-page/warning.component";
 
 import MainApplication from "./pages/application-page/main-application.component";
 
+import Register from "./components/register/register.component";
+
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 
@@ -36,6 +38,10 @@ import { setCurrentUser } from "./components/redux/user/user.actions";
 import { selectCurrentUser } from "./components/redux/user/user.selectors";
 
 import { Container } from "./global-styles/global.styles";
+
+import Axios from "axios";
+Axios.defaults.baseURL =
+  process.env.BACKENDURL || "your heroku dot com goes here";
 
 class App extends Component {
   unsubscribeFromAuth = null;
@@ -81,7 +87,6 @@ class App extends Component {
               )
             }
           />
-
           <Route
             exact
             path="/application-page"
@@ -89,7 +94,6 @@ class App extends Component {
               this.props.currentUser ? <ApplicationPage /> : <Redirect to="/" />
             }
           />
-
           <Route
             exact
             path="/signin"
@@ -103,9 +107,9 @@ class App extends Component {
               )
             }
           />
-
           <Route exact path="/main-application" component={ApplicationState} />
           <Route exact path="/warning" component={Warning} />
+          // <Route exact path="/apply" component={Register} />
           <Route
             exact
             path="/main-application"
