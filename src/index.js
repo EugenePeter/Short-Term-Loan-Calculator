@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
+import UserGlobal from "./UserGlobal";
 import * as serviceWorker from "./serviceWorker";
 
 import { BrowserRouter } from "react-router-dom";
@@ -15,7 +16,7 @@ Axios.defaults.baseURL =
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
-      <App />
+      <UserGlobal />
     </BrowserRouter>
   </Provider>,
   document.getElementById("root")

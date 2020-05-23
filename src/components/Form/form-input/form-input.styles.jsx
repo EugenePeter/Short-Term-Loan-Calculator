@@ -2,6 +2,7 @@ import styled, { css } from "styled-components";
 
 const subColor = "grey";
 const mainColor = "black";
+export const mainColorGreen = "#3BC453";
 
 const shrinkLabelStyles = css`
   top: 14px;
@@ -159,7 +160,8 @@ export const FormInputContainer = styled.input`
   box-sizing: border-box;
 
   &:focus {
-    outline: none;
+    outline: blue;
+    border: solid 2px ${mainColorGreen};
   }
 
   &:focus ~ label {

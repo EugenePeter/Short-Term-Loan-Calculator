@@ -43,7 +43,7 @@ class Calculator extends Component {
     this.setState({ continue: !clicked });
 
     // return <Redirect to="main/application" />;
-    this.props.history.push("/warning");
+    this.props.history.push("/apply");
   };
 
   render() {

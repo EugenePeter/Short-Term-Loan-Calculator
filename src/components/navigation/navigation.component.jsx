@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useContext } from "react";
 
 import {
   Nav,
@@ -20,8 +20,19 @@ import { selectCurrentUser } from "../redux/user/user.selectors";
 import { ReactComponent as Logo } from "../../assets/dollar.svg";
 
 import { ContainerMid } from "../../global-styles/global.styles";
+
+import StateContext from "../../context/StateContext";
+import DispatchContext from "../../context/DispatchContext";
+
 const Navigation = ({ currentUsers }) => {
+  const appState = useContext(StateContext);
+  const appDispatch = useContext(DispatchContext);
   console.log("from nav " + currentUsers);
+
+  function handleLogOut() {
+    appDispatch({ type: "logout" });
+  }
+
   return (
     <Fragment>
       <Nav>
@@ -30,15 +41,12 @@ const Navigation = ({ currentUsers }) => {
             <Logo className="logo" />
           </LogoContainer>
           <NavItems>
-            {currentUsers ? (
-              <NavItemsInner as="div" onClick={() => auth.signOut()}>
-                SIGN OUT
+            {appState.loggedIn ? (
+              <NavItemsInner onClick={handleLogOut} to="">
+                sign out
               </NavItemsInner>
             ) : (
-              <Fragment>
-                <NavItemsInner to="/signin">signin</NavItemsInner>
-                <NavItemsInner to="/signup">signup</NavItemsInner>
-              </Fragment>
+              <NavItemsInner to="/signin">returning customer</NavItemsInner>
             )}
           </NavItems>
         </ContainerMid>

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
+import { withRouter } from "react-router-dom";
 import Axios from "axios";
 import { useImmerReducer } from "use-immer";
 import { CSSTransition } from "react-transition-group";
@@ -16,11 +17,13 @@ import {
   FormContainer,
   ButtonWrapper,
   FormBlock,
-} from "../../components/Form/form-input/form-input.styles";
+} from "../Form/form-input/form-input.styles";
+
+import { Warning } from "../../global-styles/warning.styles";
 
 import { GlobalButton, BackBtn } from "../../global-styles/GlobalButton.styles";
 
-function Register() {
+function Register(props) {
   const appDispatch = useContext(DispatchContext);
 
   const initialState = {
@@ -233,6 +236,7 @@ function Register() {
             type: "flashMessage",
             value: "Congrats! Welcome to your new account.",
           });
+          props.history.push("/signin");
         } catch (e) {
           console.log(e);
         }
@@ -294,9 +298,9 @@ function Register() {
             classNames="liveValidateMessage"
             unmountOnExit
           >
-            <div className="alert alert-danger small liveValidateMessage">
+            <Warning className="alert alert-danger small liveValidateMessage">
               {state.username.message}
-            </div>
+            </Warning>
           </CSSTransition>
 
           <FormInput
@@ -318,9 +322,9 @@ function Register() {
             classNames="liveValidateMessage"
             unmountOnExit
           >
-            <div className="alert alert-danger small liveValidateMessage">
+            <Warning className="alert alert-danger small liveValidateMessage">
               {state.email.message}
-            </div>
+            </Warning>
           </CSSTransition>
 
           <FormInput
@@ -342,9 +346,9 @@ function Register() {
             classNames="liveValidateMessage"
             unmountOnExit
           >
-            <div className="alert alert-danger small liveValidateMessage">
+            <Warning className="alert alert-danger small liveValidateMessage">
               {state.password.message}
-            </div>
+            </Warning>
           </CSSTransition>
           <ButtonWrapper>
             <GlobalButton filterApplicants>Save And Continue</GlobalButton>
@@ -355,4 +359,4 @@ function Register() {
   );
 }
 
-export default Register;
+export default withRouter(Register);

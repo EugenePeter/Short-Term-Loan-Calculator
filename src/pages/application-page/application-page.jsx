@@ -54,23 +54,16 @@ class ApplicationPage extends Component {
 
   render() {
     const clicked = this.state.continue;
-    const {
-      selectCurrentUser: { displayName },
-      amount,
-    } = this.props;
-    console.log(displayName);
+
     return (
       <Container>
-        <Wrapper>
-          <small> Hi {displayName} </small>
-          <h2>you are borrowing</h2>
-          <h2>${amount}</h2>
-          <RepaymentAmountFigure />
-          <TotalRepayment />
+        <Wrapper className="Wrapper__margin-top">
           <Small className="margin-top">
             {" "}
             You can update loan amount, repayment schedule and duration below
           </Small>
+          <RepaymentAmountFigure />
+          <TotalRepayment />
         </Wrapper>
         <UpdateLoanContainer>
           <UpdateLoan>
@@ -82,19 +75,7 @@ class ApplicationPage extends Component {
               </InputWrapperInner>
             </InputWrapper>
           </UpdateLoan>
-          <ContinueBtn
-            className="clicked"
-            onClick={this.handleContinue}
-            clicked={clicked}
-          >
-            CONTINUE
-          </ContinueBtn>
         </UpdateLoanContainer>
-        <WarningContainer clicked={clicked}>
-          <WarningInner>
-            <Warning />
-          </WarningInner>
-        </WarningContainer>
       </Container>
     );
   }

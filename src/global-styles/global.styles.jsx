@@ -67,6 +67,11 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* margin-top: 2rem; */
+
+  &__margin-top {
+    margin-top: 2rem;
+  }
 `;
 
 export const TitleContainer = styled.div`
