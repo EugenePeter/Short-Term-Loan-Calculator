@@ -183,7 +183,7 @@ function Register(props) {
       async function fetchResults() {
         try {
           const response = await Axios.post(
-            "http://localhost:8080/doesUsernameExist",
+            "https://cashifiedbackend.herokuapp.com/doesUsernameExist",
             { username: state.username.value },
             { cancelToken: ourRequest.token }
           );
@@ -203,7 +203,7 @@ function Register(props) {
       async function fetchResults() {
         try {
           const response = await Axios.post(
-            "http://localhost:8080/doesEmailExist",
+            "https://cashifiedbackend.herokuapp.com/doesEmailExist",
             { email: state.email.value },
             { cancelToken: ourRequest.token }
           );
@@ -223,7 +223,7 @@ function Register(props) {
       async function fetchResults() {
         try {
           const response = await Axios.post(
-            "http://localhost:8080/register",
+            "https://cashifiedbackend.herokuapp.com/register",
             {
               username: state.username.value,
               email: state.email.value,

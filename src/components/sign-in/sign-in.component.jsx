@@ -27,7 +27,7 @@ import {
   FormInputSpan,
   ButtonWrapper,
   GroupContainer,
-} from "../../components/Form/form-input/form-input.styles";
+} from "../Form/form-input/form-input.styles";
 
 import FormInput from "../../components/Form/form-input/form-input.component";
 
@@ -39,17 +39,24 @@ function SignIn(props) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    alert(e);
+
     try {
-      const response = await Axios.post("http://localhost:8080/login", {
-        username: username,
-        password: password,
-      });
+      const response = await Axios.post(
+        "https://cashifiedbackend.herokuapp.com/login",
+        {
+          username: username,
+          password: password,
+        }
+      );
       if (response.data) {
         appDispatch({ type: "login", data: response.data });
       } else {
         console.log("Incorrect username / password.");
       }
     } catch (e) {
+      alert(e);
+
       console.log(e);
     }
   };
