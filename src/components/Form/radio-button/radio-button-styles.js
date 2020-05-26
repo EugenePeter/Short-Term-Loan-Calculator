@@ -1,4 +1,52 @@
 import styled from "styled-components";
+import { createGlobalStyle } from "styled-components/macro";
+
+export default createGlobalStyle`
+    
+`;
+
+export const Img = styled.img`
+  width: 100px;
+  height: 100px;
+  background-color: blue;
+`;
+
+export const IconContainer = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* background-color: blue; */
+  width: 33.33%;
+  /* height: 100px; */
+  margin: 4px;
+`;
+
+export const IconRow = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  /* background-color: red; */
+  width: 100%;
+  /* margin-bottom: 0.2rem; */
+`;
+
+export const IconColumn = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* background-color: blue; */
+  width: 20.33%;
+`;
+
+export const IconsWrapper = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  /* background-color: yellow; */
+`;
 
 export const RadioContainer = styled.div`
   width: 100%;
@@ -21,18 +69,21 @@ export const RadioInput = styled.input`
   position: absolute;
   top: 0;
   left: 0;
-  opacity: 0;
+  opacity: 1;
   cursor: pointer;
-  height: 25px;
-  width: 25px;
-  background-color: blue;
+  height: 100%;
+  width: 100%;
+  background-image: url('../../../assets/icons/education-cashified.svg')
+  /* background-color: blue; */
 
   z-index: 100;
 
-  /* outline: none; */
+  outline: none;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+
+
 `;
 
 export const CheckMark = styled.span`
@@ -116,10 +167,12 @@ export const Radio = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  width: 100%;
-  background-color: #fff;
+  width: 266.6666666666667px;
+  height: 266.6666666666667px;
+  /* background-color: #fff; */
+  background-color: yellow;
 
-  height: 4.11rem;
+  height: 8.11rem;
   margin-bottom: 0.625rem;
 
   box-shadow: 2px 2px 20px 10px rgba(0, 0, 0, 0.02);

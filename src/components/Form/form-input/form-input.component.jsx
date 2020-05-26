@@ -1,5 +1,4 @@
-import React, { useContext } from "react";
-import StateContext from "../../../context/StateContext";
+import React from "react";
 
 import {
   GroupContainer,
@@ -8,8 +7,6 @@ import {
 } from "./form-input.styles";
 
 const FormInput = ({ handleChange, label, value, ...props }) => {
-  const appState = useContext(StateContext);
-
   const test = value.length;
 
   console.log("the value is " + value);

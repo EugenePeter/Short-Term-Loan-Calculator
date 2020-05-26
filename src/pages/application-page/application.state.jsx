@@ -28,6 +28,7 @@ function ApplicationState() {
   const initialState = {
     warningModal: false,
     step: 1,
+    loanPurpose: "",
     personalDetails: {
       gender: "",
       firstName: "",
@@ -67,6 +68,8 @@ function ApplicationState() {
 
   function ourReducer(draft, action) {
     switch (action.type) {
+      case "loanPurpose":
+        draft.loanPurpose = action.value;
       case "warning":
         draft.warningModal = !draft.warningModal;
         return;

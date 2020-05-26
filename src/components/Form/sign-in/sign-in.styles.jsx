@@ -1,18 +1,18 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const SignInContainer = styled.div`
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
-    span {
-        color: white;
-    }
+  span {
+    color: white;
+  }
 `;
 
 export const SignInTitle = styled.h2`
-    margin: 10px 0;
+  margin: 10px 0;
 `;
 
 export const ButtonsBarContainer = styled.div`
@@ -24,4 +24,3 @@ export const ButtonsBarContainer = styled.div`
     margin-top: 8%;
     width: 100%:
 `;
-

@@ -9,22 +9,11 @@ import RepaymentAmount from "./repayment-amount.component";
 import RepaymentSchedule from "./repayment-schedule.component";
 
 import CustomButton from "../custom-button/custom-button.component";
-import GetStarted from "./get-started.component";
 
-import { Link, Switch, Route, Redirect, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import "normalize.css";
 
-import {
-  UpdateLoanContainer,
-  UpdateLoan,
-  InputWrapper,
-  InputWrapperInner,
-  ContinueBtn,
-  WarningContainer,
-  WarningInner,
-} from "../../pages/application-page/application-page.styles";
-
-import Warning from "../../pages/application-page/warning.component";
+// import Warning from "../../pages/application-page/warning.component";
 
 class Calculator extends Component {
   constructor(props) {

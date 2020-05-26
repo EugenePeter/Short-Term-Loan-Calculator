@@ -1,0 +1,8 @@
+<svg id="seedcash-au-icons-12" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 160.628 209.716">
+  <path id="Path_3905" data-name="Path 3905" d="M46.833,182.375a46.894,46.894,0,0,1-11.4-18.524l-1.226-3.692-3.846-.467a20.621,20.621,0,0,1-17.734-16.555H33.1l1.082-4.775a47.12,47.12,0,0,1,18.36-27.878V96.11A59.49,59.49,0,0,0,23.519,130.9H.605l-.467,5.641c-.067.79-.138,1.739-.138,2.739A32.9,32.9,0,0,0,25.073,171.2a58.828,58.828,0,0,0,13.093,19.862,59.659,59.659,0,0,0,89.434-5.826H110.676A47.433,47.433,0,0,1,46.833,182.375Z" transform="translate(0 -46.821)" fill="#3ec430"/>
+  <path id="Path_3906" data-name="Path 3906" d="M196,21.37A25.2,25.2,0,0,0,171.129,0h-1.9a25.2,25.2,0,0,0-24.873,21.37H120.46V129.185h98.85V21.37ZM169.226,11.283h1.9A13.9,13.9,0,0,1,184.463,21.37H155.877a13.908,13.908,0,0,1,13.349-10.088Zm38.8,106.62H131.743V99.917h76.285Zm0-29.268H131.743V32.653h76.285Z" transform="translate(-58.683)" fill="#3ec430"/>
+  <path id="Path_3907" data-name="Path 3907" d="M253.55,91.326a6.221,6.221,0,1,0,6.221-6.216A6.221,6.221,0,0,0,253.55,91.326Z" transform="translate(-123.519 -41.462)" fill="#3ec430"/>
+  <ellipse id="Ellipse_141" data-name="Ellipse 141" cx="6.216" cy="6.216" rx="6.216" ry="6.216" transform="translate(106.307 43.648)" fill="#3ec430"/>
+  <path id="Path_3908" data-name="Path 3908" d="M161,91.326a6.221,6.221,0,1,0,6.216-6.216A6.221,6.221,0,0,0,161,91.326Z" transform="translate(-78.432 -41.462)" fill="#3ec430"/>
+  <text id="Purchases" transform="translate(37.037 204.716)" fill="#3ec430" font-size="19" font-family="SegoeUI-Bold, Segoe UI" font-weight="700"><tspan x="0" y="0">Pu</tspan><tspan y="0" letter-spacing="-0.01em">r</tspan><tspan y="0">chases</tspan></text>
+</svg>

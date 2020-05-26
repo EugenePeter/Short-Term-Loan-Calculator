@@ -1,13 +1,10 @@
-import React, { Fragment, useContext } from "react";
+import React from "react";
 import "normalize.css";
-import { connect } from "react-redux";
+// import { connect } from "react-redux";
 
 import { withRouter } from "react-router-dom";
 
-import DispatchContext from "../../context/DispatchContext";
-import StateContext from "../../context/StateContext";
-
-import { createStructuredSelector } from "reselect";
+// import { createStructuredSelector } from "reselect";
 
 import { WarningContainer, WarningInner } from "./application-page.styles";
 

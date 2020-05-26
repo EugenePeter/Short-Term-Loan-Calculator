@@ -1,67 +1,66 @@
-import React, { Component, Fragment} from 'react';
+import React, { Component, Fragment } from "react";
 
 import InputRange from "react-input-range";
 import "react-input-range/lib/css/index.css";
-import './calculator.component.scss';
+import "./calculator.component.scss";
 
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 
-import { connect } from 'react-redux';
-import {  bindActionCreators } from 'redux';
+import { updateInput } from "../redux/calculator/loan-duration/loan-duration-actions";
 
-
-import { updateInput } from '../redux/calculator/loan-duration/loan-duration-actions';
-
-import 'normalize.css';
+import "normalize.css";
 
 class LoanDuration extends Component {
+  handleDurationChange = (value) => {
+    const { updateInput } = this.props;
+    updateInput(value);
+  };
 
-    handleDurationChange = value => {
-        const { updateInput } = this.props;
-        updateInput(value)
-    }
+  render() {
+    const {
+      loanDuration: {
+        input: { txt },
+      },
+      repaymentSchedule,
+    } = this.props;
 
-    render() {
-      
-        const { loanDuration: { input: { txt }}, repaymentSchedule } = this.props;
+    const sched = repaymentSchedule.sched;
 
-        const sched = repaymentSchedule.sched
+    const maxTerm = repaymentSchedule.term;
 
-        const maxTerm = repaymentSchedule.term
-
-        return(
-            
-        <Fragment>
-                <small>Over</small>
-                <h2>{txt} {sched}{txt > 1 && "s"}</h2>        
-                <InputRange
-                    step={1}
-                    maxValue={maxTerm}
-                    minValue={1}
-                    value={txt}
-                    onChange={this.handleDurationChange}
-                />
-        </Fragment>
-        );
-    }
+    return (
+      <Fragment>
+        <small>Over</small>
+        <h2>
+          {txt} {sched}
+          {txt > 1 && "s"}
+        </h2>
+        <InputRange
+          step={1}
+          maxValue={maxTerm}
+          minValue={1}
+          value={txt}
+          onChange={this.handleDurationChange}
+        />
+      </Fragment>
+    );
+  }
 }
-
-
 
 const mapStateToProps = ({ loanDuration, repaymentSchedule }) => {
-    return {
-        loanDuration,
-        repaymentSchedule
-    }
-}
+  return {
+    loanDuration,
+    repaymentSchedule,
+  };
+};
 
-const mapDispatchToProps = dispatch =>  bindActionCreators({
-    updateInput
-}, dispatch);
-    
+const mapDispatchToProps = (dispatch) =>
+  bindActionCreators(
+    {
+      updateInput,
+    },
+    dispatch
+  );
 
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps)(LoanDuration);
-
-
-
+export default connect(mapStateToProps, mapDispatchToProps)(LoanDuration);

@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useEffect } from "react";
 import { withRouter } from "react-router-dom";
 import Axios from "axios";
 import { useImmerReducer } from "use-immer";
 import { CSSTransition } from "react-transition-group";
-import DispatchContext from "../../context/DispatchContext";
+// import DispatchContext from "../../context/DispatchContext";
 
 import {
   Container,
@@ -21,11 +21,9 @@ import {
 
 import { Warning } from "../../global-styles/warning.styles";
 
-import { GlobalButton, BackBtn } from "../../global-styles/GlobalButton.styles";
+import { GlobalButton } from "../../global-styles/GlobalButton.styles";
 
 function Register(props) {
-  const appDispatch = useContext(DispatchContext);
-
   const initialState = {
     loggedIn: Boolean(localStorage.getItem("complexappToken")),
     flashMessages: [],

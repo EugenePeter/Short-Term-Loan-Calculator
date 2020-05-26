@@ -7,9 +7,7 @@ import {
   LogoContainer,
 } from "./navigation.styles";
 
-import SignUp from "../Form/sign-up/sign-up.component";
-
-import { auth } from "../firebase/firebase.utils";
+// import { auth } from "../firebase/firebase.utils";
 
 import { connect } from "react-redux";
 

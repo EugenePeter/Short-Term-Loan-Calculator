@@ -1,28 +1,26 @@
-import React, { Component, useContext } from "react";
+import React, { useContext } from "react";
 import "./App.css";
 import { Switch, Route, Redirect } from "react-router-dom";
-import Calculator from "./components/calculator/calculator.component";
+// import Calculator from "./components/calculator/calculator.component";
 import Navigation from "./components/navigation/navigation.component";
 import "normalize.css";
 
 import DispatchContext from "./context/DispatchContext";
 import StateContext from "./context/StateContext";
 
-import {
-  auth,
-  createUserProfileDocument,
-  signedInUser,
-  dd,
-} from "./components/firebase/firebase.utils";
+// import {
+//   auth,
+//   createUserProfileDocument,
+//   signedInUser,
+//   dd,
+// } from "./components/firebase/firebase.utils";
 
 // import SignIn from "./components/Form/sign-in/signIn.component";
 
 import SignIn from "./components/sign-in/sign-in.component";
 
-import SignUp from "./components/Form/sign-up/sign-up.component";
-
 import ApplicationState from "./pages/application-page/application.state.jsx";
-import ApplicationPage from "./pages/application-page/application-page";
+// import ApplicationPage from "./pages/application-page/application-page";
 
 import Home from "./pages/home/home";
 
@@ -38,9 +36,9 @@ import { createStructuredSelector } from "reselect";
 import { setCurrentUser } from "./components/redux/user/user.actions";
 import { selectCurrentUser } from "./components/redux/user/user.selectors";
 
-import { Container } from "./global-styles/global.styles";
-
 import Dashboard from "./pages/dashboard/dashboard";
+
+import LoanPurpose from "./pages/application-page/loan-purpose-page";
 
 import Axios from "axios";
 Axios.defaults.baseURL =
@@ -48,7 +46,7 @@ Axios.defaults.baseURL =
 
 function App() {
   const appState = useContext(StateContext);
-  const appDispatch = useContext(DispatchContext);
+  // const appDispatch = useContext(DispatchContext);
 
   return (
     <div>
@@ -86,6 +84,7 @@ function App() {
           <SignIn />
         </Route>
         <Route exact path="/apply" component={Register} />
+        <Route exact path="/loan-purpose" component={LoanPurpose} />
       </Switch>
     </div>
   );

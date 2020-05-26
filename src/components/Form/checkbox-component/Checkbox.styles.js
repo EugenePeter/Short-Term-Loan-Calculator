@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 export const mainColorGreen = "#3BC453";
 export const subColorGrey = "grey";

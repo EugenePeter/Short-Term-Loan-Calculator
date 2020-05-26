@@ -25,6 +25,7 @@ import Requirement from "./requirement";
 import Address from "./address.page";
 import EmploymentDetails from "./employment-details.page";
 import Expenses from "./expenses.page";
+import LoanPurpose from "./loan-purpose-page";
 
 import { Form, Field } from "react-final-form";
 
@@ -49,16 +50,28 @@ function MainApplication() {
 
   switch (currentStep) {
     case 1:
-      return <UserDetails />;
+      return <Requirement />;
+
     case 2:
-      return <Address />;
+      return <LoanPurpose />;
     case 3:
-      return <EmploymentDetails />;
+      return <UserDetails />;
     case 4:
+      return <Address />;
+    case 5:
+      return <EmploymentDetails />;
+    case 6:
       return <Expenses />;
 
-    // case 4:
+    // case 1:
+    //   return <LoanPurpose />;
+    // case 2:
+    //   return <Address />;
+    // case 3:
     //   return <EmploymentDetails />;
+    // case 4:
+    //   return <Expenses />;
+
     default:
   }
 }

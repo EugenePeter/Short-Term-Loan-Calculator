@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import "normalize.css";
 
 import { ContainerRow } from "../../../global-styles/global.styles";

@@ -1,4 +1,4 @@
-import React, { Component, useState, useContext, useEffect } from "react";
+import React, { useEffect } from "react";
 import "./App.css";
 import { useImmerReducer } from "use-immer";
 
@@ -8,15 +8,6 @@ import StateContext from "./context/StateContext";
 import App from "./App";
 
 import "normalize.css";
-
-import {
-  auth,
-  createUserProfileDocument,
-  signedInUser,
-  dd,
-} from "./components/firebase/firebase.utils";
-
-import { Container } from "./global-styles/global.styles";
 
 import Axios from "axios";
 Axios.defaults.baseURL =
