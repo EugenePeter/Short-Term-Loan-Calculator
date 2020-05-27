@@ -59,6 +59,9 @@ function UserDetails() {
       <ContainerNarrower>
         <FormContainer onSubmit={handleSubmit}>
           <FormBlock>
+            <ButtonWrapper>
+              <BackBtn onClick={handleBack} /> Back
+            </ButtonWrapper>
             <TitleContainer>
               <h2>Preferred Title</h2> {""}
               <small>Tell us more about you</small>

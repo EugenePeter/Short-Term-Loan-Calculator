@@ -38,7 +38,7 @@ import { selectCurrentUser } from "./components/redux/user/user.selectors";
 
 import Dashboard from "./pages/dashboard/dashboard";
 
-import LoanPurpose from "./pages/application-page/loan-purpose-page";
+import NextOfKin from "./pages/application-page/next-of-kin.page";
 
 import Axios from "axios";
 Axios.defaults.baseURL =
@@ -83,8 +83,6 @@ function App() {
         <Route exact path="/signin">
           <SignIn />
         </Route>
-        <Route exact path="/apply" component={Register} />
-        <Route exact path="/loan-purpose" component={LoanPurpose} />
       </Switch>
     </div>
   );
@@ -98,4 +96,7 @@ const mapDispatchToProps = (dispatch) => ({
   setCurrentUser: (user) => dispatch(setCurrentUser(user)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);

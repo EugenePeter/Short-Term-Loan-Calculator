@@ -5,6 +5,7 @@ export const subColorGrey = "grey";
 export const mainColorBlack = "black";
 
 export const Container = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -33,6 +34,7 @@ export const ContainerMid = styled.div`
 `;
 
 export const ContainerNarrow = styled.div`
+  position: relative;
   background-color: blue;
   display: flex;
   flex-direction: row;
@@ -80,4 +82,9 @@ export const TitleContainer = styled.div`
   width: 100%;
   align-items: center;
   margin-top: 1.705882352941176rem;
+  margin-bottom: 1.705882352941176rem;
+
+  small {
+    text-align: center;
+  }
 `;

@@ -17,16 +17,20 @@ export const IconContainer = styled.div`
   flex-direction: column;
   align-items: center;
   /* background-color: blue; */
-  width: 33.33%;
-  /* height: 100px; */
-  margin: 4px;
+  width: 18%;
+  height: 6%;
+  @media screen and (min-width: 992px) {
+    max-width: 33.33%;
+    margin: 44px;
+    height: 33.33%;
+  }
 `;
 
 export const IconRow = styled.div`
   position: relative;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   /* background-color: red; */
   width: 100%;
   /* margin-bottom: 0.2rem; */

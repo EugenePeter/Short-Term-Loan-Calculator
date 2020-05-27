@@ -25,6 +25,8 @@ export const BackBtn = styled.div`
 const warning = css`
   background-color: white;
   color: #4bc869;
+  height: 80px;
+  border-radius: 4px;
 `;
 
 const defaultButton = css`
@@ -49,6 +51,10 @@ const getButtonStyles = (props) => {
 
   if (props.back) {
     return goBack;
+  }
+
+  if (props.warning) {
+    return warning;
   }
 };
 

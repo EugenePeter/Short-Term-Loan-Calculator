@@ -60,6 +60,12 @@ function ApplicationState() {
       totalLivingExpenseSchedule: "",
       totalLivingExpenses: "",
     },
+    nextOfKin: {
+      relationship: "",
+      firstName: "",
+      lastName: "",
+      contactNumber: "",
+    },
     proofOfIdentity: {
       driversLicense: false,
       passport: false,
@@ -138,6 +144,18 @@ function ApplicationState() {
         return;
       case "totalLivingExpenses":
         draft.expenses.totalLivingExpenses = action.value;
+        return;
+      case "kinRelationship":
+        draft.nextOfKin.relationship = action.value;
+        return;
+      case "kinFName":
+        draft.nextOfKin.firstName = action.value;
+        return;
+      case "kinLName":
+        draft.nextOfKin.lastName = action.value;
+        return;
+      case "kinContactNumber":
+        draft.nextOfKin.contactNumber = action.value;
         return;
     }
   }

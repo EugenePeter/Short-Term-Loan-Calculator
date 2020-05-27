@@ -56,7 +56,9 @@ const close = keyframes`
 `;
 
 export const WarningInner = styled.div`
-  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   margin: 0 auto;
   color: #fff;
 
@@ -65,6 +67,32 @@ export const WarningInner = styled.div`
   h3,
   h4 {
     color: #fff;
+  }
+
+  div {
+    margin-top: 20px;
+  }
+
+  div:nth-of-type(5) {
+    margin-bottom: 80px;
+  }
+
+  h2 {
+    margin-bottom: 0;
+  }
+
+  h3,
+  h4 {
+    margin-top: 40px;
+  }
+
+  small {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    color: white;
+    /* margin: 80px; */
+    text-align: center !important;
   }
 `;
 

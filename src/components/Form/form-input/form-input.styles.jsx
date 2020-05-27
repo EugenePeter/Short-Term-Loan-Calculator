@@ -145,6 +145,7 @@ export const FormContainer = styled.form`
 `;
 
 export const FormInputContainer = styled.input`
+  position: relative;
   background-color: white;
   color: ${subColor};
   font-size: 18px;
@@ -232,6 +233,7 @@ export const ButtonWrapper = styled.div`
   flex-direction: row;
   /* align-items: center; */
   align-self: flex-end;
+  cursor: pointer;
 `;
 
 export const FormSelect = styled.select`

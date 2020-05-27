@@ -76,12 +76,13 @@ function LoanPurpose() {
     <Container>
       <ContainerNarrower>
         <FormContainer onSubmit={handleSubmit}>
-          <ButtonWrapper>
-            <BackBtn onClick={handleBack} /> Back
+          <ButtonWrapper onClick={handleBack}>
+            <BackBtn /> Back
           </ButtonWrapper>
           <TitleContainer>
-            <h2>Loan Purpose</h2> {""}
-            <small>What is the purpose of your loan</small>
+            <h3>What is the purpose of your loan?</h3>
+            <small>Please pick one below</small>
+            <h2>{appState.loanPurpose}</h2> {""}
           </TitleContainer>
 
           <IconsWrapper>
@@ -210,7 +211,7 @@ function LoanPurpose() {
               </IconContainer>
             </IconRow>
 
-            <IconContainer></IconContainer>
+            <IconContainer />
           </IconsWrapper>
           <ButtonWrapper>
             <GlobalButton filterApplicants>Save And Continue</GlobalButton>

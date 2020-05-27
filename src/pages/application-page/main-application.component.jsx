@@ -26,6 +26,8 @@ import Address from "./address.page";
 import EmploymentDetails from "./employment-details.page";
 import Expenses from "./expenses.page";
 import LoanPurpose from "./loan-purpose-page";
+import NextOfKin from "./next-of-kin.page";
+import UploadDocuments from "./upload.documents.page";
 
 import { Form, Field } from "react-final-form";
 
@@ -46,6 +48,10 @@ import LoanData from "./data";
 function MainApplication() {
   const appState = useContext(StateContext);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [appState]);
+
   const currentStep = appState.step;
 
   switch (currentStep) {
@@ -62,15 +68,10 @@ function MainApplication() {
       return <EmploymentDetails />;
     case 6:
       return <Expenses />;
-
-    // case 1:
-    //   return <LoanPurpose />;
-    // case 2:
-    //   return <Address />;
-    // case 3:
-    //   return <EmploymentDetails />;
-    // case 4:
-    //   return <Expenses />;
+    case 7:
+      return <NextOfKin />;
+    case 8:
+      return <UploadDocuments />;
 
     default:
   }

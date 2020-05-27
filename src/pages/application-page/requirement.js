@@ -37,6 +37,8 @@ import { GroupContainer } from "../../components/Form/form__global-styles";
 
 import FormInput from "../../components/Form/form-input/form-input.component";
 
+import { TitleContainer } from "../../global-styles/global.styles";
+
 function Requirements() {
   const appState = useContext(StateContext);
   const appDispatch = useContext(DispatchContext);
@@ -62,11 +64,13 @@ function Requirements() {
       <ContainerNarrower>
         <FormContainer onSubmit={handleSubmit}>
           <GroupContainer>
-            <h2>Requirements</h2> {""}
-            <small>
-              Before you can proceed, first you need to check if you qualify for
-              a loan with us
-            </small>
+            <TitleContainer>
+              <h2>Requirements</h2> {""}
+              <small>
+                Before you can proceed, first you need to check if you qualify
+                for a loan with us
+              </small>
+            </TitleContainer>
             <CheckBoxBlock>
               <Checkbox />
               <small htmlFor="c1">You are 18 years old or older</small>
@@ -112,9 +116,6 @@ function Requirements() {
 
           <ButtonWrapper>
             <GlobalButton filterApplicants>Save And Continue</GlobalButton>
-          </ButtonWrapper>
-          <ButtonWrapper>
-            <GlobalButton onClick={handleBack}>Back</GlobalButton>
           </ButtonWrapper>
         </FormContainer>
       </ContainerNarrower>
