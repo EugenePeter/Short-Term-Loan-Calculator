@@ -25,12 +25,6 @@ import { GlobalButton } from "../../global-styles/GlobalButton.styles";
 
 function Register(props) {
   const initialState = {
-    loggedIn: Boolean(localStorage.getItem("complexappToken")),
-    flashMessages: [],
-    user: {
-      token: localStorage.getItem("complexappToken"),
-      username: localStorage.getItem("complexappUsername"),
-    },
     username: {
       value: "",
       hasErrors: false,
@@ -55,10 +49,6 @@ function Register(props) {
 
   function ourReducer(draft, action) {
     switch (action.type) {
-      case "login":
-        draft.loggedIn = true;
-        draft.user = action.data;
-        return;
       case "usernameImmediately":
         draft.username.hasErrors = false;
         draft.username.value = action.value;
@@ -175,6 +165,7 @@ function Register(props) {
     }
   }, [state.password.value]);
 
+  //Check if a username already exist
   useEffect(() => {
     if (state.username.checkCount) {
       const ourRequest = Axios.CancelToken.source();
@@ -195,6 +186,7 @@ function Register(props) {
     }
   }, [state.username.checkCount]);
 
+  //Check if an email already exist
   useEffect(() => {
     if (state.email.checkCount) {
       const ourRequest = Axios.CancelToken.source();
@@ -215,6 +207,7 @@ function Register(props) {
     }
   }, [state.email.checkCount]);
 
+  //register applicant
   useEffect(() => {
     if (state.submitCount) {
       const ourRequest = Axios.CancelToken.source();
@@ -229,7 +222,7 @@ function Register(props) {
             },
             { cancelToken: ourRequest.token }
           );
-          dispatch({ type: "login", data: response.data });
+          // dispatch({ type: "login", data: response.data });
           dispatch({
             type: "flashMessage",
             value: "Congrats! Welcome to your new account.",
@@ -262,9 +255,9 @@ function Register(props) {
     dispatch({ type: "passwordAfterDelay", value: state.password.value });
     dispatch({ type: "submitForm" });
 
-    console.log("the username is" + state.username.message);
-    console.log("the email is" + state.email.message);
-    console.log("the password is" + state.password.message);
+    // console.log("the username is" + state.username.message);
+    // console.log("the email is" + state.email.message);
+    // console.log("the password is" + state.password.message);
   };
 
   return (

@@ -6,6 +6,10 @@ import React, {
   useContext,
 } from "react";
 
+import { withRouter } from "react-router-dom";
+
+import Axios from "axios";
+
 import DispatchContext from "../../context/DispatchContext";
 import StateContext from "../../context/StateContext";
 
@@ -24,7 +28,19 @@ import FormInput from "../../components/Form/form-input/form-input.component";
 
 import MainApplication from "./main-application.component";
 
-function ApplicationState() {
+// dependencies and components for loan related data
+import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
+
+import { amount } from "../../components/redux/calculator/loan-amount/loan-amount.selectors";
+import { durationOfLoan } from "../../components/redux/calculator/repayment-amount/repayment-amount.selector";
+import { schedule } from "../../components/redux/calculator/repayment-amount/repayment-amount.selector";
+import { repayment } from "../../components/redux/calculator/repayment-amount/repayment-amount.selector";
+import { total } from "../../components/redux/calculator/repayment-amount/repayment-amount.selector";
+
+function ApplicationState(props) {
+  const { amount, durationOfLoan, schedule, repayment, total } = props;
+
   const initialState = {
     warningModal: false,
     step: 1,
@@ -70,6 +86,11 @@ function ApplicationState() {
       driversLicense: false,
       passport: false,
     },
+    bankDetails: {
+      bankAccountNumber: "bnk - brnch - acnt - sfx",
+    },
+    loanDetails: {},
+    submitting: "",
   };
 
   function ourReducer(draft, action) {
@@ -157,14 +178,105 @@ function ApplicationState() {
       case "kinContactNumber":
         draft.nextOfKin.contactNumber = action.value;
         return;
+      case "bankDetails":
+        draft.bankDetails.bankAccountNumber = action.value;
+        return;
+      case "submit":
+        draft.submitting++;
+        draft.loanDetails = {
+          amount,
+          durationOfLoan,
+          schedule,
+          repayment,
+          total,
+        };
+        return;
     }
   }
-
   const nextStep = () => {
     dispatch({ type: "nxtStep" });
   };
 
   const [state, dispatch] = useImmerReducer(ourReducer, initialState);
+  console.log("submitting is " + state.submitting);
+
+  useEffect(() => {
+    if (state.submitting) {
+      async function submitApplication() {
+        alert("submitting is " + state.submitting);
+        try {
+          const response = await Axios.post(
+            "http://localhost:8080/submit-application",
+            {
+              loanPurpose: state.loanPurpose,
+              personalDetails: {
+                gender: state.personalDetails.gender,
+                firstName: state.personalDetails.firstName,
+                lastName: state.personalDetails.lastName,
+                email: state.personalDetails.email,
+                mobileNumber: state.personalDetails.mobileNumber,
+                birthDay: state.personalDetails.birthDay,
+                age: state.personalDetails.age,
+                address: {
+                  suburb: state.personalDetails.address.suburb,
+                  town: state.personalDetails.address.town,
+                  city: state.personalDetails.address.city,
+                  country: state.personalDetails.address.country,
+                },
+              },
+              employmentDetails: {
+                companyName: state.employmentDetails.companyName,
+                employerContactNumber:
+                  state.employmentDetails.employerContactNumber,
+                jobTitle: state.employmentDetails.jobTitle,
+                employmentDate: state.employmentDetails.employerContactNumber,
+                jobType: state.employmentDetails.jobType,
+                paySchedule: state.employmentDetails.paySchedule,
+                salary: state.employmentDetails.salary,
+              },
+
+              expenses: {
+                rentOrMortageSchedule: state.expenses.rentOrMortageSchedule,
+                totalBills: state.expenses.totalBills,
+                totalLivingExpenseSchedule:
+                  state.expenses.totalLivingExpenseSchedule,
+                totalLivingExpenses: state.expenses.totalLivingExpenses,
+              },
+              nextOfKin: {
+                relationship: state.nextOfKin.relationship,
+                firstName: state.nextOfKin.firstName,
+                lastName: state.nextOfKin.lastName,
+                contactNumber: state.nextOfKin.contactNumber,
+              },
+              bankDetails: {
+                bankAccountNumber: state.bankDetails.bankAccountNumber,
+              },
+
+              loanDetails: {
+                amount: state.loanDetails.amount,
+                durationOfLoan: state.loanDetails.durationOfLoan,
+                schedule: state.loanDetails.schedule,
+                repayment: state.loanDetails.repayment,
+                total: state.loanDetails.total,
+              },
+
+              token: localStorage.appToken,
+            }
+          );
+
+          console.log(response.data);
+          // Redirect to new post url
+          // props.history.push(`/profile/${localStorage.appUsername}`);
+          props.history.push(`/applicant/${response.data}`);
+          console.log("New post was created.");
+        } catch (e) {
+          console.log(e.response.data + "There was a problem.");
+          console.log(localStorage);
+        }
+      }
+      submitApplication();
+    }
+  }, [state.submitting]);
 
   return (
     <StateContext.Provider value={state}>
@@ -176,4 +288,13 @@ function ApplicationState() {
     </StateContext.Provider>
   );
 }
-export default ApplicationState;
+
+const mapStateToProps = createStructuredSelector({
+  amount,
+  durationOfLoan,
+  schedule,
+  repayment,
+  total,
+});
+
+export default connect(mapStateToProps)(withRouter(ApplicationState));

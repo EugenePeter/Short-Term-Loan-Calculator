@@ -40,6 +40,9 @@ import Dashboard from "./pages/dashboard/dashboard";
 
 import NextOfKin from "./pages/application-page/next-of-kin.page";
 
+import Test from "./pages/application-page/test";
+import ClientDashboard from "./pages/application-page/client-dashboard";
+
 import Axios from "axios";
 Axios.defaults.baseURL =
   process.env.BACKENDURL || "your heroku dot com goes here";
@@ -75,7 +78,17 @@ function App() {
           }
         />
 
+        <Route
+          exact
+          path="/apply"
+          render={() =>
+            appState.loggedIn ? <Redirect to="/dashboard" /> : <Register />
+          }
+        />
+
         <Route exact path="/dashboard" component={Dashboard} />
+        <Route exact path="/applicant/:id" component={Test} />
+        <Route exact path="/profile/:username" component={ClientDashboard} />
 
         <Route exact path="/main-application" component={ApplicationState} />
         <Route exact path="/dashboard" component={Dashboard} />

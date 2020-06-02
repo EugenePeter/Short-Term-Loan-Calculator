@@ -39,7 +39,6 @@ function SignIn(props) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    alert(e);
 
     try {
       const response = await Axios.post(
@@ -49,10 +48,12 @@ function SignIn(props) {
           password: password,
         }
       );
+      console.log(response.data);
       if (response.data) {
         appDispatch({ type: "login", data: response.data });
+        alert("Welcome");
       } else {
-        console.log("Incorrect username / password.");
+        alert("Incorrect Username or password");
       }
     } catch (e) {
       alert(e);

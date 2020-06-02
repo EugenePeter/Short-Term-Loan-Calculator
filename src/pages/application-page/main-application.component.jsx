@@ -28,6 +28,7 @@ import Expenses from "./expenses.page";
 import LoanPurpose from "./loan-purpose-page";
 import NextOfKin from "./next-of-kin.page";
 import UploadDocuments from "./upload.documents.page";
+import BankDetails from "./bank-details.page";
 
 import { Form, Field } from "react-final-form";
 
@@ -50,7 +51,7 @@ function MainApplication() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [appState]);
+  }, [appState.step]);
 
   const currentStep = appState.step;
 
@@ -72,6 +73,8 @@ function MainApplication() {
       return <NextOfKin />;
     case 8:
       return <UploadDocuments />;
+    case 9:
+      return <BankDetails />;
 
     default:
   }
