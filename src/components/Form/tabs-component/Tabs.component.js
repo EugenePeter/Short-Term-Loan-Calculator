@@ -1,37 +1,37 @@
-import React, { Fragment, useContext } from "react";
-import DispatchContext from "../../../context/DispatchContext";
+// import React, { Fragment, useContext } from "react";
+// import DispatchContext from "../../../context/DispatchContext";
 
-import {
-  TabInput,
-  Label,
-  TabInputWrapper,
-  TabInputContainer,
-} from "./Tabs.styles";
+// import {
+//   TabsInput,
+//   Label,
+//   TabsInputWrapper,
+//   TabsInputContainer,
+// } from "./Tabss.styles";
 
-//Global styles
-import { GroupContainer } from "../form__global-styles";
+// //Global styles
+// import { GroupContainer } from "../form__global-styles";
 
-import { RadioInput } from "../form-input/form-input.styles";
+// import { RadioInput } from "../form-input/form-input.styles";
 
-const Tabs = (props) => {
-  const appDispatch = useContext(DispatchContext);
+// const Tabss = (props) => {
+//   const appDispatch = useContext(DispatchContext);
 
-  const label = props.label;
-  const value = props.value;
-  return (
-    <Fragment>
-      <TabInputWrapper>
-        <TabInput
-          type="radio"
-          value={value}
-          onClick={(e) =>
-            appDispatch({ type: "jobType", value: e.target.value })
-          }
-        />
-        <Label>{label}</Label>
-      </TabInputWrapper>
-    </Fragment>
-  );
-};
+//   const label = props.label;
+//   const value = props.value;
+//   return (
+//     <Fragment>
+//       <TabsInputWrapper>
+//         <TabsInput
+//           type="radio"
+//           value={value}
+//           onClick={(e) =>
+//             appDispatch({ type: "jobType", value: e.target.value })
+//           }
+//         />
+//         <Label>{label}</Label>
+//       </TabsInputWrapper>
+//     </Fragment>
+//   );
+// };
 
-export default Tabs;
+// export default Tabss;

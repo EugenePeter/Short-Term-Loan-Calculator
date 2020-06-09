@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { withRouter } from "react-router-dom";
 import Axios from "axios";
 import { useImmerReducer } from "use-immer";
@@ -23,7 +23,10 @@ import { Warning } from "../../global-styles/warning.styles";
 
 import { GlobalButton } from "../../global-styles/GlobalButton.styles";
 
+import LoadingIcon from "../../global-styles/Loading-icons.component";
+
 function Register(props) {
+  const [isLoading, setIsLoading] = useState(false);
   const initialState = {
     username: {
       value: "",
@@ -213,6 +216,7 @@ function Register(props) {
       const ourRequest = Axios.CancelToken.source();
       async function fetchResults() {
         try {
+          setIsLoading(true);
           const response = await Axios.post(
             "https://cashifiedbackend.herokuapp.com/register",
             {
@@ -223,6 +227,7 @@ function Register(props) {
             { cancelToken: ourRequest.token }
           );
           // dispatch({ type: "login", data: response.data });
+          setIsLoading(false);
           dispatch({
             type: "flashMessage",
             value: "Congrats! Welcome to your new account.",

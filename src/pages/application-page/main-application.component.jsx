@@ -29,6 +29,8 @@ import LoanPurpose from "./loan-purpose-page";
 import NextOfKin from "./next-of-kin.page";
 import UploadDocuments from "./upload.documents.page";
 import BankDetails from "./bank-details.page";
+import LegalAndCompliance from "./legalAndCompliance.page";
+import Review from "./review.page";
 
 import { Form, Field } from "react-final-form";
 
@@ -75,6 +77,11 @@ function MainApplication() {
       return <UploadDocuments />;
     case 9:
       return <BankDetails />;
+    case 10:
+      return <Review />;
+
+    case 11:
+      return <LegalAndCompliance />;
 
     default:
   }

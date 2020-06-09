@@ -27,21 +27,59 @@ const warning = css`
   color: #4bc869;
   height: 80px;
   border-radius: 4px;
+
+  &:hover {
+    background-color: #f5fff8;
+  }
 `;
 
 const defaultButton = css`
   background-color: #3bc453;
+  &:hover {
+    background-image: linear-gradient(
+      to bottom right,
+      #55d251,
+      #4ac76c,
+      #31b3c2
+    );
+    color: #fff;
+    border: 1px solid #3bc453;
+  }
 `;
 
 const applicationFrmBtn = css`
   border-radius: 4px;
   background-color: ${mainColorGreen};
+  &:hover {
+    background-image: linear-gradient(
+      to bottom right,
+      #55d251,
+      #4ac76c,
+      #31b3c2
+    );
+    color: #fff;
+    border: 1px solid #3bc453;
+  }
 `;
 
 const goBack = css`
   width: 4.705882352941176rem;
   background-color: #ffd76a;
   border-radius: 4px;
+  &:hover {
+    background-image: linear-gradient(
+      to bottom right,
+      #55d251,
+      #4ac76c,
+      #31b3c2
+    );
+    color: #fff;
+    border: 1px solid #3bc453;
+  }
+`;
+
+const isDisabled = css`
+  background-color: #e0ece4;
 `;
 
 const getButtonStyles = (props) => {
@@ -55,6 +93,12 @@ const getButtonStyles = (props) => {
 
   if (props.warning) {
     return warning;
+  }
+
+  if (props.isDisabled) {
+    return isDisabled;
+  } else {
+    return applicationFrmBtn;
   }
 };
 
@@ -77,11 +121,10 @@ export const GlobalButton = styled.button`
 
   justify-content: center;
   align-items: center;
-  &:hover {
-    background-color: white;
-    color: black;
-    border: 1px solid #3bc453;
-  }
+
+  -webkit-box-shadow: -4px 39px 59px -63px rgba(0, 0, 0, 1);
+  -moz-box-shadow: -4px 39px 59px -63px rgba(0, 0, 0, 1);
+  box-shadow: -4px 39px 59px -63px rgba(0, 0, 0, 1);
 
   &.inverted {
     background-color: #3bc453;

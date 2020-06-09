@@ -10,8 +10,8 @@ import App from "./App";
 import "normalize.css";
 
 import Axios from "axios";
-Axios.defaults.baseURL =
-  process.env.BACKENDURL || "your heroku dot com goes here";
+// Axios.defaults.baseURL =
+//   process.env.BACKENDURL || "your heroku dot com goes here";
 
 function UserGlobal() {
   const initialState = {
@@ -51,6 +51,32 @@ function UserGlobal() {
       // localStorage.removeItem("complexappAvatar");
     }
   }, [state.loggedIn]);
+
+  useEffect(() => {
+    if (state.loggedIn) {
+      const ourRequest = Axios.CancelToken.source();
+      async function fetchResults() {
+        try {
+          const response = await Axios.post(
+            "http://localhost:8080/checkToken",
+            { token: localStorage.appToken },
+            { cancelToken: ourRequest.token }
+          );
+          if (!response.data) {
+            dispatch({ type: "logout" });
+            dispatch({
+              type: "flashMessage",
+              value: "Your session had expired, please login again",
+            });
+          }
+        } catch (e) {
+          console.log("There was a problem or the request was cancelled.");
+        }
+      }
+      fetchResults();
+      return () => ourRequest.cancel();
+    }
+  }, []);
 
   return (
     <StateContext.Provider value={state}>

@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import Axios from "axios";
 
@@ -9,26 +9,7 @@ import StateContext from "../../context/StateContext";
 
 import { useImmerReducer, useImmer } from "use-immer";
 
-import {
-  Container,
-  ContainerNarrower,
-  TitleContainer,
-  ContainerRow,
-} from "../../global-styles/global.styles";
-
-import { GlobalButton, BackBtn } from "../../global-styles/GlobalButton.styles";
-
-import {
-  FormContainer,
-  FormInputContainer,
-  ButtonWrapper,
-  FormInputSpan,
-  GroupContainer,
-} from "../../components/Form/form-input/form-input.styles";
-
-import RadioBlockComponent from "../../components/Form/tabs-component/RadioBlock.component";
-import { JobType } from "../../components/Form/job-type/radioBtnContainer";
-import { RadioContainer } from "../../components/Form/tabs-component/RadioInputBlock.styles";
+import { Container } from "../../global-styles/global.styles";
 
 function Test(props) {
   const appState = useContext(StateContext);
@@ -66,18 +47,9 @@ function Test(props) {
 
   console.log(post);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    appDispatch({ type: "submit" });
-  };
-
-  const handleBack = (e) => {
-    e.preventDefault();
-    appDispatch({ type: "back" });
-  };
   return (
     <Container>
-      <h1>This is our test for today</h1>
+      <h1 style={{ textAlign: "center" }}>DASHBOARD DESIGN WILL FOLLOW</h1>
     </Container>
   );
 }

@@ -6,6 +6,7 @@ import Calculator from "../../components/calculator/calculator.component";
 
 import { HeaderContainer } from "./home.styles";
 import HeroSection from "./hero-section/hero-section.component";
+import Navigation from "../../components/navigation/navigation.component";
 
 class Home extends Component {
   constructor() {
@@ -19,11 +20,13 @@ class Home extends Component {
 
   render() {
     return (
-      <HeaderContainer>
-        <HeroSection />
-        <Calculator />
-        {/* <h1>section</h1> */}
-      </HeaderContainer>
+      <Fragment>
+        <Navigation />
+        <HeaderContainer>
+          <HeroSection />
+          <Calculator />
+        </HeaderContainer>
+      </Fragment>
     );
   }
 }

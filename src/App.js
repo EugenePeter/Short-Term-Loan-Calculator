@@ -40,15 +40,19 @@ import Dashboard from "./pages/dashboard/dashboard";
 
 import NextOfKin from "./pages/application-page/next-of-kin.page";
 
-import Test from "./pages/application-page/test";
-import ClientDashboard from "./pages/application-page/client-dashboard";
+import Test from "./components/qualify-decision/test";
+import ClientDashboard from "./pages/dashboard/client-dashboard.page";
+import QualifyDecision from "./components/qualify-decision/qualify-decision.component";
+
+import LoanIndicator from "./components/loan-indicator/loan-indicator.component";
 
 import Axios from "axios";
-Axios.defaults.baseURL =
-  process.env.BACKENDURL || "your heroku dot com goes here";
+// Axios.defaults.baseURL =
+//   process.env.BACKENDURL || "your heroku dot com goes here";
 
 function App() {
   const appState = useContext(StateContext);
+
   // const appDispatch = useContext(DispatchContext);
 
   return (
@@ -88,7 +92,7 @@ function App() {
 
         <Route exact path="/dashboard" component={Dashboard} />
         <Route exact path="/applicant/:id" component={Test} />
-        <Route exact path="/profile/:username" component={ClientDashboard} />
+        <Route path="/profile/:username" component={ClientDashboard} />
 
         <Route exact path="/main-application" component={ApplicationState} />
         <Route exact path="/dashboard" component={Dashboard} />
@@ -96,6 +100,14 @@ function App() {
         <Route exact path="/signin">
           <SignIn />
         </Route>
+
+        <Route exact path="/s/:id" component={QualifyDecision} />
+        <Route exact path="/svg/" component={LoanIndicator} />
+        <Route
+          exact
+          path="/client-dashboard/:username"
+          component={ClientDashboard}
+        />
       </Switch>
     </div>
   );

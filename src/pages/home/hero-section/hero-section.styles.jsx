@@ -15,7 +15,13 @@ export const HeroSectionWrapper = styled.div`
 
   h1 {
     font-weight: 900 !important;
+    /* background-color: yellow; */
+    text-align: center;
     /* font-size: 4.6rem; */
+  }
+
+  h1:nth-of-type(2) {
+    padding-top: 2rem;
   }
 
   h1,

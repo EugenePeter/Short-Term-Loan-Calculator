@@ -30,17 +30,23 @@ import {
 } from "../Form/form-input/form-input.styles";
 
 import FormInput from "../../components/Form/form-input/form-input.component";
-
 import { FormInner } from "./sign-in.styles";
 
+import LoadingIcon from "../../global-styles/Loading-icons.component";
+
 function SignIn(props) {
+  const appState = useContext(StateContext);
+  const appDispatch = useContext(DispatchContext);
+
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
+      setIsLoading(true);
       const response = await Axios.post(
         "https://cashifiedbackend.herokuapp.com/login",
         {
@@ -48,10 +54,11 @@ function SignIn(props) {
           password: password,
         }
       );
+      setIsLoading(false);
       console.log(response.data);
       if (response.data) {
         appDispatch({ type: "login", data: response.data });
-        alert("Welcome");
+        // alert("Welcome");
       } else {
         alert("Incorrect Username or password");
       }
@@ -62,8 +69,14 @@ function SignIn(props) {
     }
   };
 
-  const appState = useContext(StateContext);
-  const appDispatch = useContext(DispatchContext);
+  if (isLoading)
+    return (
+      <Container>
+        <ContainerNarrower>
+          <LoadingIcon />
+        </ContainerNarrower>
+      </Container>
+    );
 
   return (
     <Container>

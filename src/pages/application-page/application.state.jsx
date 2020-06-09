@@ -38,6 +38,8 @@ import { schedule } from "../../components/redux/calculator/repayment-amount/rep
 import { repayment } from "../../components/redux/calculator/repayment-amount/repayment-amount.selector";
 import { total } from "../../components/redux/calculator/repayment-amount/repayment-amount.selector";
 
+import LoanIndicator from "./loan-indicator";
+
 function ApplicationState(props) {
   const { amount, durationOfLoan, schedule, repayment, total } = props;
 
@@ -85,6 +87,14 @@ function ApplicationState(props) {
     proofOfIdentity: {
       driversLicense: false,
       passport: false,
+    },
+
+    disclosure: {
+      disclosureStatement: false,
+      cancellationStatement: false,
+      privacyWaiver: false,
+      creditCheck: false,
+      hasClicked: false,
     },
     bankDetails: {
       bankAccountNumber: "bnk - brnch - acnt - sfx",
@@ -181,6 +191,22 @@ function ApplicationState(props) {
       case "bankDetails":
         draft.bankDetails.bankAccountNumber = action.value;
         return;
+
+      case "disclosureStatement":
+        draft.disclosure.disclosureStatement = !draft.disclosure
+          .disclosureStatement;
+        return;
+      case "cancellationStatement":
+        draft.disclosure.cancellationStatement = !draft.disclosure
+          .cancellationStatement;
+        return;
+      case "privacyWaiver":
+        draft.disclosure.privacyWaiver = !draft.disclosure.privacyWaiver;
+        return;
+      case "creditCheck":
+        draft.disclosure.creditCheck = !draft.disclosure.creditCheck;
+        return;
+
       case "submit":
         draft.submitting++;
         draft.loanDetails = {
@@ -267,11 +293,10 @@ function ApplicationState(props) {
           console.log(response.data);
           // Redirect to new post url
           // props.history.push(`/profile/${localStorage.appUsername}`);
-          props.history.push(`/applicant/${response.data}`);
+          props.history.push(`/s/${response.data}`);
           console.log("New post was created.");
         } catch (e) {
-          console.log(e.response.data + "There was a problem.");
-          console.log(localStorage);
+          console.log(e + "There was a problem.");
         }
       }
       submitApplication();
@@ -282,6 +307,7 @@ function ApplicationState(props) {
     <StateContext.Provider value={state}>
       <DispatchContext.Provider value={dispatch}>
         <Fragment>
+          <LoanIndicator />
           <MainApplication />
         </Fragment>
       </DispatchContext.Provider>

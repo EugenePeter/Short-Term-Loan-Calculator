@@ -234,6 +234,10 @@ export const ButtonWrapper = styled.div`
   /* align-items: center; */
   align-self: flex-end;
   cursor: pointer;
+
+  -webkit-box-shadow: -4px 39px 59px -63px rgba(0, 0, 0, 1);
+  -moz-box-shadow: -4px 39px 59px -63px rgba(0, 0, 0, 1);
+  box-shadow: -4px 39px 59px -63px rgba(0, 0, 0, 1);
 `;
 
 export const FormSelect = styled.select`

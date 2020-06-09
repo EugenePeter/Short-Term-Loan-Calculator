@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="439" height="134" viewBox="0 0 439 134">
+  <defs>
+    <filter id="Rectangle_1288" x="0" y="0" width="140" height="134" filterUnits="userSpaceOnUse">
+      <feOffset dy="20" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="15" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Group_1200" data-name="Group 1200" transform="translate(-281 -263)">
+    <g transform="matrix(1, 0, 0, 1, 281, 263)" filter="url(#Rectangle_1288)">
+      <rect id="Rectangle_1288-2" data-name="Rectangle 1288" width="50" height="44" rx="5" transform="translate(45 25)" fill="#fff"/>
+    </g>
+    <rect id="Rectangle_1285" data-name="Rectangle 1285" width="78" height="70" rx="5" transform="translate(312 282)" fill="#fff"/>
+    <path id="Path_2642" data-name="Path 2642" d="M5525.562,2020.389l15.523,15.523-15.523,15.523" transform="translate(5884.585 2352.935) rotate(180)" fill="none" stroke="#707070" stroke-linecap="round" stroke-width="9"/>
+    <text id="Back_to_main_dashboard" data-name="Back to main dashboard" transform="translate(434 329)" fill="#8a8a8a" font-size="26" font-family="SegoeUI-Semibold, Segoe UI" font-weight="600"><tspan x="0" y="0">Back to main dashboard</tspan></text>
+  </g>
+</svg>

@@ -35,7 +35,6 @@ export const ContainerMid = styled.div`
 
 export const ContainerNarrow = styled.div`
   position: relative;
-  background-color: blue;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -49,7 +48,7 @@ export const ContainerNarrow = styled.div`
 export const ContainerNarrower = styled.div`
   display: flex;
   flex-direction: column;
-  width: 90%;
+  width: 80%;
 
   @media screen and (min-width: 992px) {
     max-width: 50rem;
@@ -84,6 +83,21 @@ export const TitleContainer = styled.div`
   margin-top: 1.705882352941176rem;
   margin-bottom: 1.705882352941176rem;
 
+  small {
+    text-align: center;
+  }
+`;
+
+export const BodyContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  margin-top: 1.705882352941176rem;
+  margin-bottom: 1.705882352941176rem;
+
+  h3,
+  p,
   small {
     text-align: center;
   }

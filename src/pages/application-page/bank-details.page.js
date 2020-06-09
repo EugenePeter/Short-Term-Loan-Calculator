@@ -35,22 +35,7 @@ function BankDetails() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    appDispatch({ type: "submit" });
-    // try {
-    //   const response = await Axios.post("http://localhost:8080/create-post", {
-    //     test: "testtttting",
-    //     token: localStorage.appToken,
-    //   });
-    //   // Redirect to new post url
-    //   appDispatch({
-    //     type: "flashMessage",
-    //     value: "Congrats, you created a new post.",
-    //   });
-    //   console.log("New post was created.");
-    // } catch (e) {
-    //   console.log(e.response.data + "There was a problem.");
-    //   console.log(localStorage);
-    // }
+    appDispatch({ type: "nxtStep" });
   };
 
   const handleBack = (e) => {

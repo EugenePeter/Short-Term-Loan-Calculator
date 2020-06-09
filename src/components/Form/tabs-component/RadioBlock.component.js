@@ -25,7 +25,7 @@ const RadioBlockComponent = ({ value, name, ...props }) => {
         <RadioBlock__wrapper>
           <RadioBlock>
             <RadioInput type="radio" name={name} value={value} click />
-            <CheckMark></CheckMark>
+            <CheckMark />
           </RadioBlock>
         </RadioBlock__wrapper>
       </Radio>

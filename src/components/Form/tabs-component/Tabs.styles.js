@@ -1,93 +1,121 @@
 import styled, { css } from "styled-components";
 
-export const mainColorGreen = "#3BC453";
-export const subColorGrey = "grey";
-export const mainColorBlack = "black";
-
-export const Label = styled.label`
-  position: absolute;
-  /* border: solid 2px yellow; */
+export const TabsContainer = styled.div`
+  width: 100%;
+  background-image: linear-gradient(to bottom right, #55d251, #4ac76c, #31b3c2);
+  padding: 2rem 1rem 2rem 1rem;
+  margin-top: 1rem;
   box-sizing: border-box;
 
-  text-align: center;
-
-  {Label}:hover  {
-    color: green;
+  h4 {
+    margin-bottom: 2rem;
   }
 
+  -webkit-box-shadow: -4px 39px 59px -63px rgba(0, 0, 0, 1);
+  -moz-box-shadow: -4px 39px 59px -63px rgba(0, 0, 0, 1);
+  box-shadow: -4px 39px 59px -63px rgba(0, 0, 0, 1);
 
-  cursor: pointer;
-
-  &::before {
-    /* content: 'test' */
+  @media screen and (min-width: 992px) {
+    padding: 2rem 4.11rem 2rem 4.11rem;
+    margin-top: 1rem;
   }
-z-index: -1;
-
-  /* transition-duration: 0.5s;
-  transform-origin: 2px 12px; */
 `;
-export const TabInputWrapper = styled.div`
+
+export const TabsBlock = styled.div`
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  align-content: center;
+  position: relative;
+  /* padding-left: 35px; */
+  /* margin-right: 1.625rem; */
+  cursor: pointer;
+  /* font-size: 22px; */
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  /* background-color: yellow; */
+
+  &:hover {
+    background-color: #f2f2f2;
+  }
+`;
+
+export const TabsBlock__wrapper = styled.div`
+   {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 1.625rem;
+    width: 100%;
+    background-color: pink;
+    box-sizing: border-box;
+  }
+`;
+
+const isNotClicked = css`
+  border: solid 2px #ff9300;
+`;
+
+const getTabsStyles = (props) => {
+  if (props.isNotClicked == true) {
+    return isNotClicked;
+  }
+};
+
+export const Tabs = styled.div`
   position: relative;
   display: flex;
   flex-direction: row;
+  justify-content: space-around;
   align-items: center;
-  justify-content: center;
-  border-radius: 4px;
-  border: solid 0.5px;
+
   width: 100%;
-  height: 4rem;
-  margin-right: 8px;
+  background-color: #f6fff9;
 
-  transition: 0.5s;
+  height: 6.11rem;
+  margin-bottom: 0.625rem;
 
-  z-index: 100;
+  padding: 0 1.625rem 0 1.625rem;
+  box-sizing: border-box;
 
-  &:nth-last-of-type(1) {
-    margin-right: 0;
-  }
+  -webkit-box-shadow: 0px 13px 59px -25px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 0px 13px 59px -25px rgba(0, 0, 0, 0.4);
+  box-shadow: 0px 13px 59px -45px rgba(0, 0, 0, 0.8);
 
-  /* &:hover {
-    border-color: ${mainColorGreen};
-    background-color: pink;
-  } */
-
- /* &:hover{
-    background-color: ${mainColorGreen};
-  } */
-
-&:hover {
-    background-color: ${mainColorGreen};
-  }
-
-
-
-`;
-
-export const TabInput = styled.input`
-  border-radius: 2px;
-  opacity: 0;
-  width: 100%;
-  height: 4.11rem;
-
-  /* -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none!important; */
-
-  border: solid 1px;
-
-  position: relative;
-
-  cursor: pointer;
-  user-select: none;
-  outline: none;
-
-  transition-duration: 0.2s;
+  transition: 0.3s;
 
   &:hover {
-    border-color: blue;
+    background-color: #fff;
+    color: #84de40;
   }
 
-  {TabInput}:hover ~ ${TabInputWrapper} {
-    background-color: pink;
+  &:checked {
+    background-color: #fff;
+    color: #84de40;
+  }
+  transition: width 1s cubic-bezier(0.35, 0, 0.1, 1) 0.2s;
+  ${getTabsStyles}
+
+  @media screen and (min-width: 992px) {
+    height: 6.11rem;
+  }
+`;
+
+export const TabsDetails = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+
+  h3 {
+    color: #84de40 !important;
+  }
+
+  h3,
+  small {
+    position: relative;
+    display: inline-block;
+    margin: 2px;
   }
 `;

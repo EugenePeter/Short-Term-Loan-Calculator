@@ -39,11 +39,6 @@ function Dashboard(props) {
     props.history.push("/warning");
   };
 
-  const handleBack = (e) => {
-    e.preventDefault();
-    appDispatch({ type: "back" });
-  };
-
   return (
     <Container>
       <ContainerNarrower>
