@@ -4,16 +4,14 @@ import { useParams } from "react-router-dom";
 
 import Axios from "axios";
 
-import DispatchContext from "../../context/DispatchContext";
-import StateContext from "../../context/StateContext";
-
-import { useImmerReducer, useImmer } from "use-immer";
+// import DispatchContext from "../../context/DispatchContext";
+// import StateContext from "../../context/StateContext";
 
 import { Container } from "../../global-styles/global.styles";
 
 function Test(props) {
-  const appState = useContext(StateContext);
-  const appDispatch = useContext(DispatchContext);
+  // const appState = useContext(StateContext);
+  // const appDispatch = useContext(DispatchContext);
   const { id } = useParams();
   const [isLoading, setIsLoading] = useState(true);
   const [post, setPost] = useState();

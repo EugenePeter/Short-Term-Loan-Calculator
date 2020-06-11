@@ -13,21 +13,25 @@ import {
 import {} from "../../components/dashboard-component/list.styles";
 
 function List(props) {
-  const date = props.date;
+  const schedule = props.details;
+  const repaymentAmount = props.repaymentAmount;
+
+  console.log(schedule);
+
   return (
     <Fragment>
       <Modifiers />
       <ListContainer className="padding-lr-1 margin-b shadow">
         <DateCircleBadge>
           {" "}
-          <small>sat</small>
-          <h4> {date}</h4>
-          <small>09</small>
+          <small>{schedule.day}</small>
+          <h4> {schedule.date}</h4>
+          <small>{schedule.month}</small>
         </DateCircleBadge>
         <CheckIcon />
         <AmountWrapper>
           <span>Amount</span>
-          <span>$309.97</span>
+          <span> $ {repaymentAmount} </span>
         </AmountWrapper>
         <ButtonRounded>pay now</ButtonRounded>
       </ListContainer>

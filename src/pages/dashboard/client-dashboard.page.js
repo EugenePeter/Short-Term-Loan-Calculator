@@ -1,14 +1,14 @@
-import React, { useContext, useState, Fragment } from "react";
+import React, { useContext, useEffect, Fragment } from "react";
 
 import {
   useParams,
   Switch,
   Route,
   withRouter,
-  NavLink,
   BrowserRouter as Router,
-  Link,
 } from "react-router-dom";
+
+import Axios from "axios";
 
 import {
   StyledNavLink,
@@ -16,97 +16,51 @@ import {
   GlobalStyle,
 } from "../../components/nav-link/nav-link.styles";
 
-import DispatchContext from "../../context/DispatchContext";
+// import DispatchContext from "../../context/DispatchContext";
 import StateContext from "../../context/StateContext";
 
-import { useImmerReducer, useImmer } from "use-immer";
+import { useImmer } from "use-immer";
 
-import {
-  Container,
-  ContainerNarrower,
-  TitleContainer,
-  ContainerRow,
-} from "../../global-styles/global.styles";
+import { Container } from "../../global-styles/global.styles";
 
 import ActiveLoans from "./active-loans.page";
 
 function ClientDashboard(props) {
   const { username } = useParams();
   const appState = useContext(StateContext);
-  const appDispatch = useContext(DispatchContext);
+  const [state, setState] = useImmer({
+    profileData: {
+      profileUsername: "...Eugenio pedro",
+      profileAvatar: "https://gravatar.com/avatar/placeholder?s=128",
+      isFollowing: false,
+      counts: { postCount: "", followerCount: "", followingCount: "" },
+      email: "",
+    },
+  });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  useEffect(() => {
+    const ourRequest = Axios.CancelToken.source();
 
-    props.history.push("/warning");
-  };
-
-  var date = new Date("2020/6/1");
-  var next = new Date(date.getFullYear(), date.getMonth(), date.getDate());
-  var days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
-  var months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
-
-  function format(d) {
-    return d.getDate() + " " + days[d.getDay()] + ", " + months[d.getMonth()];
-  }
-
-  console.log("Starting day is " + format(date));
-  const week = 7;
-  const fornight = 14;
-  const month = 30;
-  for (var i = 0; i < 10; i++) {
-    next = new Date(
-      next.getFullYear(),
-      next.getMonth(),
-      next.getDate() + month
-    );
-    console.log("Next week is " + format(next));
-  }
-
-  function Home() {
-    return (
-      <div>
-        <h2>Home</h2>
-      </div>
-    );
-  }
-
-  function About() {
-    return (
-      <div>
-        <h2>About</h2>
-      </div>
-    );
-  }
-
-  function Dashboard() {
-    return (
-      <div>
-        <h2>Dashboard</h2>
-      </div>
-    );
-  }
+    async function fetchData() {
+      try {
+        const response = await Axios.post(
+          `http://localhost:8080/profile/${username}`,
+          { token: appState.user.token },
+          { cancelToken: ourRequest.token }
+        );
+        setState((draft) => {
+          draft.profileData = response.data;
+        });
+        console.log(JSON.stringify(response.data));
+      } catch (e) {
+        console.log(e + "There was a problem.");
+      }
+    }
+    fetchData();
+    return () => {
+      ourRequest.cancel();
+    };
+  }, []);
 
   return (
     <Fragment>
@@ -133,10 +87,26 @@ function ClientDashboard(props) {
             <Route exact path="/client-dashboard/:username">
               <ActiveLoans />
             </Route>
-            <Route path="/client-dashboard/:username/recent-loans">
-              <ActiveLoans />
-            </Route>
+            <Route path="/client-dashboard/:username/recent-loans">test</Route>
           </Switch>
+
+          <NavLinkContainer>
+            <StyledNavLink
+              exact
+              to={`/client-dashboard/${state.profileData.profileUsername}`}
+              className="nav-item nav-link"
+            >
+              Overdue Payments
+            </StyledNavLink>
+            <StyledNavLink
+              to={`/client-dashboard/${
+                state.profileData.profileUsername
+              }/recent-loans`}
+              className="nav-item nav-link"
+            >
+              Upcoming Payments
+            </StyledNavLink>
+          </NavLinkContainer>
         </Router>
       </Container>
     </Fragment>

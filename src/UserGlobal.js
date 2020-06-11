@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import "./App.css";
 import { useImmerReducer } from "use-immer";
 
+import { BrowserRouter } from "react-router-dom";
+
 import DispatchContext from "./context/DispatchContext";
 import StateContext from "./context/StateContext";
 
@@ -81,7 +83,9 @@ function UserGlobal() {
   return (
     <StateContext.Provider value={state}>
       <DispatchContext.Provider value={dispatch}>
-        <App />
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
       </DispatchContext.Provider>
     </StateContext.Provider>
   );

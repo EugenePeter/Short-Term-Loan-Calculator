@@ -5,7 +5,7 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import Navigation from "./components/navigation/navigation.component";
 import "normalize.css";
 
-import DispatchContext from "./context/DispatchContext";
+// import DispatchContext from "./context/DispatchContext";
 import StateContext from "./context/StateContext";
 
 // import {
@@ -26,7 +26,7 @@ import Home from "./pages/home/home";
 
 import Warning from "./pages/application-page/warning.component";
 
-import MainApplication from "./pages/application-page/main-application.component";
+// import MainApplication from "./pages/application-page/main-application.component";
 
 import Register from "./components/register/register.component";
 
@@ -38,7 +38,7 @@ import { selectCurrentUser } from "./components/redux/user/user.selectors";
 
 import Dashboard from "./pages/dashboard/dashboard";
 
-import NextOfKin from "./pages/application-page/next-of-kin.page";
+// import NextOfKin from "./pages/application-page/next-of-kin.page";
 
 import Test from "./components/qualify-decision/test";
 import ClientDashboard from "./pages/dashboard/client-dashboard.page";
@@ -46,7 +46,7 @@ import QualifyDecision from "./components/qualify-decision/qualify-decision.comp
 
 import LoanIndicator from "./components/loan-indicator/loan-indicator.component";
 
-import Axios from "axios";
+// import Axios from "axios";
 // Axios.defaults.baseURL =
 //   process.env.BACKENDURL || "your heroku dot com goes here";
 

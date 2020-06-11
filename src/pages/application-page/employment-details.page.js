@@ -23,7 +23,7 @@ import {
 } from "../../components/Form/form-input/form-input.styles";
 
 import RadioBlockComponent from "../../components/Form/tabs-component/RadioBlock.component";
-import { JobType } from "../../components/Form/job-type/radioBtnContainer";
+// import { JobType } from "../../components/Form/job-type/radioBtnContainer";
 
 import { RadioContainer } from "../../components/Form/tabs-component/RadioInputBlock.styles";
 

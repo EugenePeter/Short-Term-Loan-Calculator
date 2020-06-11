@@ -44,7 +44,7 @@ function Decision(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // props.history.push(`/applicant/${state.account}`);
+    props.history.push(`/applicant/${state.account}`);
   };
 
   return (

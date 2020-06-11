@@ -15,9 +15,7 @@ import Axios from "axios";
 
 ReactDOM.render(
   <Provider store={store}>
-    <BrowserRouter>
-      <UserGlobal />
-    </BrowserRouter>
+    <UserGlobal />
   </Provider>,
   document.getElementById("root")
 );
