@@ -56,17 +56,23 @@ const close = keyframes`
 `;
 
 export const WarningInner = styled.div`
+  position: relative;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   margin: 0 auto;
   color: #fff;
+  box-sizing: border-box;
 
   h1,
   h2,
   h3,
   h4 {
     color: #fff;
+  }
+
+  div {
   }
 
   div {

@@ -10,6 +10,7 @@ export const Container = styled.div`
   flex-direction: column;
   width: 100%;
   align-items: center;
+  box-sizing: border-box;
 `;
 
 export const ContainerRow = styled.div`
@@ -48,7 +49,8 @@ export const ContainerNarrow = styled.div`
 export const ContainerNarrower = styled.div`
   display: flex;
   flex-direction: column;
-  width: 80%;
+  width: 90%;
+  box-sizing: border-box;
 
   @media screen and (min-width: 992px) {
     max-width: 50rem;
