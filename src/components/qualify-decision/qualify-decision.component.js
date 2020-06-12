@@ -39,7 +39,7 @@ function QualifyDecision(props) {
     async function fetchPost() {
       try {
         const response = await Axios.get(
-          `http://localhost:8080/check-qualification/${id}`,
+          `https://cashifiedbackend.herokuapp.com/check-qualification/${id}`,
           {
             cancelToken: ourRequest.token,
           }
@@ -96,11 +96,6 @@ function QualifyDecision(props) {
       });
     }
   }, [state.isLoading]);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    props.history.push(`/applicant/${state.account}`);
-  };
 
   console.log("account is " + state.account);
 

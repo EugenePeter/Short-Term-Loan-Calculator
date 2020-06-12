@@ -14,16 +14,20 @@ import {
   StyledNavLink,
   NavLinkContainer,
   GlobalStyle,
+  NavLinkBottom,
+  NavLinkBottomWrapper,
+  NavLinkBottomRow,
 } from "../../components/nav-link/nav-link.styles";
 
-// import DispatchContext from "../../context/DispatchContext";
 import StateContext from "../../context/StateContext";
-
 import { useImmer } from "use-immer";
-
 import { Container } from "../../global-styles/global.styles";
-
 import ActiveLoans from "./active-loans.page";
+
+import { ReactComponent as Settings } from "../../assets/icons/client-dashboard-icons/setting.svg";
+import { ReactComponent as Contact } from "../../assets/icons/client-dashboard-icons/contact.svg";
+import { ReactComponent as Notifications } from "../../assets/icons/client-dashboard-icons/notification.svg";
+import { ReactComponent as Website } from "../../assets/icons/client-dashboard-icons/website.svg";
 
 function ClientDashboard(props) {
   const { username } = useParams();
@@ -44,7 +48,7 @@ function ClientDashboard(props) {
     async function fetchData() {
       try {
         const response = await Axios.post(
-          `http://localhost:8080/profile/${username}`,
+          `https://cashifiedbackend.herokuapp.com/profile/${username}`,
           { token: appState.user.token },
           { cancelToken: ourRequest.token }
         );
@@ -65,7 +69,7 @@ function ClientDashboard(props) {
   return (
     <Fragment>
       <GlobalStyle />
-      <Container>
+      <Container className="full-height">
         <Router>
           <NavLinkContainer>
             <StyledNavLink
@@ -87,26 +91,33 @@ function ClientDashboard(props) {
             <Route exact path="/client-dashboard/:username">
               <ActiveLoans />
             </Route>
-            <Route path="/client-dashboard/:username/recent-loans">test</Route>
+            <Route path="/client-dashboard/:username/recent-loans">
+              Recent Loans
+            </Route>
+            <Route path="/client-dashboard/:username/overdue-payments">
+              Overdue Payments
+            </Route>
           </Switch>
 
-          <NavLinkContainer>
-            <StyledNavLink
-              exact
-              to={`/client-dashboard/${state.profileData.profileUsername}`}
-              className="nav-item nav-link"
-            >
-              Overdue Payments
-            </StyledNavLink>
-            <StyledNavLink
-              to={`/client-dashboard/${
-                state.profileData.profileUsername
-              }/recent-loans`}
-              className="nav-item nav-link"
-            >
-              Upcoming Payments
-            </StyledNavLink>
-          </NavLinkContainer>
+          <NavLinkBottom className="shadow-bottom">
+            <NavLinkContainer>
+              <StyledNavLink
+                exact
+                to={`/client-dashboard/${
+                  state.profileData.profileUsername
+                }/ovedue-payments`}
+                className="nav-item nav-link"
+              >
+                Overdue Payments
+              </StyledNavLink>
+            </NavLinkContainer>
+
+            <NavLinkBottomRow>
+              <Contact />
+              <Notifications />
+              <Settings />
+            </NavLinkBottomRow>
+          </NavLinkBottom>
         </Router>
       </Container>
     </Fragment>

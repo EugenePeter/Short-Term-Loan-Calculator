@@ -101,7 +101,11 @@ function App() {
           <SignIn />
         </Route>
 
-        <Route exact path="/s/:id" component={QualifyDecision} />
+        <Route
+          exact
+          path="/validating-applicant/:id"
+          component={QualifyDecision}
+        />
         <Route exact path="/svg/" component={LoanIndicator} />
         <Route
           exact

@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect, Fragment } from "react";
+import React, { useContext, Fragment } from "react";
 import { withRouter } from "react-router-dom";
 import { Link, useParams } from "react-router-dom";
 
@@ -32,6 +32,8 @@ import ApplicationDeclined from "./applicationDeclined";
 import LoadingIcon from "./loading-icon";
 
 function Decision(props) {
+  const appState = useContext(StateContext);
+  const username = appState.user.username;
   const account = props.account;
   const { id } = useParams();
   // const [account, setAccount] = useState("none");
@@ -44,7 +46,7 @@ function Decision(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    props.history.push(`/applicant/${state.account}`);
+    props.history.push(`/client-dashboard/${username}`);
   };
 
   return (

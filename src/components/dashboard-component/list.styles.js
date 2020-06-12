@@ -14,7 +14,7 @@ export const Modifiers = createGlobalStyle`
   }
 
   .padding-lr-1 {
-    padding: 0 1.70rem 0 1.70rem;
+    padding: 0.8rem 1.70rem 0.8rem 1.70rem;
 
     @media screen and (min-width: 992px) {
       padding: 0 1.70rem 0 1.70rem;
@@ -44,7 +44,11 @@ export const ListContainer = styled.div`
   box-sizing: border-box;
   background-color: #fff;
   box-shadow: 0px 10px 88px -50px rgba(0, 0, 0, 1) !important;
-  z-index: 10000;
+
+  &:nth-of-type(4) {
+    margin-botton: 100px;
+  }
+  /* z-index: 100; */
 `;
 
 export const DateCircleBadge = styled.div`

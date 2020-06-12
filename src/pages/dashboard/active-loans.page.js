@@ -52,7 +52,7 @@ function ActiveLoans(props) {
     async function fetchPosts() {
       try {
         const response = await Axios.get(
-          `http://localhost:8080/profile/${username}/posts`,
+          `https://cashifiedbackend.herokuapp.com/profile/${username}/posts`,
           {
             cancelToken: ourRequest.token,
           }
@@ -64,7 +64,7 @@ function ActiveLoans(props) {
           draft.isFetchingData = !draft.isFetchingData;
         });
       } catch (e) {
-        console.log(e + "There was a problem.");
+        console.log(e.resp + "There was a problem.");
       }
     }
     fetchPosts();
@@ -209,27 +209,27 @@ function ActiveLoans(props) {
   return (
     <Fragment>
       <Modifiers />
-      <LoanIndicator />
-      <UpcomingPaymentsTitle className="padding-l-1 margin-b">
-        Upcoming Payments{" "}
-        <CircleIcon className="margin-l-10">
-          <small> {loanDuration}</small>
-        </CircleIcon>{" "}
-      </UpcomingPaymentsTitle>
-      {!state.isFetchingDate &&
-        state.repaymentDates.length > 0 &&
-        state.repaymentDates.map((post) => {
-          return (
-            <List
-              key={post.id}
-              details={post}
-              repaymentAmount={loanRepayment}
-            />
-          );
-        })}
-      {state.isFetchingDate ? <LoadingIcon /> : ""}
-
-      {!state.repaymentDates ? <h1>test</h1> : <h1>now</h1>}
+      <div className="component-margin-b">
+        <LoanIndicator />
+        <UpcomingPaymentsTitle className="padding-l-1 margin-b">
+          Upcoming Payments{" "}
+          <CircleIcon className="margin-l-10">
+            <small> {loanDuration}</small>
+          </CircleIcon>{" "}
+        </UpcomingPaymentsTitle>
+        {!state.isFetchingDate &&
+          state.repaymentDates.length > 0 &&
+          state.repaymentDates.map((post) => {
+            return (
+              <List
+                key={post.id}
+                details={post}
+                repaymentAmount={loanRepayment}
+              />
+            );
+          })}
+        {state.isFetchingDate ? <LoadingIcon /> : ""}
+      </div>
     </Fragment>
   );
 }

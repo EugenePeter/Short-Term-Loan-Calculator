@@ -1,0 +1,22 @@
+<svg  width="60%" height="60%" viewBox="0 0 19.2 24">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_735" data-name="Rectangle 735" width="19.2" height="24" transform="translate(1615.6 40.5)"/>
+    </clipPath>
+  </defs>
+  <g id="Artwork_12_2_" transform="translate(-1615.6 -40.5)">
+    <g id="Group_585" data-name="Group 585">
+      <g id="Group_584" data-name="Group 584" clip-path="url(#clip-path)">
+        <g id="Group_581" data-name="Group 581" clip-path="url(#clip-path)">
+          <path id="Path_1940" data-name="Path 1940" d="M1634.1,58.4l-2.3-3.4V48.5a6.5,6.5,0,0,0-13,0V55l-2.3,3.4a.828.828,0,0,0,.7,1.3h16.3A.877.877,0,0,0,1634.1,58.4Z" fill="none" stroke="#e4e7ec" stroke-miterlimit="10" stroke-width="1.297"/>
+        </g>
+        <g id="Group_582" data-name="Group 582" clip-path="url(#clip-path)">
+          <path id="Path_1941" data-name="Path 1941" d="M1622.5,61.8a2.786,2.786,0,0,0,5.4,0" fill="none" stroke="#e4e7ec" stroke-linecap="round" stroke-miterlimit="10" stroke-width="1.297"/>
+        </g>
+        <g id="Group_583" data-name="Group 583" clip-path="url(#clip-path)">
+          <path id="Path_1942" data-name="Path 1942" d="M1633.8,44.1a3.6,3.6,0,1,1-3.6-3.6,3.585,3.585,0,0,1,3.6,3.6" fill="#ff5252"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

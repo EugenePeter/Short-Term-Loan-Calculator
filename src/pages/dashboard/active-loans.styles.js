@@ -23,6 +23,12 @@ export const Modifiers = createGlobalStyle`
     box-shadow: 0px 10px 88px -50px rgba(0,0,0,1)!important;
     }
 
+    .component-margin-b {
+      width: 100%;
+      margin: 0 0 6.47rem 0;
+      padding: 0;
+    }
+
 `;
 
 export const UpcomingPaymentsTitle = styled.div`
@@ -32,6 +38,8 @@ export const UpcomingPaymentsTitle = styled.div`
   width: 100%;
   height: 2.7rem;
   box-sizing: border-box;
+  font-weight: bold;
+  padding: 2rem 0 2rem 0;
 `;
 
 export const CircleIcon = styled.div`

@@ -232,7 +232,7 @@ function ApplicationState(props) {
         alert("submitting is " + state.submitting);
         try {
           const response = await Axios.post(
-            "http://localhost:8080/submit-application",
+            "https://cashifiedbackend.herokuapp.com/submit-application",
             {
               loanPurpose: state.loanPurpose,
               personalDetails: {
@@ -293,7 +293,7 @@ function ApplicationState(props) {
           console.log(response.data);
           // Redirect to new post url
           // props.history.push(`/profile/${localStorage.appUsername}`);
-          props.history.push(`/s/${response.data}`);
+          props.history.push(`/validating-applicant/${response.data}`);
           console.log("New post was created.");
         } catch (e) {
           console.log(e + "There was a problem.");
