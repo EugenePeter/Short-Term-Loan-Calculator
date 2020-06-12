@@ -216,7 +216,6 @@ function ActiveLoans(props) {
           <small> {loanDuration}</small>
         </CircleIcon>{" "}
       </UpcomingPaymentsTitle>
-      {state.isFetchingDate ? <LoadingIcon /> : ""}
       {!state.isFetchingDate &&
         state.repaymentDates.length > 0 &&
         state.repaymentDates.map((post) => {
@@ -229,6 +228,8 @@ function ActiveLoans(props) {
           );
         })}
       {state.isFetchingDate ? <LoadingIcon /> : ""}
+
+      {!state.repaymentDates ? <h1>test</h1> : <h1>now</h1>}
     </Fragment>
   );
 }
