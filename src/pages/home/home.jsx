@@ -21,7 +21,6 @@ class Home extends Component {
   render() {
     return (
       <Fragment>
-        <Navigation />
         <HeaderContainer>
           <HeroSection />
           <Calculator />
