@@ -1,15 +1,30 @@
-import styled, { css } from "styled-components";
+import styled, { css, createGlobalStyle } from "styled-components";
 
 export const mainColorGreen = "#3BC453";
 export const subColorGrey = "grey";
 export const mainColorBlack = "black";
 
+export const Modifier = createGlobalStyle`
+  .loan-indicator__shadow-b {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    height: 80px;
+
+  }
+`;
+
 // Parent conrtainer
 export const LoanIndicatorContainer = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: center;
   width: 100%;
-  height: 10px;
-  border-radius: 50px;
-  background-color: ${mainColorGreen};
+  height: 50px;
+  /* background-color: blue; */
+
+  box-shadow: 0px 12px 30px -10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
 `;
 
 const stepOne = css`
@@ -103,8 +118,11 @@ const getWidth = (props) => {
 
 // Ajust the width of the loan indicator
 export const LoanIndicatorWrapper = styled.div`
-  border-radius: 50px;
-  background-color: pink;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
 
   transition: width 1s cubic-bezier(0.35, 0, 0.1, 1) 0.2s;
 

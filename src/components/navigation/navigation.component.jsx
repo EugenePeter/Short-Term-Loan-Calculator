@@ -1,11 +1,6 @@
 import React, { Fragment, useContext } from "react";
 
-import {
-  Nav,
-  NavItems,
-  NavItemsInner,
-  LogoContainer,
-} from "./navigation.styles";
+import { Nav, NavItems, NavItemsInner, LogoContainer } from "./navigation.styles";
 
 // import { auth } from "../firebase/firebase.utils";
 
@@ -16,6 +11,7 @@ import { createStructuredSelector } from "reselect";
 import { selectCurrentUser } from "../redux/user/user.selectors";
 
 import { ReactComponent as Logo } from "../../assets/dollar.svg";
+import { useLocation } from "react-router-dom";
 
 import { ContainerMid } from "../../global-styles/global.styles";
 
@@ -26,6 +22,13 @@ const Navigation = ({ currentUsers }) => {
   const appState = useContext(StateContext);
   const appDispatch = useContext(DispatchContext);
   console.log("from nav " + currentUsers);
+  let location = useLocation();
+
+  const currentLocation = location.pathname;
+  const compareLocation = "/dashboard";
+  const compareLocationTwo = "main-application";
+
+  console.log(location.pathname);
 
   function handleLogOut() {
     appDispatch({ type: "logout" });
@@ -33,22 +36,43 @@ const Navigation = ({ currentUsers }) => {
 
   return (
     <Fragment>
-      <Nav>
-        <ContainerMid>
-          <LogoContainer to="/">
-            <Logo className="logo" />
-          </LogoContainer>
-          <NavItems>
-            {appState.loggedIn ? (
-              <NavItemsInner onClick={handleLogOut} to="">
-                sign out
-              </NavItemsInner>
-            ) : (
-              <NavItemsInner to="/signin">returning customer</NavItemsInner>
-            )}
-          </NavItems>
-        </ContainerMid>
-      </Nav>
+      {currentLocation == "/" && (
+        <Nav>
+          <ContainerMid>
+            <LogoContainer to="/">
+              <Logo className="logo" />
+            </LogoContainer>
+            <NavItems>
+              {appState.loggedIn ? (
+                <NavItemsInner onClick={handleLogOut} to="">
+                  sign out
+                </NavItemsInner>
+              ) : (
+                <NavItemsInner to="/signin">returning customer</NavItemsInner>
+              )}
+            </NavItems>
+          </ContainerMid>
+        </Nav>
+      )}
+
+      {currentLocation == "/dashboard" && (
+        <Nav>
+          <ContainerMid>
+            <LogoContainer to="/">
+              <Logo className="logo" />
+            </LogoContainer>
+            <NavItems>
+              {appState.loggedIn ? (
+                <NavItemsInner onClick={handleLogOut} to="">
+                  sign out
+                </NavItemsInner>
+              ) : (
+                <NavItemsInner to="/signin">returning customer</NavItemsInner>
+              )}
+            </NavItems>
+          </ContainerMid>
+        </Nav>
+      )}
     </Fragment>
   );
 };

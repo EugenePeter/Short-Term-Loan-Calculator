@@ -1,5 +1,7 @@
 import styled, { createGlobalStyle } from "styled-components";
 
+export const mainColorGreen = "#3BC453";
+
 export const Modifiers = createGlobalStyle`
   .margin-l-10 {
     margin-left: 0.58rem;
@@ -23,14 +25,49 @@ export const Modifiers = createGlobalStyle`
 
   .margin-b {
     margin: 0 0 0.58rem 0;
+  } 
+
+  .border {
+    border-bottom: .2px solid #707070;
   }
+
+  .component-margin-b {
+    margin: 0 0 6.47rem 0;
+  }
+  
+  .title-styles {
+   background-color: #fff;
+   font-weight: bold;
+   margin: 0;
+   padding: 2rem 0 2rem 0;
+   height: 4.7rem;
+    border-bottom: 0.1px solid #C9C9C9;
+   box-shadow: 0px 22px 28px -20px rgba(0,0,0,0.25);
+   z-index: 2000;
+   
+  }
+
+  
 
 .shadow {
 -webkit-box-shadow: 0px 10px 88px -50px rgba(0,0,0,0.75);
 -moz-box-shadow: 0px 10px 88px -50px rgba(0,0,0,0.75);
-box-shadow: 0px 10px 88px -50px rgba(0,0,0,1)!important;
+box-shadow: 0px 10px 60px -50px rgba(0,0,0,1)!important;
 }
 
+`;
+
+export const BackBtn = styled.div`
+  width: 0.5rem;
+  height: 0.5rem;
+  border: solid;
+  border-width: 0 0.2rem 0.2rem 0;
+  border-radius: 4px;
+  border-color: ${mainColorGreen};
+  /* -webkit-transform: rotate(90deg);
+  -ms-transform: rotate(90deg); */
+  transform: rotate(-45deg);
+  display: inline-block;
 `;
 
 export const ListContainer = styled.div`
@@ -49,6 +86,10 @@ export const ListContainer = styled.div`
 
   &:nth-of-type(4) {
     margin-botton: 100px;
+  }
+
+  &:last-of-type {
+    border: none;
   }
   /* z-index: 100; */
 `;

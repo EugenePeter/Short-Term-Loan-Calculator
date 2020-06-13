@@ -52,7 +52,7 @@ const Warning = ({ history, props }) => {
 
             <div>
               If you are on government benefits, ask if you can receive an
-              advance from Centrelink: www.humanservices.gov.au/ advancepayments
+              advance from Centrelink: www.humanservices.gov.au/advancepayments
             </div>
 
             <small>

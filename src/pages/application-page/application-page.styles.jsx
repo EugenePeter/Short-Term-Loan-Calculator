@@ -73,6 +73,7 @@ export const WarningInner = styled.div`
   }
 
   div {
+    overflow-wrap: break-word;
   }
 
   div {

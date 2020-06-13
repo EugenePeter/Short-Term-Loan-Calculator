@@ -2,10 +2,7 @@ import React, { Fragment } from "react";
 import { withRouter } from "react-router-dom";
 import styled from "styled-components";
 
-import {
-  Container,
-  ContainerNarrower,
-} from "../../global-styles/global.styles";
+import { Container, ContainerNarrower } from "../../global-styles/global.styles";
 
 import LoanFigures from "./loan-figures.component";
 
@@ -53,7 +50,7 @@ function LoanIndicator(props) {
     stroke-miterlimit: 10;
 
     stroke-dasharray: 1062.6514892578125;
-    animation: circle-outline 2.5s cubic-bezier(0.5, 0, 0.07, 1.01) infinite;
+    animation: circle-outline 2.5s cubic-bezier(0.5, 0, 0.07, 1.01) forwards;
 
     @keyframes circle-outline {
       from {
@@ -70,23 +67,10 @@ function LoanIndicator(props) {
       <GlobalStyle />
       <Container className="white-background">
         <ContainerNarrower className="narrower">
-          <svg
-            version="1.1"
-            id="Layer_1"
-            x="0px"
-            y="0px"
-            viewBox="0 0 417 417"
-            style={{ enableBackground: "new 0 0 417 417" }}
-          >
+          <svg version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 417 417" style={{ enableBackground: "new 0 0 417 417" }}>
             <style type="text/css" />
             <StyledIndicatorBase>
-              <circle
-                id="base"
-                className={indicatorBase}
-                cx="208.5"
-                cy="208.5"
-                r="168"
-              />
+              <circle id="base" className={indicatorBase} cx="208.5" cy="208.5" r="168" />
             </StyledIndicatorBase>
 
             <StyledIndicator>
