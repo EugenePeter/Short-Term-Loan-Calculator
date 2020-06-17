@@ -13,7 +13,14 @@ import { FormContainer, ButtonWrapper } from "../../components/Form/form-input/f
 
 import { CheckBoxContainer } from "../../components/Form/tabs-component/checkbox.styles";
 
-import { CheckBox, CheckBoxBlock, CheckBoxBlock__wrapper, CheckBoxInput, CheckMark, CheckBoxDetails } from "../../components/Form/tabs-component/checkbox.styles";
+import {
+  CheckBox,
+  CheckBoxBlock,
+  CheckBoxBlockWrapper,
+  CheckBoxInput,
+  CheckMark,
+  CheckBoxDetails,
+} from "../../components/Form/tabs-component/checkbox.styles";
 
 // import "normalize.css";
 
@@ -31,7 +38,12 @@ function LegalAndCompliance() {
   console.log(" is not clicked is " + state.isNotClicked);
 
   useEffect(() => {
-    if (disclosureState.disclosureStatement && appState.disclosure.cancellationStatement && appState.disclosure.privacyWaiver && appState.disclosure.creditCheck) {
+    if (
+      disclosureState.disclosureStatement &&
+      appState.disclosure.cancellationStatement &&
+      appState.disclosure.privacyWaiver &&
+      appState.disclosure.creditCheck
+    ) {
       setState((draft) => {
         draft.disabled = false;
       });
@@ -41,7 +53,12 @@ function LegalAndCompliance() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!disclosureState.disclosureStatement && !appState.disclosure.cancellationStatement && !appState.disclosure.privacyWaiver && !appState.disclosure.creditCheck) {
+    if (
+      !disclosureState.disclosureStatement &&
+      !appState.disclosure.cancellationStatement &&
+      !appState.disclosure.privacyWaiver &&
+      !appState.disclosure.creditCheck
+    ) {
       setState((draft) => {
         draft.isNotClicked = true;
       });
@@ -84,12 +101,14 @@ function LegalAndCompliance() {
 
           <CheckBoxContainer>
             <div style={{ marginBottom: "2rem" }}>
-              <h5 style={{ marginBottom: "0", color: "#fff" }}>Please read carefully and tick the box after reading.</h5>
+              <h5 style={{ marginBottom: "0", color: "#fff" }}>
+                Please read carefully and tick the box after reading.
+              </h5>
               <small style={{ color: "#fff" }}>Only tick the boxes after reading carefully.</small>
             </div>
 
             <CheckBox className="" isNotClicked={state.isNotClicked}>
-              <CheckBoxBlock__wrapper>
+              <CheckBoxBlockWrapper>
                 <CheckBoxBlock>
                   <CheckBoxInput
                     type="CheckBox"
@@ -104,21 +123,25 @@ function LegalAndCompliance() {
                   />
                   <CheckMark />
                 </CheckBoxBlock>
-              </CheckBoxBlock__wrapper>
-              <CheckBoxBlock__wrapper>
+              </CheckBoxBlockWrapper>
+              <CheckBoxBlockWrapper>
                 <CheckBoxDetails>
                   <h3>Disclosure Statement</h3>
-                  <small>I have read and understand the Disclosure Statement. I am completing this application of my own free will and can understand the language and terms used. Click here to read the Disclosure Statement.</small>
+                  <small>
+                    I have read and understand the Disclosure Statement. I am completing this
+                    application of my own free will and can understand the language and terms used.
+                    Click here to read the Disclosure Statement.
+                  </small>
                   <a href="">
                     {" "}
                     <small>Click here to read the Disclosure Statement.</small>{" "}
                   </a>
                 </CheckBoxDetails>
-              </CheckBoxBlock__wrapper>
+              </CheckBoxBlockWrapper>
             </CheckBox>
 
             <CheckBox className="" isNotClicked={state.isNotClicked}>
-              <CheckBoxBlock__wrapper>
+              <CheckBoxBlockWrapper>
                 <CheckBoxBlock>
                   <CheckBoxInput
                     type="CheckBox"
@@ -133,21 +156,25 @@ function LegalAndCompliance() {
                   />
                   <CheckMark />
                 </CheckBoxBlock>
-              </CheckBoxBlock__wrapper>
-              <CheckBoxBlock__wrapper>
+              </CheckBoxBlockWrapper>
+              <CheckBoxBlockWrapper>
                 <CheckBoxDetails>
                   <h3>Cancellation Statement</h3>
-                  <small>I have read and understand the cancellation Statement. I am completing this application of my own free will and can understand the language and terms used. Click here to read the cancellation Statement.</small>
+                  <small>
+                    I have read and understand the cancellation Statement. I am completing this
+                    application of my own free will and can understand the language and terms used.
+                    Click here to read the cancellation Statement.
+                  </small>
                   <a href="">
                     {" "}
                     <small>Click here to read the cancellation Statement..</small>{" "}
                   </a>
                 </CheckBoxDetails>
-              </CheckBoxBlock__wrapper>
+              </CheckBoxBlockWrapper>
             </CheckBox>
 
             <CheckBox className="" isNotClicked={state.isNotClicked}>
-              <CheckBoxBlock__wrapper>
+              <CheckBoxBlockWrapper>
                 <CheckBoxBlock>
                   <CheckBoxInput
                     type="CheckBox"
@@ -162,21 +189,25 @@ function LegalAndCompliance() {
                   />
                   <CheckMark />
                 </CheckBoxBlock>
-              </CheckBoxBlock__wrapper>
-              <CheckBoxBlock__wrapper>
+              </CheckBoxBlockWrapper>
+              <CheckBoxBlockWrapper>
                 <CheckBoxDetails>
                   <h3>Privacy Waiver</h3>
-                  <small>I have read and understand the Privacy waiver. I am completing this application of my own free will and can understand the language and terms used. Click here to read the Privacy waiver.</small>
+                  <small>
+                    I have read and understand the Privacy waiver. I am completing this application
+                    of my own free will and can understand the language and terms used. Click here
+                    to read the Privacy waiver.
+                  </small>
                   <a href="">
                     {" "}
                     <small>Click here to read the Privacy waiver.</small>{" "}
                   </a>
                 </CheckBoxDetails>
-              </CheckBoxBlock__wrapper>
+              </CheckBoxBlockWrapper>
             </CheckBox>
 
             <CheckBox className="" isNotClicked={state.isNotClicked}>
-              <CheckBoxBlock__wrapper>
+              <CheckBoxBlockWrapper>
                 <CheckBoxBlock>
                   <CheckBoxInput
                     type="CheckBox"
@@ -191,21 +222,34 @@ function LegalAndCompliance() {
                   />
                   <CheckMark />
                 </CheckBoxBlock>
-              </CheckBoxBlock__wrapper>
-              <CheckBoxBlock__wrapper>
+              </CheckBoxBlockWrapper>
+              <CheckBoxBlockWrapper>
                 <CheckBoxDetails>
                   <h3>Credit Check</h3>
-                  <small>I have read and understand the credit check disclosure. I am completing this application of my own free will and can understand the language and terms used. Click here to read the credit check disclosure." link="Click here to read the credit check disclosure.</small>
+                  <small>
+                    I have read and understand the credit check disclosure. I am completing this
+                    application of my own free will and can understand the language and terms used.
+                    Click here to read the credit check disclosure." link="Click here to read the
+                    credit check disclosure.
+                  </small>
                   <a href="">
                     {" "}
                     <small>Click here to read the credit check disclosure.</small>{" "}
                   </a>
                 </CheckBoxDetails>
-              </CheckBoxBlock__wrapper>
+              </CheckBoxBlockWrapper>
             </CheckBox>
           </CheckBoxContainer>
-          <small style={{ margin: "1.675rem 0 0 0", textAlign: "center" }}>By clicking continue, you agree to all our terms and conditions.</small>
-          <ButtonWrapper>{state.disabled ? <GlobalButton isDisabled> I undestand, continue</GlobalButton> : <GlobalButton filterApplicants>I undestand, continue</GlobalButton>}</ButtonWrapper>
+          <small style={{ margin: "1.675rem 0 0 0", textAlign: "center" }}>
+            By clicking continue, you agree to all our terms and conditions.
+          </small>
+          <ButtonWrapper>
+            {state.disabled ? (
+              <GlobalButton isDisabled> I undestand, continue</GlobalButton>
+            ) : (
+              <GlobalButton filterApplicants>I undestand, continue</GlobalButton>
+            )}
+          </ButtonWrapper>
         </FormContainer>
       </ContainerNarrower>
     </Container>

@@ -102,7 +102,7 @@ export const CheckBoxBlock = styled.div`
 
 `;
 
-export const CheckBoxBlock__wrapper = styled.div`
+export const CheckBoxBlockWrapper = styled.div`
    {
     display: flex;
     justify-content: center;
