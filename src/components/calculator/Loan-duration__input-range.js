@@ -11,7 +11,7 @@ import { updateInput } from "../redux/calculator/loan-duration/loan-duration-act
 
 import "normalize.css";
 
-class LoanDuration extends Component {
+class LoanDurationInputRange extends Component {
   handleDurationChange = (value) => {
     const { updateInput } = this.props;
     updateInput(value);
@@ -26,7 +26,9 @@ class LoanDuration extends Component {
     } = this.props;
 
     const sched = repaymentSchedule.sched;
-    const maxTerm = repaymentSchedule.term;
+
+    const maxTerm = parseInt(repaymentSchedule.term);
+    console.log(maxTerm);
     const { children } = this.props;
 
     return (
@@ -66,4 +68,4 @@ const mapDispatchToProps = (dispatch) =>
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(LoanDuration);
+)(LoanDurationInputRange);

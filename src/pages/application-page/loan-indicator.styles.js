@@ -72,46 +72,46 @@ const stepEleven = css`
 `;
 
 const getWidth = (props) => {
-  if (props.step == 1) {
+  if (props.step === 1) {
     return stepOne;
   }
 
-  if (props.step == 2) {
+  if (props.step === 2) {
     return stepTwo;
   }
 
-  if (props.step == 3) {
+  if (props.step === 3) {
     return stepThree;
   }
 
-  if (props.step == 4) {
+  if (props.step === 4) {
     return stepFour;
   }
 
-  if (props.step == 5) {
+  if (props.step === 5) {
     return stepFive;
   }
 
-  if (props.step == 6) {
+  if (props.step === 6) {
     return stepSix;
   }
 
-  if (props.step == 7) {
+  if (props.step === 7) {
     return stepSeven;
   }
 
-  if (props.step == 8) {
+  if (props.step === 8) {
     return stepEight;
   }
 
-  if (props.step == 9) {
+  if (props.step === 9) {
     return stepNine;
   }
-  if (props.step == 10) {
+  if (props.step === 10) {
     return stepTen;
   }
 
-  if (props.step == 11) {
+  if (props.step === 11) {
     return stepEleven;
   }
 };

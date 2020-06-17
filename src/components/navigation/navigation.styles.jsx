@@ -1,6 +1,18 @@
-import styled from "styled-components";
+import styled, { css, createGlobalStyle } from "styled-components";
 
 import { Link } from "react-router-dom";
+
+export const Modifiers = createGlobalStyle`
+.logo {
+  position: relative;
+  width: 46%;
+  box-sizing: border-box;
+}
+
+.margin-t {
+  margin-top: 1rem;
+}
+`;
 
 export const Nav = styled.nav`
   height: 40px;
@@ -8,7 +20,7 @@ export const Nav = styled.nav`
   display: flex;
   justify-content: center;
   /* margin-bottom: 25px; */
-  background-color: white;
+  /* background-color: white; */
   padding-top: 1rem;
   padding-bottom: 1rem;
 
@@ -18,7 +30,20 @@ export const Nav = styled.nav`
   }
 `;
 
+const home = css`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+`;
+
+const getLogoContainerStyles = (props) => {
+  if (props.home) {
+    return home;
+  }
+};
+
 export const LogoContainer = styled(Link)`
+  position: relative;
   height: 100%;
   width: 70px;
   /* padding: 25px; */
@@ -30,9 +55,7 @@ export const LogoContainer = styled(Link)`
     /* cursor: pointer; */
   }
 
-  .logo {
-    width: 40px;
-  }
+  ${getLogoContainerStyles}
 `;
 
 export const NavItems = styled.div`

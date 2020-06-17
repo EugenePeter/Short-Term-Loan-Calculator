@@ -14,24 +14,3 @@ export const FormInner = styled.div`
   // background-color: white;
   box-sizing: border-box;
 `;
-
-// .form-wrapper {
-//     display: flex;
-//     flex-direction: column;
-//     align-items: center;
-//     width: 80%;
-//     background-color: #fff!important;
-//     border-radius: 2rem;
-//     box-shadow: 0 10px 32px 4px rgba(0, 0, 0, 0.2), 0 2px 6px 1px rgba(0, 0, 0, 0.1);
-//     z-index: 1000;
-//     padding: 4%;
-// }
-
-// .form-wrapper__inner {
-//     display: flex;
-//     flex-direction: column;
-//     justify-content: center;
-//     padding: 6% 0 6% 0;
-//     width: 100%;
-//     // background-color: yellow;
-// }

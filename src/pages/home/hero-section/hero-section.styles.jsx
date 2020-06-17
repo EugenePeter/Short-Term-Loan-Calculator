@@ -1,7 +1,19 @@
-import styled from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
+
+export const Modifiers = createGlobalStyle`
+
+.margin-t {
+  margin-top: 4rem;
+}
+
+.margin-b {
+  margin-bottom: 2rem;
+}
+`;
 
 export const HeroSectionWrapper = styled.div`
-  margin: 10% 0 8% 0;
+  position: relative;
+  /* margin: 10% 0 8% 0; */
   display: flex;
   flex-direction: column;
   width: 100%;

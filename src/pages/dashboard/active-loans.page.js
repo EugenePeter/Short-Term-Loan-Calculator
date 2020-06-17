@@ -1,32 +1,12 @@
-import React, { useContext, useState, Fragment, useEffect } from "react";
-import {
-  useParams,
-  Switch,
-  Route,
-  withRouter,
-  BrowserRouter as Router,
-} from "react-router-dom";
-import { useImmerReducer, useImmer } from "use-immer";
-
-import StateContext from "../../context/StateContext";
+import React, { Fragment, useEffect } from "react";
+import { useParams, withRouter } from "react-router-dom";
+import { useImmer } from "use-immer";
 
 import Axios from "axios";
 
-import {
-  UpcomingPaymentsTitle,
-  CircleIcon,
-  Modifiers,
-} from "./active-loans.styles";
-
-import {
-  StyledNavLink,
-  NavLinkContainer,
-  GlobalStyle,
-} from "../../components/nav-link/nav-link.styles";
+import { UpcomingPaymentsTitle, CircleIcon, Modifiers } from "./active-loans.styles";
 
 import List from "../../components/dashboard-component/list.component";
-
-import {} from "../../global-styles/global.styles";
 
 import LoanIndicator from "../../components/loan-indicator/loan-indicator.component";
 
@@ -35,8 +15,6 @@ import LoadingIcon from "../../global-styles/Loading-icons.component";
 function ActiveLoans(props) {
   const { username } = useParams();
 
-  const appState = useContext(StateContext);
-  const [posts, setPosts] = useState([]);
   const [state, setState] = useImmer({
     accountDetails: "",
     sched: "sss",
@@ -51,12 +29,9 @@ function ActiveLoans(props) {
 
     async function fetchPosts() {
       try {
-        const response = await Axios.get(
-          `https://cashifiedbackend.herokuapp.com/profile/${username}/posts`,
-          {
-            cancelToken: ourRequest.token,
-          }
-        );
+        const response = await Axios.get(`https://cashifiedbackend.herokuapp.com/profile/${username}/posts`, {
+          cancelToken: ourRequest.token,
+        });
         // setPosts(response.data);
         console.log(response.data);
         setState((draft) => {
@@ -81,21 +56,21 @@ function ActiveLoans(props) {
 
   useEffect(() => {
     if (!state.isFetchingData) {
-      if (loanSchedule == "Month") {
+      if (loanSchedule === "Month") {
         setState((draft) => {
           draft.sched = 30;
           draft.runDateFunction = true;
         });
       }
 
-      if (loanSchedule == "Week") {
+      if (loanSchedule === "Week") {
         setState((draft) => {
           draft.sched = 7;
           draft.runDateFunction = true;
         });
       }
 
-      if (loanSchedule == "Fornight") {
+      if (loanSchedule === "Fornight") {
         setState((draft) => {
           draft.sched = 14;
           draft.runDateFunction = true;
@@ -114,26 +89,11 @@ function ActiveLoans(props) {
 
       var next = new Date(date.getFullYear(), date.getMonth(), date.getDate());
       var days = ["sun", "mon", "tues", "wed", "thus", "fri", "sat"];
-      var months = [
-        "jan",
-        "febr",
-        "mar",
-        "apr",
-        "may",
-        "jun",
-        "jul",
-        "aug",
-        "sep",
-        "oct",
-        "nov",
-        "dec",
-      ];
+      var months = ["jan", "febr", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
       const getDate = async () => {
         try {
           function format(d) {
-            return (
-              d.getDate() + " " + days[d.getDay()] + ", " + months[d.getMonth()]
-            );
+            return d.getDate() + " " + days[d.getDay()] + ", " + months[d.getMonth()];
           }
 
           function formatDate(d) {
@@ -152,11 +112,7 @@ function ActiveLoans(props) {
 
           async function dateLoop() {
             for (let i = 0; i < loanDuration; i++) {
-              next = new Date(
-                next.getFullYear(),
-                next.getMonth(),
-                next.getDate() + state.sched
-              );
+              next = new Date(next.getFullYear(), next.getMonth(), next.getDate() + state.sched);
               // console.log("Next week is " + format(next));
 
               // var getDate = await Array(1)
@@ -220,13 +176,7 @@ function ActiveLoans(props) {
         {!state.isFetchingDate &&
           state.repaymentDates.length > 0 &&
           state.repaymentDates.map((post) => {
-            return (
-              <List
-                key={post.id}
-                details={post}
-                repaymentAmount={loanRepayment}
-              />
-            );
+            return <List key={post.id} details={post} repaymentAmount={loanRepayment} />;
           })}
         {state.isFetchingDate ? <LoadingIcon /> : ""}
       </div>

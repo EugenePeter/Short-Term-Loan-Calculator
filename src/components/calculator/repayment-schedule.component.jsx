@@ -107,4 +107,7 @@ const mapDispatchToProps = (dispatch) => ({
   weekSched: () => dispatch(weekAction()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(RepaymentSchedule);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(RepaymentSchedule);

@@ -1,7 +1,10 @@
 import React, { Component } from "react";
+import { createStructuredSelector } from "reselect";
+import { connect } from "react-redux";
 
 import "./calculator.component.scss";
 
+import { amount } from "../redux/calculator/loan-amount/loan-amount.selectors";
 import LoanAmount from "./loan-amount.component";
 import LoanDuration from "./loan-duration.component";
 import RepaymentAmount from "./repayment-amount.component";
@@ -36,7 +39,7 @@ class Calculator extends Component {
   };
 
   render() {
-    const clicked = this.state.continue;
+    // const clicked = this.state.continue;
     const { getStarted } = this.state;
     return (
       <div className="Calculator">
@@ -44,18 +47,18 @@ class Calculator extends Component {
           <RepaymentSchedule />
           <div className="Input-wrapper">
             <div className="Input-wrapper__inner">
-              <LoanAmount />
-              <LoanDuration />
+              <LoanAmount>
+                <small>I want to borrow</small>
+              </LoanAmount>
+              <LoanDuration>
+                <small>Over</small>
+              </LoanDuration>
             </div>
             <div className="Input-wrapper__inner">
               <RepaymentAmount />
             </div>
             <div className="Input-wrapper__inner">
-              <CustomButton
-                onClick={this.handleGetStarted}
-                isActive={getStarted}
-                calculatorBtn
-              >
+              <CustomButton onClick={this.handleGetStarted} isActive={getStarted} calculatorBtn>
                 Get Started
               </CustomButton>
             </div>
@@ -66,4 +69,8 @@ class Calculator extends Component {
   }
 }
 
-export default withRouter(Calculator);
+const mapStateToProps = createStructuredSelector({
+  amount,
+});
+
+export default connect(mapStateToProps)(withRouter(Calculator));

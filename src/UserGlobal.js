@@ -59,11 +59,7 @@ function UserGlobal() {
       const ourRequest = Axios.CancelToken.source();
       async function fetchResults() {
         try {
-          const response = await Axios.post(
-            "http://localhost:8080/checkToken",
-            { token: localStorage.appToken },
-            { cancelToken: ourRequest.token }
-          );
+          const response = await Axios.post("https://cashifiedbackend.herokuapp.com/checkToken", { token: localStorage.appToken }, { cancelToken: ourRequest.token });
           if (!response.data) {
             dispatch({ type: "logout" });
             dispatch({

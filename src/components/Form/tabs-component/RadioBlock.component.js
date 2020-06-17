@@ -1,17 +1,17 @@
-import React, { Fragment, useContext } from "react";
-import DispatchContext from "../../../context/DispatchContext";
+import React, { Fragment } from "react";
+// import DispatchContext from "../../../context/DispatchContext";
 
 import {
   Radio,
   RadioBlock,
-  RadioBlock__wrapper,
+  RadioBlockWrapper,
   RadioInput,
   CheckMark,
 } from "./RadioInputBlock.styles";
 
 //Global styles
 
-const RadioBlockComponent = ({ value, name, ...props }) => {
+const RadioBlockComponent = ({ value, name }) => {
   // const appDispatch = useContext(DispatchContext);
   // const click = props.clicked;
 
@@ -20,14 +20,14 @@ const RadioBlockComponent = ({ value, name, ...props }) => {
   return (
     <Fragment>
       <Radio onClick={changeColor} className="">
-        <RadioBlock__wrapper>{value}</RadioBlock__wrapper>
+        <RadioBlockWrapper>{value}</RadioBlockWrapper>
 
-        <RadioBlock__wrapper>
+        <RadioBlockWrapper>
           <RadioBlock>
             <RadioInput type="radio" name={name} value={value} click />
             <CheckMark />
           </RadioBlock>
-        </RadioBlock__wrapper>
+        </RadioBlockWrapper>
       </Radio>
     </Fragment>
   );

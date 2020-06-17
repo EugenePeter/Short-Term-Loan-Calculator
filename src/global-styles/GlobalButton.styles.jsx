@@ -1,6 +1,6 @@
-import styled, { css, keyframes } from "styled-components";
+import styled, { css } from "styled-components";
 
-const subColor = "grey";
+// const subColor = "grey";
 export const mainColorGreen = "#3BC453";
 
 // const shrinkLabelStyles = css`
@@ -33,30 +33,25 @@ const warning = css`
   }
 `;
 
-const defaultButton = css`
-  background-color: #3bc453;
-  &:hover {
-    background-image: linear-gradient(
-      to bottom right,
-      #55d251,
-      #4ac76c,
-      #31b3c2
-    );
-    color: #fff;
-    border: 1px solid #3bc453;
-  }
-`;
+// const defaultButton = css`
+//   background-color: #3bc453;
+//   &:hover {
+//     background-image: linear-gradient(
+//       to bottom right,
+//       #55d251,
+//       #4ac76c,
+//       #31b3c2
+//     );
+//     color: #fff;
+//     border: 1px solid #3bc453;
+//   }
+// `;
 
 const applicationFrmBtn = css`
   border-radius: 4px;
   background-color: ${mainColorGreen};
   &:hover {
-    background-image: linear-gradient(
-      to bottom right,
-      #55d251,
-      #4ac76c,
-      #31b3c2
-    );
+    background-image: linear-gradient(to bottom right, #55d251, #4ac76c, #31b3c2);
     color: #fff;
     border: 1px solid #3bc453;
   }
@@ -67,12 +62,7 @@ const goBack = css`
   background-color: #ffd76a;
   border-radius: 4px;
   &:hover {
-    background-image: linear-gradient(
-      to bottom right,
-      #55d251,
-      #4ac76c,
-      #31b3c2
-    );
+    background-image: linear-gradient(to bottom right, #55d251, #4ac76c, #31b3c2);
     color: #fff;
     border: 1px solid #3bc453;
   }

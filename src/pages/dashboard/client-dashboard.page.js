@@ -1,10 +1,23 @@
 import React, { useContext, useEffect, Fragment } from "react";
 
-import { useParams, Switch, Route, withRouter, BrowserRouter as Router, useLocation } from "react-router-dom";
+import {
+  useParams,
+  Switch,
+  Route,
+  withRouter,
+  BrowserRouter as Router,
+  useLocation,
+} from "react-router-dom";
 
 import Axios from "axios";
 
-import { StyledNavLink, NavLinkContainer, GlobalStyle, NavLinkBottom, NavLinkBottomWrapper, NavLinkBottomRow } from "../../components/nav-link/nav-link.styles";
+import {
+  StyledNavLink,
+  NavLinkContainer,
+  GlobalStyle,
+  NavLinkBottom,
+  NavLinkBottomRow,
+} from "../../components/nav-link/nav-link.styles";
 
 import StateContext from "../../context/StateContext";
 import { useImmer } from "use-immer";
@@ -15,9 +28,9 @@ import SettingsComponent from "../../components/settings-component/settings.comp
 import { ReactComponent as Settings } from "../../assets/icons/client-dashboard-icons/setting.svg";
 import { ReactComponent as Contact } from "../../assets/icons/client-dashboard-icons/contact.svg";
 import { ReactComponent as Notifications } from "../../assets/icons/client-dashboard-icons/notification.svg";
-import { ReactComponent as Website } from "../../assets/icons/client-dashboard-icons/website.svg";
+// import { ReactComponent as Website } from "../../assets/icons/client-dashboard-icons/website.svg";
 
-function ClientDashboard(props, { match }) {
+function ClientDashboard(props) {
   const { username } = useParams();
   const appState = useContext(StateContext);
 
@@ -37,7 +50,11 @@ function ClientDashboard(props, { match }) {
 
     async function fetchData() {
       try {
-        const response = await Axios.post(`https://cashifiedbackend.herokuapp.com/profile/${username}`, { token: appState.user.token }, { cancelToken: ourRequest.token });
+        const response = await Axios.post(
+          `https://cashifiedbackend.herokuapp.com/profile/${username}`,
+          { token: appState.user.token },
+          { cancelToken: ourRequest.token }
+        );
         setState((draft) => {
           draft.profileData = response.data;
         });
@@ -56,53 +73,57 @@ function ClientDashboard(props, { match }) {
   return (
     <Fragment>
       <GlobalStyle />
-      <Container className=" full-height">
-        <Router>
-          <NavLinkContainer>
-            <StyledNavLink exact to={`/client-dashboard/${username}`} className="loan-nav">
-              Active Loans
-            </StyledNavLink>
-            <StyledNavLink to={`/client-dashboard/${username}/recent-loans`} className="loan-nav">
-              Recent Loans
-            </StyledNavLink>
-          </NavLinkContainer>
-
-          <Switch>
-            <Route exact path="/client-dashboard/:username">
-              <ActiveLoans />
-            </Route>
-            <Route path="/client-dashboard/:username/recent-loans">Recent Loans</Route>
-            <Route path="/client-dashboard/:username/overdue-payments">Overdue Payments</Route>
-
-            <Route path={`${location}/settings`}>
-              <SettingsComponent />
-            </Route>
-          </Switch>
-
-          <NavLinkBottom>
+      {appState.loggedIn ? (
+        <Container className=" full-height">
+          <Router>
             <NavLinkContainer>
-              <StyledNavLink exact to={`${location}/ovedue-payments`} className="loan-nav">
-                Overdue Payments
+              <StyledNavLink exact to={`/client-dashboard/${username}`} className="loan-nav">
+                Active Loans
+              </StyledNavLink>
+              <StyledNavLink to={`/client-dashboard/${username}/recent-loans`} className="loan-nav">
+                Recent Loans
               </StyledNavLink>
             </NavLinkContainer>
 
-            <NavLinkBottomRow>
-              <StyledNavLink exact to={`${location}/contact`} className="nav-item nav-link">
-                <Contact />
-              </StyledNavLink>
+            <Switch>
+              <Route exact path="/client-dashboard/:username">
+                <ActiveLoans />
+              </Route>
+              <Route path="/client-dashboard/:username/recent-loans">Recent Loans</Route>
+              <Route path="/client-dashboard/:username/overdue-payments">Overdue Payments</Route>
 
-              <StyledNavLink exact to={`${location}/notifications`} className="nav-item nav-link">
-                <Notifications />
-              </StyledNavLink>
+              <Route path={`${location}/settings`}>
+                <SettingsComponent />
+              </Route>
+            </Switch>
 
-              <StyledNavLink exact to={`${location}/settings`} className="nav-item nav-link">
-                <Settings />
-              </StyledNavLink>
-            </NavLinkBottomRow>
-          </NavLinkBottom>
-        </Router>
-      </Container>
+            <NavLinkBottom>
+              <NavLinkContainer>
+                <StyledNavLink exact to={`${location}/ovedue-payments`} className="loan-nav">
+                  Overdue Payments
+                </StyledNavLink>
+              </NavLinkContainer>
+
+              <NavLinkBottomRow>
+                <StyledNavLink exact to={`${location}/contact`} className="nav-item nav-link">
+                  <Contact />
+                </StyledNavLink>
+
+                <StyledNavLink exact to={`${location}/notifications`} className="nav-item nav-link">
+                  <Notifications />
+                </StyledNavLink>
+
+                <StyledNavLink exact to={`${location}/settings`} className="nav-item nav-link">
+                  <Settings />
+                </StyledNavLink>
+              </NavLinkBottomRow>
+            </NavLinkBottom>
+          </Router>
+        </Container>
+      ) : (
+        props.history.push("/")
+      )}
     </Fragment>
   );
 }
-export default withRouter(ClientDashboard);
+export default ClientDashboard;

@@ -1,25 +1,14 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useEffect } from "react";
 
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import Axios from "axios";
 
-import DispatchContext from "../../context/DispatchContext";
-import StateContext from "../../context/StateContext";
+import { useImmer } from "use-immer";
 
-import { useImmerReducer, useImmer } from "use-immer";
-
-import {
-  Container,
-  ContainerNarrower,
-  TitleContainer,
-  ContainerRow,
-} from "../../global-styles/global.styles";
+import { Container } from "../../global-styles/global.styles";
 
 function ClientDashboard(props) {
-  const appState = useContext(StateContext);
-  const appDispatch = useContext(DispatchContext);
-
   const { username } = useParams();
 
   const [state, setState] = useImmer({
@@ -40,11 +29,7 @@ function ClientDashboard(props) {
 
     async function fetchData() {
       try {
-        const response = await Axios.post(
-          `http://localhost:8080/profile/${username}`,
-          { token: localStorage.appToken },
-          { cancelToken: ourRequest.token }
-        );
+        const response = await Axios.post(`http://localhost:8080/profile/${username}`, { token: localStorage.appToken }, { cancelToken: ourRequest.token });
         console.log("response data is " + response.data);
         setState((draft) => {
           draft.profileData = response.data;

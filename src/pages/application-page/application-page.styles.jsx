@@ -1,4 +1,72 @@
-import styled, { css, keyframes } from "styled-components";
+import styled, { css, keyframes, createGlobalStyle } from "styled-components";
+
+export const Modifiers = createGlobalStyle`
+.flex-row {
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%!important;
+
+  * {
+    padding: 0;
+    margin: 0;
+  }
+}
+
+.margin-t {
+ margin-top: 1rem;
+}
+
+.padding-t-b {
+  padding: 2rem 0 2rem 0;
+}
+
+.shadow-bottom{
+  width: 100%;
+
+  -webkit-box-shadow: 0px -101px 5px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px -101px 5px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 14px -20px rgba(0, 0, 0, 0.75) !important;
+}
+
+.full-height {
+  height: 100vh;
+  display: flex;
+}
+
+.max-width__mobile-width {
+  width: 50rem!important;
+}
+
+  .loan-nav {
+    &[aria-current="page"] {
+      background: #fff;
+      color: #7ece42;
+      border: 2px solid #7ece42;
+  
+      &:hover,
+      &:focus {
+        &:after {
+          background: #fff;
+        }
+      }
+    }
+  }
+
+  .border {
+    border: 2px solid #55d251!important;
+  }
+
+  .bg-color__green {
+    background-image: linear-gradient(
+      to bottom right,
+      #55d251,
+      #4ac76c,
+      #31b3c2
+    );
+  }
+`;
 
 export const ContinueBtn = styled.button`
   width: 100%;
@@ -152,10 +220,11 @@ export const InputWrapper = styled.div`
   align-items: center;
   width: 100%;
   /* background-color: #fff!important; */
-  border-radius: 2rem;
+  border-radius: 2rem 2rem 0 0
   /* box-shadow: 0 10px 32px 4px rgba(0, 0, 0, 0.2), 0 2px 6px 1px rgba(0, 0, 0, 0.1); */
   z-index: 1000;
-  padding: 4%;
+  /* padding: 4%; */
+  box-sizing: border-box;
 `;
 
 export const InputWrapperInner = styled.div`

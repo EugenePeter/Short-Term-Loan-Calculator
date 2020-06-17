@@ -1,61 +1,54 @@
-
 import React from "react";
-import 'normalize.css';
-import './calculator.component.scss';
-import { connect } from 'react-redux';
+import "normalize.css";
+import "./calculator.component.scss";
+import { connect } from "react-redux";
 
+import { createStructuredSelector } from "reselect";
 
-import { createStructuredSelector } from 'reselect'
+import { amount } from "../redux/calculator/loan-amount/loan-amount.selectors";
 
-import { amount } from '../redux/calculator/loan-amount/loan-amount.selectors';
+import { schedule } from "../redux/calculator/repayment-amount/repayment-amount.selector";
 
-import { schedule } from '../redux/calculator/repayment-amount/repayment-amount.selector';
+import { durationOfLoan } from "../redux/calculator/repayment-amount/repayment-amount.selector";
 
-import { durationOfLoan } from '../redux/calculator/repayment-amount/repayment-amount.selector'
+import { apr, repayment } from "../redux/calculator/repayment-amount/repayment-amount.selector";
 
+import RepaymentAmountFigure from "./repayment-figure.component";
 
-import { apr, repayment } from '../redux/calculator/repayment-amount/repayment-amount.selector'
-
-import RepaymentAmountFigure from './repayment-figure.component';
-
-import TotalRepayment from './total-repayment.component';
-
-
+import TotalRepayment from "./total-repayment.component";
 
 const RepaymentAmount = ({ durationOfLoan, amount, schedule, apr, repayment }) => {
+  // const total = repayment * durationOfLoan;
 
+  console.log("repayment amount is = " + repayment);
 
-    const total = repayment * durationOfLoan;
+  console.log("the apr is = " + apr);
 
-    console.log("repayment amount is = " + repayment)
+  console.log("The amount is = " + amount);
 
-    console.log("the apr is = " + apr )
+  console.log("duration is = " + durationOfLoan);
 
-    console.log("The amount is = " + amount)
+  console.log("from repayment amount" + apr);
 
-    console.log("duration is = " + durationOfLoan)
-
-    console.log("from repayment amount" + apr)
-
-    return (
-        <div className="payment-amount__container">
-            <div className="paymentAmount">
-                <RepaymentAmountFigure />  
-            </div>
-            <div className="paymentAmount">
-                <TotalRepayment />
-            </div>
-        </div>
-    );
+  return (
+    <div className="payment-amount__container">
+      <div className="paymentAmount">
+        <RepaymentAmountFigure />
+      </div>
+      <div className="paymentAmount">
+        <TotalRepayment />
+      </div>
+    </div>
+  );
 };
 
-const mapStateToProps = createStructuredSelector({ 
-    schedule,
-    amount,
-    durationOfLoan,
-    apr,
-    repayment
- });
+const mapStateToProps = createStructuredSelector({
+  schedule,
+  amount,
+  durationOfLoan,
+  apr,
+  repayment,
+});
 
 // const mapStateToProps = (state) => {
 //     return {

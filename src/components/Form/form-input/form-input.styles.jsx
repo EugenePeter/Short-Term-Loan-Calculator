@@ -194,7 +194,8 @@ const ha = (props) => {
 };
 
 export const FormInputSpan = styled.label`
-  display: ${({ label, value }) => (label && value ? "none" : "")};
+  display: ${({ label, value }) =>
+    label && value ? "none" : ""};
   display: flex;
   flex-direction: column;
   color: ${subColor};
@@ -226,6 +227,7 @@ export const ButtonsBarContainer = styled.div`
 `;
 
 export const ButtonWrapper = styled.div`
+  position: relative;
   margin-top: 8%;
   /* margin-bottom: 8%; */
   width: 100%;

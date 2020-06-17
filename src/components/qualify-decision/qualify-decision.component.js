@@ -6,10 +6,7 @@ import Axios from "axios";
 
 import { useImmer } from "use-immer";
 
-import {
-  Container,
-  ContainerNarrower,
-} from "../../global-styles/global.styles";
+import { Container, ContainerNarrower } from "../../global-styles/global.styles";
 
 import PersonalDetails from "./personal-details-validation";
 import EmploymentDetails from "./employment-details-validation";
@@ -18,13 +15,12 @@ import Decision from "./loanStatus.component";
 
 import ValidationIllustration from "../../components/illustration-component/validation-illustration.component.";
 
-import ApplicationApproved from "./applicationApproved";
+// import ApplicationApproved from "./applicationApproved";
 
 import LoadingIcon from "./loading-icon";
 
 function QualifyDecision(props) {
   const { id } = useParams();
-  // const [account, setAccount] = useState("none");
   const [state, setState] = useImmer({
     step: 1,
     account: "test",
@@ -34,16 +30,13 @@ function QualifyDecision(props) {
   });
 
   useEffect(() => {
-    const token = localStorage.appToken;
+    // const token = localStorage.appToken;
     const ourRequest = Axios.CancelToken.source();
     async function fetchPost() {
       try {
-        const response = await Axios.get(
-          `https://cashifiedbackend.herokuapp.com/check-qualification/${id}`,
-          {
-            cancelToken: ourRequest.token,
-          }
-        );
+        const response = await Axios.get(`https://cashifiedbackend.herokuapp.com/check-qualification/${id}`, {
+          cancelToken: ourRequest.token,
+        });
         setState((draft) => {
           draft.account = response.data;
         });

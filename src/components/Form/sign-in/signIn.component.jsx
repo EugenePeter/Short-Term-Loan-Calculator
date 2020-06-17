@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Componen } from "react";
 
 import "normalize.css";
 
@@ -8,15 +8,12 @@ import { FormContainer, ButtonWrapper } from "../form-input/form-input.styles";
 
 import CustomButton from "../../custom-button/custom-button.component";
 
-import {
-  auth,
-  signInWithGoogle,
-} from "../../../components/firebase/firebase.utils";
+import { auth, signInWithGoogle } from "../../../components/firebase/firebase.utils";
 
 import {
   SignInContainer,
   SignInTitle,
-  ButtonsBarContainer,
+  // ButtonsBarContainer,
 } from "./sign-in.styles";
 
 import { Container } from "../../../global-styles/global.styles";
@@ -60,22 +57,8 @@ class SignIn extends Component {
           <span>Sign in with your email and password</span>
 
           <FormContainer onSubmit={this.handleSubmit}>
-            <FormInput
-              name="email"
-              type="email"
-              handleChange={this.handleChange}
-              value={this.state.email}
-              label="email"
-              required
-            />
-            <FormInput
-              name="password"
-              type="password"
-              value={this.state.password}
-              handleChange={this.handleChange}
-              label="password"
-              required
-            />
+            <FormInput name="email" type="email" handleChange={this.handleChange} value={this.state.email} label="email" required />
+            <FormInput name="password" type="password" value={this.state.password} handleChange={this.handleChange} label="password" required />
 
             <ButtonWrapper>
               <CustomButton type="submit" signIn>

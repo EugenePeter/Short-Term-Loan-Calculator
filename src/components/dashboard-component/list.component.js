@@ -1,14 +1,8 @@
-import React, { useContext, useState, Fragment } from "react";
+import React, { Fragment } from "react";
 import { withRouter } from "react-router-dom";
 import { ReactComponent as CheckIcon } from "../../assets/icons/check-icon.svg";
 
-import {
-  Modifiers,
-  ListContainer,
-  DateCircleBadge,
-  AmountWrapper,
-  ButtonRounded,
-} from "../dashboard-component/list.styles";
+import { Modifiers, ListContainer, DateCircleBadge, AmountWrapper, ButtonRounded } from "../dashboard-component/list.styles";
 
 import {} from "../../components/dashboard-component/list.styles";
 

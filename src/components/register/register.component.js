@@ -1,32 +1,24 @@
 import React, { useEffect, useState } from "react";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import Axios from "axios";
 import { useImmerReducer } from "use-immer";
 import { CSSTransition } from "react-transition-group";
 // import DispatchContext from "../../context/DispatchContext";
 
-import {
-  Container,
-  TitleContainer,
-  ContainerNarrower,
-} from "../../global-styles/global.styles";
+import { Container, TitleContainer, ContainerNarrower } from "../../global-styles/global.styles";
 
 import FormInput from "../../components/Form/form-input/form-input.component";
 
-import {
-  FormContainer,
-  ButtonWrapper,
-  FormBlock,
-} from "../Form/form-input/form-input.styles";
+import { FormContainer, ButtonWrapper, FormBlock } from "../Form/form-input/form-input.styles";
 
 import { Warning } from "../../global-styles/warning.styles";
 
 import { GlobalButton } from "../../global-styles/GlobalButton.styles";
 
-import LoadingIcon from "../../global-styles/Loading-icons.component";
+// import LoadingIcon from "../../global-styles/Loading-icons.component";
 
 function Register(props) {
-  const [isLoading, setIsLoading] = useState(false);
+  const [setIsLoading] = useState(false);
   const initialState = {
     username: {
       value: "",
@@ -59,13 +51,9 @@ function Register(props) {
           draft.username.hasErrors = true;
           draft.username.message = "Username cannot exceed 30 characters.";
         }
-        if (
-          draft.username.value &&
-          !/^([a-zA-Z0-9]+)$/.test(draft.username.value)
-        ) {
+        if (draft.username.value && !/^([a-zA-Z0-9]+)$/.test(draft.username.value)) {
           draft.username.hasErrors = true;
-          draft.username.message =
-            "Username can only contain letters and numbers.";
+          draft.username.message = "Username can only contain letters and numbers.";
         }
         return;
       case "usernameAfterDelay":
@@ -123,13 +111,7 @@ function Register(props) {
         }
         return;
       case "submitForm":
-        if (
-          !draft.username.hasErrors &&
-          draft.username.isUnique &&
-          !draft.email.hasErrors &&
-          draft.email.isUnique &&
-          !draft.password.hasErrors
-        ) {
+        if (!draft.username.hasErrors && draft.username.isUnique && !draft.email.hasErrors && draft.email.isUnique && !draft.password.hasErrors) {
           draft.submitCount++;
         }
         return;
@@ -140,30 +122,21 @@ function Register(props) {
 
   useEffect(() => {
     if (state.username.value) {
-      const delay = setTimeout(
-        () => dispatch({ type: "usernameAfterDelay" }),
-        200
-      );
+      const delay = setTimeout(() => dispatch({ type: "usernameAfterDelay" }), 200);
       return () => clearTimeout(delay);
     }
   }, [state.username.value]);
 
   useEffect(() => {
     if (state.email.value) {
-      const delay = setTimeout(
-        () => dispatch({ type: "emailAfterDelay" }),
-        800
-      );
+      const delay = setTimeout(() => dispatch({ type: "emailAfterDelay" }), 800);
       return () => clearTimeout(delay);
     }
   }, [state.email.value]);
 
   useEffect(() => {
     if (state.password.value) {
-      const delay = setTimeout(
-        () => dispatch({ type: "passwordAfterDelay" }),
-        800
-      );
+      const delay = setTimeout(() => dispatch({ type: "passwordAfterDelay" }), 800);
       return () => clearTimeout(delay);
     }
   }, [state.password.value]);
@@ -174,11 +147,7 @@ function Register(props) {
       const ourRequest = Axios.CancelToken.source();
       async function fetchResults() {
         try {
-          const response = await Axios.post(
-            "https://cashifiedbackend.herokuapp.com/doesUsernameExist",
-            { username: state.username.value },
-            { cancelToken: ourRequest.token }
-          );
+          const response = await Axios.post("https://cashifiedbackend.herokuapp.com/doesUsernameExist", { username: state.username.value }, { cancelToken: ourRequest.token });
           dispatch({ type: "usernameUniqueResults", value: response.data });
         } catch (e) {
           console.log("There was a problem or the request was cancelled.");
@@ -195,11 +164,7 @@ function Register(props) {
       const ourRequest = Axios.CancelToken.source();
       async function fetchResults() {
         try {
-          const response = await Axios.post(
-            "https://cashifiedbackend.herokuapp.com/doesEmailExist",
-            { email: state.email.value },
-            { cancelToken: ourRequest.token }
-          );
+          const response = await Axios.post("https://cashifiedbackend.herokuapp.com/doesEmailExist", { email: state.email.value }, { cancelToken: ourRequest.token });
           dispatch({ type: "emailUniqueResults", value: response.data });
         } catch (e) {
           console.log("There was a problem or the request was cancelled.");
@@ -288,15 +253,8 @@ function Register(props) {
             label="User Name"
           />
 
-          <CSSTransition
-            in={state.username.hasErrors}
-            timeout={330}
-            classNames="liveValidateMessage"
-            unmountOnExit
-          >
-            <Warning className="alert alert-danger small liveValidateMessage">
-              {state.username.message}
-            </Warning>
+          <CSSTransition in={state.username.hasErrors} timeout={330} classNames="liveValidateMessage" unmountOnExit>
+            <Warning className="alert alert-danger small liveValidateMessage">{state.username.message}</Warning>
           </CSSTransition>
 
           <FormInput
@@ -312,15 +270,8 @@ function Register(props) {
             label="email"
           />
 
-          <CSSTransition
-            in={state.email.hasErrors}
-            timeout={330}
-            classNames="liveValidateMessage"
-            unmountOnExit
-          >
-            <Warning className="alert alert-danger small liveValidateMessage">
-              {state.email.message}
-            </Warning>
+          <CSSTransition in={state.email.hasErrors} timeout={330} classNames="liveValidateMessage" unmountOnExit>
+            <Warning className="alert alert-danger small liveValidateMessage">{state.email.message}</Warning>
           </CSSTransition>
 
           <FormInput
@@ -336,19 +287,16 @@ function Register(props) {
             label="password"
           />
 
-          <CSSTransition
-            in={state.password.hasErrors}
-            timeout={330}
-            classNames="liveValidateMessage"
-            unmountOnExit
-          >
-            <Warning className="alert alert-danger small liveValidateMessage">
-              {state.password.message}
-            </Warning>
+          <CSSTransition in={state.password.hasErrors} timeout={330} classNames="liveValidateMessage" unmountOnExit>
+            <Warning className="alert alert-danger small liveValidateMessage">{state.password.message}</Warning>
           </CSSTransition>
+
           <ButtonWrapper>
             <GlobalButton filterApplicants>Save And Continue</GlobalButton>
           </ButtonWrapper>
+          <Link to="/signin" style={{ color: "#3BC453" }}>
+            I already have an account
+          </Link>
         </FormContainer>
       </ContainerNarrower>
     </Container>

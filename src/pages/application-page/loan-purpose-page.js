@@ -1,33 +1,15 @@
-import React, { useContext, useState, useEffect } from "react";
-import { useImmerReducer, useImmer } from "use-immer";
+import React, { useContext } from "react";
 
 import DispatchContext from "../../context/DispatchContext";
 import StateContext from "../../context/StateContext";
 
 import { GlobalButton, BackBtn } from "../../global-styles/GlobalButton.styles";
 
-import {
-  Container,
-  ContainerNarrower,
-  TitleContainer,
-  ContainerRow,
-} from "../../global-styles/global.styles";
+import { Container, ContainerNarrower, TitleContainer } from "../../global-styles/global.styles";
 
-import {
-  FormContainer,
-  FormInputContainer,
-  ButtonWrapper,
-  FormInputSpan,
-  GroupContainer,
-} from "../../components/Form/form-input/form-input.styles";
+import { FormContainer, ButtonWrapper } from "../../components/Form/form-input/form-input.styles";
 
-import {
-  RadioContainer,
-  IconContainer,
-  IconRow,
-  RadioInput,
-  IconsWrapper,
-} from "../../components/Form/radio-button/radio-button-styles";
+import { IconContainer, IconRow, RadioInput, IconsWrapper } from "../../components/Form/radio-button/radio-button-styles";
 
 import Education from "../../assets/icons/education-cashified";
 import { ReactComponent as Emergency } from "../../assets/icons/emergency.svg";
@@ -40,23 +22,6 @@ import { ReactComponent as Utilities } from "../../assets/icons/utilities-and-bi
 import { ReactComponent as VehicleRepairs } from "../../assets/icons/vehicle-repairs.svg";
 
 function LoanPurpose() {
-  const [state, setState] = useImmer({
-    icons: {
-      url: [
-        "../../assets/icons/education-cashified.svg",
-        "../../assets/icons/emergencies-cashified.svg",
-        "../../assets/icons/home-improvements-cashified.svg",
-        "../../assets/icons/leisure-cashified.svg",
-        "../../assets/icons/life-events-cashified.svg",
-        "../../assets/icons/purchases-cashified.svg",
-        "../../assets/icons/travel-cashified.svg",
-        "../../assets/icons/utilities-and-bills-cashified.svg",
-        "../../assets/icons/vehicle-expenses-cashified.svg",
-        ,
-      ],
-    },
-  });
-
   const appState = useContext(StateContext);
   const appDispatch = useContext(DispatchContext);
 

@@ -1,6 +1,7 @@
-import React, { useContext } from "react";
+import React, { useContext, Suspense } from "react";
 import "./App.css";
 import { Switch, Route, Redirect } from "react-router-dom";
+
 // import Calculator from "./components/calculator/calculator.component";
 import Navigation from "./components/navigation/navigation.component";
 import "normalize.css";
@@ -19,7 +20,7 @@ import StateContext from "./context/StateContext";
 
 import SignIn from "./components/sign-in/sign-in.component";
 
-import ApplicationState from "./pages/application-page/application.state.jsx";
+// import ApplicationState from "./pages/application-page/application.state.jsx";
 // import ApplicationPage from "./pages/application-page/application-page";
 
 import Home from "./pages/home/home";
@@ -41,10 +42,16 @@ import Dashboard from "./pages/dashboard/dashboard";
 // import NextOfKin from "./pages/application-page/next-of-kin.page";
 
 import Test from "./components/qualify-decision/test";
-import ClientDashboard from "./pages/dashboard/client-dashboard.page";
-import QualifyDecision from "./components/qualify-decision/qualify-decision.component";
+
+// import ClientDashboard from "./pages/dashboard/client-dashboard.page";
 
 import LoanIndicator from "./components/loan-indicator/loan-indicator.component";
+
+const ClientDashboard = React.lazy(() => import("./pages/dashboard/client-dashboard.page"));
+const ApplicationState = React.lazy(() => import("./pages/application-page/application.state.jsx"));
+const QualifyDecision = React.lazy(() =>
+  import("./components/qualify-decision/qualify-decision.component")
+);
 
 // import Axios from "axios";
 // Axios.defaults.baseURL =
@@ -57,62 +64,53 @@ function App() {
 
   return (
     <div>
-      <Navigation />
-      <Switch>
-        <Route
-          exact
-          path="/"
-          render={() =>
-            appState.loggedIn ? <Redirect to="/dashboard" /> : <Home />
-          }
-        />
+      <Suspense fallback={<div>loading</div>}>
+        <Switch>
+          <Route
+            exact
+            path="/"
+            render={() => (appState.loggedIn ? <Redirect to="/dashboard" /> : <Home />)}
+          />
 
-        <Route
-          exact
-          path="/dashboard"
-          render={() =>
-            appState.loggedIn ? <Dashboard /> : <Redirect to="/" />
-          }
-        />
-        <Route
-          exact
-          path="/signin"
-          render={() =>
-            appState.loggedIn ? <Redirect to="/dashboard" /> : <SignIn />
-          }
-        />
+          <Route
+            exact
+            path="/dashboard"
+            render={() => (appState.loggedIn ? <Dashboard /> : <Redirect to="/" />)}
+          />
+          <Route
+            exact
+            path="/signin"
+            render={() => (appState.loggedIn ? <Redirect to="/dashboard" /> : <SignIn />)}
+          />
 
-        <Route
-          exact
-          path="/apply"
-          render={() =>
-            appState.loggedIn ? <Redirect to="/dashboard" /> : <Register />
-          }
-        />
+          <Route
+            exact
+            path="/apply"
+            render={() => (appState.loggedIn ? <Redirect to="/dashboard" /> : <Register />)}
+          />
 
-        <Route exact path="/dashboard" component={Dashboard} />
-        <Route exact path="/applicant/:id" component={Test} />
-        <Route path="/profile/:username" component={ClientDashboard} />
+          <Route exact path="/dashboard" component={Dashboard} />
+          <Route exact path="/applicant/:id" component={Test} />
+          <Route path="/profile/:username" component={ClientDashboard} />
 
-        <Route exact path="/main-application" component={ApplicationState} />
-        <Route exact path="/dashboard" component={Dashboard} />
-        <Route exact path="/warning" component={Warning} />
-        <Route exact path="/signin">
-          <SignIn />
-        </Route>
+          <Route exact path="/main-application" component={ApplicationState} />
+          <Route exact path="/dashboard" component={Dashboard} />
+          <Route exact path="/warning" component={Warning} />
+          <Route exact path="/signin">
+            <SignIn />
+          </Route>
 
-        <Route
-          exact
-          path="/validating-applicant/:id"
-          component={QualifyDecision}
-        />
-        <Route exact path="/svg/" component={LoanIndicator} />
-        <Route
-          exact
-          path="/client-dashboard/:username"
-          component={ClientDashboard}
-        />
-      </Switch>
+          <Route exact path="/validating-applicant/:id" component={QualifyDecision} />
+          <Route exact path="/svg/" component={LoanIndicator} />
+
+          <Route
+            exact
+            path="/"
+            render={() => (appState.loggedIn ? <Redirect to="/dashboard" /> : <Home />)}
+          />
+          <Route exact path="/client-dashboard/:username" component={ClientDashboard} />
+        </Switch>
+      </Suspense>
     </div>
   );
 }

@@ -2,8 +2,8 @@ import styled, { css, keyframes } from "styled-components";
 
 import {
   mainColorGreen,
-  subColorGrey,
-  mainColorBlack,
+  // subColorGrey,
+  // mainColorBlack,
 } from "../../global-styles/global.styles";
 
 const warning = css`
@@ -35,6 +35,7 @@ const applicationFrmBtn = css`
 const calculatorBtn = css`
   border-radius: 50px;
   background-color: ${mainColorGreen};
+  height: 4.7‬rem !important;
 `;
 
 // const clickedBtn = css`
@@ -58,12 +59,12 @@ const getButtonStyles = (props) => {
   if (props.calculatorBtn) {
     return calculatorBtn;
   }
-  return props.googleSignIn ? googleSignInButton : defaultButton;
+  // return props.googleSignIn ? googleSignInButton : defaultButton;
 };
 
 export const CustomButtonContainer = styled.button`
   width: 100%;
-  height: 4.705882352941176‬rem;
+  height: 4.705882352941176‬rem !important;
   letter-spacing: 0.5px;
   line-height: 50px;
   /* padding: 0 35px 0 35px; */
@@ -156,8 +157,7 @@ export const FormInputWrapper = styled.div`
   width: 80%;
   background-color: #335145;
   border-radius: 25px 25px 50px 50px;
-  box-shadow: 0 10px 32px 4px rgba(0, 0, 0, 0.2),
-    0 2px 6px 1px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 32px 4px rgba(0, 0, 0, 0.2), 0 2px 6px 1px rgba(0, 0, 0, 0.1);
   z-index: 1000;
   /* padding: 4%; */
   padding-top: 8%;

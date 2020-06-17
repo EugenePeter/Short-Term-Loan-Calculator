@@ -1,10 +1,4 @@
-import React, {
-  Component,
-  Fragment,
-  useState,
-  useEffect,
-  useContext,
-} from "react";
+import React, { Fragment, useEffect } from "react";
 
 import { withRouter } from "react-router-dom";
 
@@ -14,17 +8,6 @@ import DispatchContext from "../../context/DispatchContext";
 import StateContext from "../../context/StateContext";
 
 import { useImmerReducer } from "use-immer";
-
-import { Container } from "../../global-styles/global.styles";
-import CustomButton from "../../components/custom-button/custom-button.component";
-
-import {
-  FormContainer,
-  ButtonsBarContainer,
-  ButtonWrapper,
-} from "../../components/Form/form-input/form-input.styles";
-
-import FormInput from "../../components/Form/form-input/form-input.component";
 
 import MainApplication from "./main-application.component";
 
@@ -107,6 +90,7 @@ function ApplicationState(props) {
     switch (action.type) {
       case "loanPurpose":
         draft.loanPurpose = action.value;
+        return;
       case "warning":
         draft.warningModal = !draft.warningModal;
         return;
@@ -193,12 +177,10 @@ function ApplicationState(props) {
         return;
 
       case "disclosureStatement":
-        draft.disclosure.disclosureStatement = !draft.disclosure
-          .disclosureStatement;
+        draft.disclosure.disclosureStatement = !draft.disclosure.disclosureStatement;
         return;
       case "cancellationStatement":
-        draft.disclosure.cancellationStatement = !draft.disclosure
-          .cancellationStatement;
+        draft.disclosure.cancellationStatement = !draft.disclosure.cancellationStatement;
         return;
       case "privacyWaiver":
         draft.disclosure.privacyWaiver = !draft.disclosure.privacyWaiver;
@@ -224,71 +206,65 @@ function ApplicationState(props) {
   };
 
   const [state, dispatch] = useImmerReducer(ourReducer, initialState);
-  console.log("submitting is " + state.submitting);
 
   useEffect(() => {
     if (state.submitting) {
       async function submitApplication() {
         alert("submitting is " + state.submitting);
         try {
-          const response = await Axios.post(
-            "https://cashifiedbackend.herokuapp.com/submit-application",
-            {
-              loanPurpose: state.loanPurpose,
-              personalDetails: {
-                gender: state.personalDetails.gender,
-                firstName: state.personalDetails.firstName,
-                lastName: state.personalDetails.lastName,
-                email: state.personalDetails.email,
-                mobileNumber: state.personalDetails.mobileNumber,
-                birthDay: state.personalDetails.birthDay,
-                age: state.personalDetails.age,
-                address: {
-                  suburb: state.personalDetails.address.suburb,
-                  town: state.personalDetails.address.town,
-                  city: state.personalDetails.address.city,
-                  country: state.personalDetails.address.country,
-                },
+          const response = await Axios.post("https://cashifiedbackend.herokuapp.com/submit-application", {
+            loanPurpose: state.loanPurpose,
+            personalDetails: {
+              gender: state.personalDetails.gender,
+              firstName: state.personalDetails.firstName,
+              lastName: state.personalDetails.lastName,
+              email: state.personalDetails.email,
+              mobileNumber: state.personalDetails.mobileNumber,
+              birthDay: state.personalDetails.birthDay,
+              age: state.personalDetails.age,
+              address: {
+                suburb: state.personalDetails.address.suburb,
+                town: state.personalDetails.address.town,
+                city: state.personalDetails.address.city,
+                country: state.personalDetails.address.country,
               },
-              employmentDetails: {
-                companyName: state.employmentDetails.companyName,
-                employerContactNumber:
-                  state.employmentDetails.employerContactNumber,
-                jobTitle: state.employmentDetails.jobTitle,
-                employmentDate: state.employmentDetails.employerContactNumber,
-                jobType: state.employmentDetails.jobType,
-                paySchedule: state.employmentDetails.paySchedule,
-                salary: state.employmentDetails.salary,
-              },
+            },
+            employmentDetails: {
+              companyName: state.employmentDetails.companyName,
+              employerContactNumber: state.employmentDetails.employerContactNumber,
+              jobTitle: state.employmentDetails.jobTitle,
+              employmentDate: state.employmentDetails.employerContactNumber,
+              jobType: state.employmentDetails.jobType,
+              paySchedule: state.employmentDetails.paySchedule,
+              salary: state.employmentDetails.salary,
+            },
 
-              expenses: {
-                rentOrMortageSchedule: state.expenses.rentOrMortageSchedule,
-                totalBills: state.expenses.totalBills,
-                totalLivingExpenseSchedule:
-                  state.expenses.totalLivingExpenseSchedule,
-                totalLivingExpenses: state.expenses.totalLivingExpenses,
-              },
-              nextOfKin: {
-                relationship: state.nextOfKin.relationship,
-                firstName: state.nextOfKin.firstName,
-                lastName: state.nextOfKin.lastName,
-                contactNumber: state.nextOfKin.contactNumber,
-              },
-              bankDetails: {
-                bankAccountNumber: state.bankDetails.bankAccountNumber,
-              },
+            expenses: {
+              rentOrMortageSchedule: state.expenses.rentOrMortageSchedule,
+              totalBills: state.expenses.totalBills,
+              totalLivingExpenseSchedule: state.expenses.totalLivingExpenseSchedule,
+              totalLivingExpenses: state.expenses.totalLivingExpenses,
+            },
+            nextOfKin: {
+              relationship: state.nextOfKin.relationship,
+              firstName: state.nextOfKin.firstName,
+              lastName: state.nextOfKin.lastName,
+              contactNumber: state.nextOfKin.contactNumber,
+            },
+            bankDetails: {
+              bankAccountNumber: state.bankDetails.bankAccountNumber,
+            },
 
-              loanDetails: {
-                amount: state.loanDetails.amount,
-                durationOfLoan: state.loanDetails.durationOfLoan,
-                schedule: state.loanDetails.schedule,
-                repayment: state.loanDetails.repayment,
-                total: state.loanDetails.total,
-              },
+            loanDetails: {
+              amount: state.loanDetails.amount,
+              durationOfLoan: state.loanDetails.durationOfLoan,
+              schedule: state.loanDetails.schedule,
+              repayment: state.loanDetails.repayment,
+              total: state.loanDetails.total,
+            },
 
-              token: localStorage.appToken,
-            }
-          );
+            token: localStorage.appToken,
+          });
 
           console.log(response.data);
           // Redirect to new post url

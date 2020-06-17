@@ -1,4 +1,5 @@
 import styled, { createGlobalStyle } from "styled-components";
+import { Link } from "react-router-dom";
 
 export const mainColorGreen = "#3BC453";
 
@@ -47,6 +48,10 @@ export const Modifiers = createGlobalStyle`
    
   }
 
+  .full_width {
+
+  }
+
   
 
 .shadow {
@@ -55,6 +60,16 @@ export const Modifiers = createGlobalStyle`
 box-shadow: 0px 10px 60px -50px rgba(0,0,0,1)!important;
 }
 
+`;
+
+export const StyledLink = styled(Link)`
+  width: 100% !important;
+  text-decoration: none;
+  color: #a5a5a5;
+
+  &:hover {
+    background-color: #f8fdff;
+  }
 `;
 
 export const BackBtn = styled.div`

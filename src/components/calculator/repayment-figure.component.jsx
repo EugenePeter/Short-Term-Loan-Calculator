@@ -7,16 +7,13 @@ import { createStructuredSelector } from "reselect";
 
 import { amount } from "../redux/calculator/loan-amount/loan-amount.selectors";
 
-import {
-  schedule,
-  repayment,
-} from "../redux/calculator/repayment-amount/repayment-amount.selector";
+import { schedule, repayment } from "../redux/calculator/repayment-amount/repayment-amount.selector";
 
 const RepaymentAmountFigure = ({
-  durationOfLoan,
-  amount,
+  // durationOfLoan,
+  // amount,
   schedule,
-  apr,
+  // apr,
   repayment,
 }) => {
   return (

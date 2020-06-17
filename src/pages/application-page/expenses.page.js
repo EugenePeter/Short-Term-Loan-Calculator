@@ -1,29 +1,15 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 
 import DispatchContext from "../../context/DispatchContext";
 import StateContext from "../../context/StateContext";
 
-import { useImmerReducer, useImmer } from "use-immer";
-
-import {
-  Container,
-  ContainerNarrower,
-  TitleContainer,
-  ContainerRow,
-} from "../../global-styles/global.styles";
+import { Container, ContainerNarrower, TitleContainer } from "../../global-styles/global.styles";
 
 import { GlobalButton, BackBtn } from "../../global-styles/GlobalButton.styles";
 
-import {
-  FormContainer,
-  FormInputContainer,
-  ButtonWrapper,
-  FormInputSpan,
-  GroupContainer,
-} from "../../components/Form/form-input/form-input.styles";
+import { FormContainer, FormInputContainer, ButtonWrapper, FormInputSpan, GroupContainer } from "../../components/Form/form-input/form-input.styles";
 
 import RadioBlockComponent from "../../components/Form/tabs-component/RadioBlock.component";
-import { JobType } from "../../components/Form/job-type/radioBtnContainer";
 import { RadioContainer } from "../../components/Form/tabs-component/RadioInputBlock.styles";
 
 function Expenses() {
@@ -33,8 +19,7 @@ function Expenses() {
   const rentOrMortageSchedule = appState.expenses.rentOrMortageSchedule;
 
   const totalBills = appState.expenses.totalBills;
-  const totalLivingExpenseSchedule =
-    appState.expenses.totalLivingExpenseSchedule;
+  const totalLivingExpenseSchedule = appState.expenses.totalLivingExpenseSchedule;
 
   const totalLivingExpenses = appState.expenses.totalLivingExpenses;
 
@@ -71,37 +56,14 @@ function Expenses() {
             }
           >
             <h5>Rent or Mortgage</h5>
-            <RadioBlockComponent
-              label="Week"
-              value="Week"
-              name="rentOrMortageSchedule"
-              clicked
-            />
-            <RadioBlockComponent
-              label="Fornight"
-              value="Fornight"
-              name="rentOrMortageSchedule"
-            />
-            <RadioBlockComponent
-              label="Month"
-              value="Month"
-              name="rentOrMortageSchedule"
-            />
+            <RadioBlockComponent label="Week" value="Week" name="rentOrMortageSchedule" clicked />
+            <RadioBlockComponent label="Fornight" value="Fornight" name="rentOrMortageSchedule" />
+            <RadioBlockComponent label="Month" value="Month" name="rentOrMortageSchedule" />
           </RadioContainer>
 
           <GroupContainer>
-            <FormInputContainer
-              onChange={(e) =>
-                appDispatch({ type: "totalBills", value: e.target.value })
-              }
-              name="rentOrMortgage"
-              type="number"
-              value={totalBills}
-              label=" totalBills"
-            />
-            <FormInputSpan value={totalBills}>
-              Payment Amount per {rentOrMortageSchedule}
-            </FormInputSpan>
+            <FormInputContainer onChange={(e) => appDispatch({ type: "totalBills", value: e.target.value })} name="rentOrMortgage" type="number" value={totalBills} label=" totalBills" />
+            <FormInputSpan value={totalBills}>Payment Amount per {rentOrMortageSchedule}</FormInputSpan>
           </GroupContainer>
 
           <RadioContainer
@@ -113,21 +75,9 @@ function Expenses() {
             }
           >
             <h5>Total Living Expenses</h5>
-            <RadioBlockComponent
-              label="Week"
-              value="Week"
-              name="totalLivingExpenseSchedule"
-            />
-            <RadioBlockComponent
-              label="Fornight"
-              value="Fornight"
-              name="totalLivingExpenseSchedule"
-            />
-            <RadioBlockComponent
-              label="Month"
-              value="Month"
-              name="totalLivingExpenseSchedule"
-            />
+            <RadioBlockComponent label="Week" value="Week" name="totalLivingExpenseSchedule" />
+            <RadioBlockComponent label="Fornight" value="Fornight" name="totalLivingExpenseSchedule" />
+            <RadioBlockComponent label="Month" value="Month" name="totalLivingExpenseSchedule" />
           </RadioContainer>
 
           <GroupContainer>
@@ -143,9 +93,7 @@ function Expenses() {
               value={totalLivingExpenses}
               label="totalLivingExpenseSchedule"
             />
-            <FormInputSpan value={totalLivingExpenses}>
-              Payment Amount per {totalLivingExpenseSchedule}
-            </FormInputSpan>
+            <FormInputSpan value={totalLivingExpenses}>Payment Amount per {totalLivingExpenseSchedule}</FormInputSpan>
           </GroupContainer>
 
           <ButtonWrapper>

@@ -1,6 +1,6 @@
 import React, { Fragment, useContext } from "react";
 
-import { Nav, NavItems, NavItemsInner, LogoContainer } from "./navigation.styles";
+import { Nav, NavItems, NavItemsInner, LogoContainer, Modifiers } from "./navigation.styles";
 
 // import { auth } from "../firebase/firebase.utils";
 
@@ -10,7 +10,7 @@ import { createStructuredSelector } from "reselect";
 
 import { selectCurrentUser } from "../redux/user/user.selectors";
 
-import { ReactComponent as Logo } from "../../assets/dollar.svg";
+import { ReactComponent as Logo } from "../../assets/icons/cashfull-logo-2.svg";
 import { useLocation } from "react-router-dom";
 
 import { ContainerMid } from "../../global-styles/global.styles";
@@ -25,8 +25,8 @@ const Navigation = ({ currentUsers }) => {
   let location = useLocation();
 
   const currentLocation = location.pathname;
-  const compareLocation = "/dashboard";
-  const compareLocationTwo = "main-application";
+  // const compareLocation = "/dashboard";
+  // const compareLocationTwo = "main-application";
 
   console.log(location.pathname);
 
@@ -36,30 +36,22 @@ const Navigation = ({ currentUsers }) => {
 
   return (
     <Fragment>
-      {currentLocation == "/" && (
+      <Modifiers />
+      {currentLocation === "/" && (
         <Nav>
           <ContainerMid>
-            <LogoContainer to="/">
-              <Logo className="logo" />
+            <LogoContainer home to="/">
+              <Logo className="logo margin-t" />
             </LogoContainer>
-            <NavItems>
-              {appState.loggedIn ? (
-                <NavItemsInner onClick={handleLogOut} to="">
-                  sign out
-                </NavItemsInner>
-              ) : (
-                <NavItemsInner to="/signin">returning customer</NavItemsInner>
-              )}
-            </NavItems>
           </ContainerMid>
         </Nav>
       )}
 
-      {currentLocation == "/dashboard" && (
+      {currentLocation === "/client-dashboard/:username" && (
         <Nav>
           <ContainerMid>
             <LogoContainer to="/">
-              <Logo className="logo" />
+              <Logo className="logo " />
             </LogoContainer>
             <NavItems>
               {appState.loggedIn ? (

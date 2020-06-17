@@ -5,11 +5,8 @@ import App from "./App";
 import UserGlobal from "./UserGlobal";
 import * as serviceWorker from "./serviceWorker";
 
-import { BrowserRouter } from "react-router-dom";
-
 import { Provider } from "react-redux";
 import store from "./components/redux/store";
-import Axios from "axios";
 // Axios.defaults.baseURL =
 //   process.env.BACKENDURL || "your heroku dot com goes here";
 

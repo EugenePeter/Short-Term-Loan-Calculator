@@ -21,6 +21,10 @@ export const ContainerRow = styled.div`
   align-items: center;
   justify-content: center;
   /* background-color: red; */
+
+  @media screen and (min-width: 992px) {
+    max-width: 50rem;
+  }
 `;
 
 export const ContainerMid = styled.div`

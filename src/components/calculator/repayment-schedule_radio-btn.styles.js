@@ -1,8 +1,8 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
-export const CheckBoxContainer = styled.div`
+export const RadioContainer = styled.div`
   width: 100%;
-  background-image: linear-gradient(to bottom right, #55d251, #4ac76c, #31b3c2);
+  background-color: #fcfcfc;
   padding: 2rem 1rem 2rem 1rem;
   margin-top: 1rem;
   box-sizing: border-box;
@@ -11,17 +11,13 @@ export const CheckBoxContainer = styled.div`
     margin-bottom: 2rem;
   }
 
-  -webkit-box-shadow: -4px 39px 59px -63px rgba(0, 0, 0, 1);
-  -moz-box-shadow: -4px 39px 59px -63px rgba(0, 0, 0, 1);
-  box-shadow: -4px 39px 59px -63px rgba(0, 0, 0, 1);
-
   @media screen and (min-width: 992px) {
     padding: 2rem 4.11rem 2rem 4.11rem;
     margin-top: 1rem;
   }
 `;
 
-export const CheckBoxInput = styled.input`
+export const RadioInput = styled.input`
   position: absolute;
   top: 0;
   left: 0;
@@ -46,18 +42,18 @@ export const CheckMark = styled.span`
   width: 16px;
   height: 16px;
   border: solid 2px;
-  /* border-radius: 50%; */
+  border-radius: 50%;
   box-sizing: border-box;
 `;
 
-export const CheckBoxBlock = styled.div`
+export const RadioBlock = styled.div`
   display: inline-block;
   width: 16px;
   height: 16px;
  align-content: center;
   position: relative;
   /* padding-left: 35px; */
-  /* margin-right: 1.625rem; */
+  margin-right: 1.625rem;
   cursor: pointer;
   /* font-size: 22px; */
   -webkit-user-select: none;
@@ -66,12 +62,12 @@ export const CheckBoxBlock = styled.div`
   /* background-color: yellow; */
 
   &:hover {
-    ${CheckBoxInput} ~ ${CheckMark} {
+    ${RadioInput} ~ ${CheckMark} {
       background-color: #F2F2F2;
     }
   }
 
-  ${CheckBoxInput}:checked ~ ${CheckMark} {
+  ${RadioInput}:checked ~ ${CheckMark} {
       background-color: #84DE40;
       border: none;
   }
@@ -83,7 +79,7 @@ export const CheckBoxBlock = styled.div`
     display: none;
   }
 
-  ${CheckBoxInput}:checked ~ ${CheckMark}:after {
+  ${RadioInput}:checked ~ ${CheckMark}:after {
     display: block;
   }
   ${CheckMark}:after {
@@ -102,7 +98,7 @@ export const CheckBoxBlock = styled.div`
 
 `;
 
-export const CheckBoxBlock__wrapper = styled.div`
+export const RadioBlockWrapper = styled.div`
    {
     display: flex;
     justify-content: center;
@@ -113,61 +109,26 @@ export const CheckBoxBlock__wrapper = styled.div`
   }
 `;
 
-const isNotClicked = css`
-  border: solid 2px #ff9300;
-`;
-
-const getCheckboxStyles = (props) => {
-  if (props.isNotClicked === true) {
-    return isNotClicked;
-  }
-};
-
-export const CheckBox = styled.div`
+export const Radio = styled.div`
   position: relative;
   display: flex;
   flex-direction: row;
-  /* justify-content: space-between; */
+  justify-content: space-between;
   align-items: center;
 
   width: 100%;
-  background-color: #f6fff9;
+  background-color: #fff;
 
-  height: 14.11rem;
+  height: 4.11rem;
   margin-bottom: 0.625rem;
 
-  -webkit-box-shadow: 0px 13px 59px -25px rgba(0, 0, 0, 0.4);
-  -moz-box-shadow: 0px 13px 59px -25px rgba(0, 0, 0, 0.4);
-  box-shadow: 0px 13px 59px -45px rgba(0, 0, 0, 0.8);
+  box-shadow: 2px 2px 20px 10px rgba(0, 0, 0, 0.02);
 
   transition: 0.3s;
 
   &:hover {
-    background-color: #fff;
-    color: #84de40;
-  }
-
-  &:checked {
-    background-color: #fff;
-    color: #84de40;
-  }
-  transition: width 1s cubic-bezier(0.35, 0, 0.1, 1) 0.2s;
-  ${getCheckboxStyles}
-
-  @media screen and (min-width: 992px) {
-    height: 10.11rem;
-  }
-`;
-
-export const CheckBoxDetails = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-right: 1.625rem;
-
-  a {
-    text-decoration: none;
-  }
-  a small {
-    color: #84de40 !important;
+    /* background-color: #84de40; */
+    border: 2px solid #84de40;
+    box-sizing: border-box;
   }
 `;

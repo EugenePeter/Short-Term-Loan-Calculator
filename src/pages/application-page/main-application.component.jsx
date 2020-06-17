@@ -1,24 +1,8 @@
-import React, {
-  Component,
-  Fragment,
-  useState,
-  useEffect,
-  useContext,
-} from "react";
+import React, { useEffect, useContext } from "react";
 
-import DispatchContext from "../../context/DispatchContext";
 import StateContext from "../../context/StateContext";
 
-import { useImmerReducer } from "use-immer";
-
 import "normalize.css";
-
-import { Small } from "../../global-styles/global.styles";
-
-import { connect } from "react-redux";
-import { createStructuredSelector } from "reselect";
-
-import FormInput from "../../components/Form/form-input/form-input.component";
 
 import UserDetails from "./user-details.component";
 import Requirement from "./requirement";
@@ -31,22 +15,6 @@ import UploadDocuments from "./upload.documents.page";
 import BankDetails from "./bank-details.page";
 import LegalAndCompliance from "./legalAndCompliance.page";
 import Review from "./review.page";
-
-import { Form, Field } from "react-final-form";
-
-import {
-  FormContainer,
-  ButtonsBarContainer,
-} from "../../components/Form/form-input/form-input.styles";
-
-import CustomButton from "../../components/custom-button/custom-button.component";
-
-import {
-  auth,
-  addUserApplication,
-} from "../../components/firebase/firebase.utils";
-
-import LoanData from "./data";
 
 function MainApplication() {
   const appState = useContext(StateContext);

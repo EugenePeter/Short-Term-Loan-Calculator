@@ -58,7 +58,7 @@ const isNotClicked = css`
 `;
 
 const getTabsStyles = (props) => {
-  if (props.isNotClicked == true) {
+  if (props.isNotClicked === true) {
     return isNotClicked;
   }
 };

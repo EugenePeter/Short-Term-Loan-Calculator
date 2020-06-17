@@ -1,9 +1,11 @@
 import styled from "styled-components";
 
 export const RadioContainer = styled.div`
+  display: flex;
+  flex-direction: column;
   width: 100%;
   background-color: #fcfcfc;
-  padding: 2rem 1rem 2rem 1rem;
+  padding: 1rem 1rem 2rem 1rem;
   margin-top: 1rem;
   box-sizing: border-box;
 
@@ -98,7 +100,7 @@ export const RadioBlock = styled.div`
 
 `;
 
-export const RadioBlock__wrapper = styled.div`
+export const RadioBlockWrapper = styled.div`
    {
     display: flex;
     justify-content: center;
@@ -127,7 +129,8 @@ export const Radio = styled.div`
   transition: 0.3s;
 
   &:hover {
-    background-color: #84de40;
-    color: #fff;
+    /* background-color: #84de40; */
+    border: 2px solid #84de40;
+    box-sizing: border-box;
   }
 `;

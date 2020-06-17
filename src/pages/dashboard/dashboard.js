@@ -1,30 +1,23 @@
-import React, { useContext, useState } from "react";
+import React, {
+  useContext,
+  Fragment,
+} from "react";
+import { Link } from "react-router-dom";
 
 import DispatchContext from "../../context/DispatchContext";
 import StateContext from "../../context/StateContext";
-
-import { useImmerReducer, useImmer } from "use-immer";
 
 import {
   Container,
   ContainerNarrower,
   TitleContainer,
-  ContainerRow,
 } from "../../global-styles/global.styles";
 
-import { GlobalButton, BackBtn } from "../../global-styles/GlobalButton.styles";
+import { InputWrapper } from "../application-page/application-page.styles";
 
-import {
-  FormContainer,
-  FormInputContainer,
-  ButtonWrapper,
-  FormInputSpan,
-  GroupContainer,
-} from "../../components/Form/form-input/form-input.styles";
+import { GlobalButton } from "../../global-styles/GlobalButton.styles";
 
-import RadioBlockComponent from "../../components/Form/tabs-component/RadioBlock.component";
-import { JobType } from "../../components/Form/job-type/radioBtnContainer";
-import { RadioContainer } from "../../components/Form/tabs-component/RadioInputBlock.styles";
+import { ButtonWrapper } from "../../components/Form/form-input/form-input.styles";
 
 import ApplicationPage from "../application-page/application-page";
 import { withRouter } from "react-router-dom";
@@ -39,21 +32,47 @@ function Dashboard(props) {
     props.history.push("/warning");
   };
 
+  function handleLogOut() {
+    appDispatch({ type: "logout" });
+  }
+
   return (
-    <Container>
-      <ContainerNarrower>
-        <TitleContainer>
-          <small>Hi {appState.user.username}</small>
-          <h2>Welcome</h2> {""}
-        </TitleContainer>
-        <ApplicationPage />
-        <ButtonWrapper>
-          <GlobalButton filterApplicants onClick={handleSubmit}>
-            Save And Continue
-          </GlobalButton>
-        </ButtonWrapper>
-      </ContainerNarrower>
-    </Container>
+    <Fragment>
+      <Container>
+        <ContainerNarrower>
+          <TitleContainer>
+            <small>
+              Hi {appState.user.username}
+            </small>
+            <h2>Welcome</h2> {""}
+          </TitleContainer>
+
+          <InputWrapper>
+            <ApplicationPage />
+            <ButtonWrapper>
+              <GlobalButton
+                filterApplicants
+                onClick={handleSubmit}
+              >
+                Save And Continue
+              </GlobalButton>
+            </ButtonWrapper>
+            <Link
+              to="/"
+              onClick={handleLogOut}
+              style={{
+                color: "#3BC453",
+                width: "100%",
+                textAlign: "center",
+                marginBottom: "2rem",
+              }}
+            >
+              Log me out
+            </Link>
+          </InputWrapper>
+        </ContainerNarrower>
+      </Container>
+    </Fragment>
   );
 }
 export default withRouter(Dashboard);

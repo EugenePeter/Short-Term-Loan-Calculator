@@ -1,28 +1,11 @@
-import React, {
-  Component,
-  Fragment,
-  useState,
-  useEffect,
-  useContext,
-} from "react";
+import React, { Fragment, useState } from "react";
 
-import {
-  Container,
-  ContainerNarrower,
-  TitleContainer,
-  ContainerRow,
-} from "../../global-styles/global.styles";
+import { TitleContainer } from "../../global-styles/global.styles";
 
 import LoadingIcon from "./loading-icon";
 
 function PersonalDetails() {
   const [isLoading, setIsLoading] = useState(true);
-
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     setIsLoading(false);
-  //   }, 10000);
-  // }, []);
 
   return (
     <Fragment>

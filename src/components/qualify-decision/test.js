@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 import { useParams } from "react-router-dom";
 
@@ -13,7 +13,7 @@ function Test(props) {
   // const appState = useContext(StateContext);
   // const appDispatch = useContext(DispatchContext);
   const { id } = useParams();
-  const [isLoading, setIsLoading] = useState(true);
+  const [setIsLoading] = useState(true);
   const [post, setPost] = useState();
 
   useEffect(() => {
@@ -22,19 +22,14 @@ function Test(props) {
     console.log(token);
     async function fetchPost() {
       try {
-        const response = await Axios.get(
-          `http://localhost:8080/applicant/${id}`,
-          {
-            token: token,
-          }
-        );
+        const response = await Axios.get(`http://localhost:8080/applicant/${id}`, {
+          token: token,
+        });
         // console.log(response.data);
         setPost(response.data);
         setIsLoading(false);
       } catch (e) {
-        console.log(
-          e.response.data + "There was a problem or the request was cancelled."
-        );
+        console.log(e.response.data + "There was a problem or the request was cancelled.");
       }
     }
     fetchPost();

@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 
 import DispatchContext from "../../context/DispatchContext";
 import StateContext from "../../context/StateContext";
@@ -9,36 +9,17 @@ import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import { withRouter } from "react-router-dom";
 import { amount } from "../../components/redux/calculator/loan-amount/loan-amount.selectors";
-import {
-  durationOfLoan,
-  schedule,
-  repayment,
-  total,
-} from "../../components/redux/calculator/repayment-amount/repayment-amount.selector";
+import { durationOfLoan, schedule, repayment, total } from "../../components/redux/calculator/repayment-amount/repayment-amount.selector";
 
-import {
-  Container,
-  ContainerNarrower,
-  TitleContainer,
-  ContainerRow,
-} from "../../global-styles/global.styles";
+import { Container, ContainerNarrower, TitleContainer } from "../../global-styles/global.styles";
 
 import { GlobalButton, BackBtn } from "../../global-styles/GlobalButton.styles";
 
-import {
-  FormContainer,
-  FormInputContainer,
-  ButtonWrapper,
-  FormInputSpan,
-  GroupContainer,
-} from "../../components/Form/form-input/form-input.styles";
+import { FormContainer, ButtonWrapper } from "../../components/Form/form-input/form-input.styles";
 
 import { TabsContainer } from "../../components/Form/tabs-component/Tabs.styles";
 
-import {
-  Tabs,
-  TabsDetails,
-} from "../../components/Form/tabs-component/Tabs.styles";
+import { Tabs, TabsDetails } from "../../components/Form/tabs-component/Tabs.styles";
 
 // import "normalize.css";
 
@@ -54,14 +35,8 @@ function Review(props) {
     isNotClicked: false,
   });
 
-  const name = localStorage.appUsername;
   useEffect(() => {
-    if (
-      disclosureState.disclosureStatement &&
-      appState.disclosure.cancellationStatement &&
-      appState.disclosure.privacyWaiver &&
-      appState.disclosure.creditCheck
-    ) {
+    if (disclosureState.disclosureStatement && appState.disclosure.cancellationStatement && appState.disclosure.privacyWaiver && appState.disclosure.creditCheck) {
       setState((draft) => {
         draft.disabled = false;
       });
@@ -119,7 +94,7 @@ function Review(props) {
             <Tabs className="">
               <TabsDetails>
                 <h3>{total}</h3>
-                <smaller>Total payment</smaller>
+                <small>Total payment</small>
               </TabsDetails>
             </Tabs>
           </TabsContainer>

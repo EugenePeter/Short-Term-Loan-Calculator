@@ -4,35 +4,15 @@ import cuid from "cuid";
 import DispatchContext from "../../context/DispatchContext";
 import StateContext from "../../context/StateContext";
 
-import { useImmerReducer, useImmer } from "use-immer";
-
-import {
-  Container,
-  ContainerNarrower,
-  TitleContainer,
-  ContainerRow,
-} from "../../global-styles/global.styles";
-
+import { Container, ContainerNarrower, TitleContainer } from "../../global-styles/global.styles";
 import { GlobalButton, BackBtn } from "../../global-styles/GlobalButton.styles";
-
-import {
-  FormContainer,
-  FormInputContainer,
-  ButtonWrapper,
-  FormInputSpan,
-  GroupContainer,
-} from "../../components/Form/form-input/form-input.styles";
-
-import {
-  RequiredDocs,
-  RequiredDocsColumn,
-} from "../../components/Form/dropzone-component/dropzone.styles";
+import { FormContainer, ButtonWrapper } from "../../components/Form/form-input/form-input.styles";
+import { RequiredDocs, RequiredDocsColumn } from "../../components/Form/dropzone-component/dropzone.styles";
 
 import Dropzone from "../../components/Form/dropzone-component/dropzone.component";
 import ImageList from "../../components/Form/dropzone-component/upload-preview";
 
 function UploadDocuments() {
-  const appState = useContext(StateContext);
   const appDispatch = useContext(DispatchContext);
 
   const [images, setImages] = useState([]);
@@ -47,10 +27,7 @@ function UploadDocuments() {
       // onload callback gets called after the reader reads the file data
       reader.onload = function(e) {
         // add the image into the state. Since FileReader reading process is asynchronous, its better to get the latest snapshot state (i.e., prevState) and update it.
-        setImages((prevState) => [
-          ...prevState,
-          { id: cuid(), src: e.target.result, filename: file.name },
-        ]);
+        setImages((prevState) => [...prevState, { id: cuid(), src: e.target.result, filename: file.name }]);
       };
       // Read the file as Data URL (since we accept only images)
       reader.readAsDataURL(file);
@@ -67,10 +44,6 @@ function UploadDocuments() {
   const handleBack = (e) => {
     e.preventDefault();
     appDispatch({ type: "back" });
-  };
-
-  const handleRadioInput = (e) => {
-    // setDispatchType(e.target.value)}
   };
 
   return (
