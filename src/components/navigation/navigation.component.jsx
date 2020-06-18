@@ -39,11 +39,9 @@ const Navigation = ({ currentUsers }) => {
       <Modifiers />
       {currentLocation === "/" && (
         <Nav>
-          <ContainerMid>
-            <LogoContainer home to="/">
-              <Logo className="logo margin-t" />
-            </LogoContainer>
-          </ContainerMid>
+          <LogoContainer home to="/">
+            <Logo className="logo" />
+          </LogoContainer>
         </Nav>
       )}
 

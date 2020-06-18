@@ -15,6 +15,7 @@ export const Modifiers = createGlobalStyle`
 `;
 
 export const Nav = styled.nav`
+  position: relative;
   height: 40px;
   width: 100%;
   display: flex;
@@ -45,7 +46,7 @@ const getLogoContainerStyles = (props) => {
 export const LogoContainer = styled(Link)`
   position: relative;
   height: 100%;
-  width: 70px;
+  width: 68% !important;
   /* padding: 25px; */
   display: flex;
   justify-content: center;
@@ -56,6 +57,10 @@ export const LogoContainer = styled(Link)`
   }
 
   ${getLogoContainerStyles}
+
+  @media screen and (min-width: 768px) {
+    max-width: 16%;
+  }
 `;
 
 export const NavItems = styled.div`

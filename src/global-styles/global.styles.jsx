@@ -28,6 +28,7 @@ export const ContainerRow = styled.div`
 `;
 
 export const ContainerMid = styled.div`
+  position: relative;
   display: flex;
   flex-direction: row;
   justify-content: space-between;

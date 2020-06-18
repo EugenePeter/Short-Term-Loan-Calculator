@@ -3,7 +3,7 @@ import styled, { createGlobalStyle } from "styled-components";
 export const Modifiers = createGlobalStyle`
 
 .margin-t {
-  margin-top: 4rem;
+  margin-top: 1rem;
 }
 
 .margin-b {
