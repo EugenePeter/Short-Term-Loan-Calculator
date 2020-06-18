@@ -1,17 +1,10 @@
-import React, {
-  useContext,
-  Fragment,
-} from "react";
+import React, { useContext, Fragment } from "react";
 import { Link } from "react-router-dom";
 
 import DispatchContext from "../../context/DispatchContext";
 import StateContext from "../../context/StateContext";
 
-import {
-  Container,
-  ContainerNarrower,
-  TitleContainer,
-} from "../../global-styles/global.styles";
+import { Container, ContainerNarrower, TitleContainer } from "../../global-styles/global.styles";
 
 import { InputWrapper } from "../application-page/application-page.styles";
 
@@ -41,19 +34,14 @@ function Dashboard(props) {
       <Container>
         <ContainerNarrower>
           <TitleContainer>
-            <small>
-              Hi {appState.user.username}
-            </small>
+            <small>Hi {appState.user.username}</small>
             <h2>Welcome</h2> {""}
           </TitleContainer>
 
           <InputWrapper>
             <ApplicationPage />
             <ButtonWrapper>
-              <GlobalButton
-                filterApplicants
-                onClick={handleSubmit}
-              >
+              <GlobalButton filterApplicants onClick={handleSubmit}>
                 Save And Continue
               </GlobalButton>
             </ButtonWrapper>
