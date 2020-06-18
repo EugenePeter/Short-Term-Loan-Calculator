@@ -31,8 +31,6 @@ class LoanDurationInputRange extends Component {
     console.log(maxTerm);
     const { children } = this.props;
 
-    console.log();
-
     return (
       <Fragment>
         {children}
