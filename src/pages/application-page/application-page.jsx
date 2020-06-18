@@ -24,7 +24,7 @@ import TotalRepayment from "../../components/calculator/total-repayment.componen
 import RepaymentSchedule from "../../components/calculator/repayment-schedule.component";
 import LoanAmount from "../../components/calculator/loan-amount.component";
 import LoanDuration from "../../components/calculator/loan-duration.component";
-import LoanDurationInputRange from "../../components/calculator/Loan-duration__input-range";
+import LoanDurationInputRange from "../../components/calculator/loan-duration__input-range";
 import RepaymentScheduleRadioBtn from "../../components/calculator/repayment-schedule__radio-btn";
 import { amount } from "../../components/redux/calculator/loan-amount/loan-amount.selectors";
 
