@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "cuid": "^2.1.8",
     "final-form": "^4.20.0",
     "firebase": "^7.15.1",
